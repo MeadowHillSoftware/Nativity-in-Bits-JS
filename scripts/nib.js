@@ -4,6 +4,23 @@
 "use strict";
 var oNIB = {};
 
+oNIB.addNeutralEthics = function(sMorals) {
+    if (sMorals === "Neutral") {
+        oNIB.oCharacter.sAlignment = "True Neutral";
+    } else {
+        oNIB.oCharacter.sAlignment = "Neutral " + sMorals;
+    }
+};
+
+oNIB.addNonlawfulEthics = function(sMorals) {
+    var iRoll = oNIB.roll(4);
+    if (iRoll < 3) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    }
+};
+
 oNIB.createClass = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
@@ -83,6 +100,85 @@ oNIB.createClass = function() {
     oCharacter["sClass"] = sClass;
 };
 
+oNIB.createDwarvenEthics = function(sMorals) {
+    var iRoll = oNIB.roll(96);
+    if (iRoll < 66) {
+        oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    } else if (iRoll < 86) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    }
+};
+
+oNIB.createElvenEthics = function(sMorals) {
+    var iRoll = oNIB.roll(96);
+    if (iRoll < 66) {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    } else if (iRoll < 86) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    }
+};
+
+oNIB.createEthics = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sClass = oCharacter.sClass;
+    var sRace = oCharacter.sRace;
+    var sMorals = oCharacter.sAlignment;
+    if (sClass === "Bard" || sClass === "Barbarian") {
+        if (sRace === "Dwarf") {
+            oNIB.createNonlawfulDwarf(sMorals);
+        } else if (sRace === "Halfling" ) {
+            oNIB.createNonlawfulHin(sMorals);
+        } else if (sRace === "Gnome" || sRace === "Human") {
+            oNIB.addNonlawfulEthics(sMorals);
+        } else {
+            oNIB.createNonlawfulElf(sMorals);
+        }
+    } else if (sClass === "Druid") {
+        if (sMorals !== "Neutral") {
+            oCharacter.sAlignment = "Neutral " + sMorals;
+        } else {
+            if (sRace === "Dwarf") {
+                oNIB.createDwarvenEthics(sMorals);
+            } else if (sRace === "Halfling") {
+                oNIB.createHinEthics(sMorals);
+            } else if (sRace === "Gnome" || sRace === "Human") {
+                oNIB.createNormalEthics(sMorals);
+            } else {
+                oNIB.createElvenEthics(sMorals);
+            }
+        }
+    } else if (sClass === "Monk") {
+        oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    } else if (sClass === "Paladin") {
+        oNIB.oCharacter.sAlignment = "Lawful Good";
+    } else {
+        if (sRace === "Dwarf") {
+            oNIB.createDwarvenEthics(sMorals);
+        } else if (sRace === "Halfling") {
+            oNIB.createHinEthics(sMorals);
+        } else if (sRace === "Gnome" || sRace === "Human") {
+            oNIB.createNormalEthics(sMorals);
+        } else {
+            oNIB.createElvenEthics(sMorals);
+        }
+    }
+};
+
+oNIB.createHinEthics = function(sMorals) {
+    var iRoll = oNIB.roll(100);
+    if (iRoll < 61) {
+        oNIB.addNeutralEthics(sMorals);
+    } else if (iRoll < 81) {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    } else {
+        oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    }
+};
+
 oNIB.createMorals = function() {
     var iRoll = oNIB.roll(100);
     var sMorals = "";
@@ -94,6 +190,44 @@ oNIB.createMorals = function() {
         sMorals = "Evil";
     }
     oNIB.oCharacter["sAlignment"] = sMorals;
+};
+
+oNIB.createNonlawfulDwarf = function(sMorals) {
+    var iRoll = oNIB.roll(36);
+    if (iRoll < 26) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    }
+};
+
+oNIB.createNonlawfulElf = function(sMorals) {
+    var iRoll = oNIB.roll(85);
+    if (iRoll < 66) {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals
+    } else {
+        oNIB.addNeutralEthics(sMorals);
+    }
+};
+
+oNIB.createNonlawfulHin = function(sMorals) {
+    var iRoll = oNIB.roll(80);
+    if (iRoll < 61) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    }
+};
+
+oNIB.createNormalEthics = function(sMorals) {
+    var iRoll = oNIB.roll(6);
+    if (iRoll < 3) {
+        oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    } else if (iRoll < 5) {
+        oNIB.addNeutralEthics(sMorals);
+    } else {
+        oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
+    }
 };
 
 oNIB.createRace = function() {
@@ -677,7 +811,7 @@ oNIB.printCharacter = function() {
     var sAlignment = oCharacter.sAlignment;
     var alignment = $("<p></p>")
         .attr('id', 'alignment')
-        .text(("Morals: " + sAlignment));
+        .text(("Alignment: " + sAlignment));
     var sRace = oCharacter.sRace;
     var race = $("<p></p>")
         .attr('id', 'race')
@@ -699,4 +833,5 @@ oNIB.roll = function(die) {
 oNIB.createMorals();
 oNIB.createClass();
 oNIB.createRace();
+oNIB.createEthics();
 oNIB.printCharacter();
