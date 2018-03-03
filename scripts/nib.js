@@ -108,7 +108,7 @@ oNIB.createClass = function() {
             sClass = "Wizard";
         }
     }
-    oCharacter["sClass"] = sClass;
+    oCharacter.sClass = sClass;
 };
 
 oNIB.createDwarvenEthics = function(sMorals) {
@@ -205,12 +205,46 @@ oNIB.createEthics = function() {
     }
 };
 
+oNIB.createFormalEducation = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    if (iRoll < 26) {
+        oCharacter.sFormalEducation = "Agriculture";
+    } else if (iRoll < 31) {
+        oCharacter.sFormalEducation = "History";
+    } else if (iRoll < 36) {
+        oCharacter.sFormalEducation = "Politics";
+    } else if (iRoll < 41) {
+        oCharacter.sFormalEducation = "Religion";
+    } else if (iRoll < 46) {
+        oCharacter.sFormalEducation = "Natural History";
+    } else if (iRoll < 51) {
+        oCharacter.sFormalEducation = "Multicultural";
+    } else if (iRoll < 56) {
+        oCharacter.sFormalEducation = "Arts";
+    } else if (iRoll < 61) {
+        oCharacter.sFormalEducation = "Literature";
+    } else if (iRoll < 66) {
+        oCharacter.sFormalEducation = "Math";
+    } else if (iRoll < 71) {
+        oCharacter.sFormalEducation = "Advanced Math";
+    } else if (iRoll < 76) {
+        oCharacter.sFormalEducation = "Astronomy";
+    } else if (iRoll < 86) {
+        oCharacter.sFormalEducation = "Finishing School";
+    } else if (iRoll < 96) {
+        oCharacter.sFormalEducation = "School of Hard Knocks";
+    } else {
+        oCharacter.sFormalEducation = "Magic";
+    }
+};
+
 oNIB.createGender = function() {
     var iRoll = oNIB.roll(4);
     if (iRoll < 3) {
-        oNIB.oCharacter["sGender"] = "Female";
+        oNIB.oCharacter.sGender = "Female";
     } else {
-        oNIB.oCharacter["sGender"] = "Male";
+        oNIB.oCharacter.sGender = "Male";
     }
 };
 
@@ -235,7 +269,7 @@ oNIB.createMorals = function() {
     } else {
         sMorals = "Evil";
     }
-    oNIB.oCharacter["sAlignment"] = sMorals;
+    oNIB.oCharacter.sAlignment = sMorals;
 };
 
 oNIB.createNonlawfulDwarf = function(sMorals) {
@@ -856,7 +890,7 @@ oNIB.createRace = function() {
             }
         }
     }
-    oCharacter["sRace"] = sRace;
+    oCharacter.sRace = sRace;
 };
 
 oNIB.createSpecialistWizard = function() {
@@ -1052,12 +1086,17 @@ oNIB.printCharacter = function() {
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
         .text(("Early Childhood Instruction: " + sInstruction));
+    var sEducation = oCharacter.sFormalEducation;
+    var education = $("<p></p>")
+        .attr('id', 'education')
+        .text(("Formal Education: " + sEducation));
     var body = $("#body")
         .append(gender)
         .append(race)
         .append(characterClass)
         .append(alignment)
-        .append(instruction);
+        .append(instruction)
+        .append(education);
 };
 
 oNIB.roll = function(die) {
@@ -1070,4 +1109,5 @@ oNIB.createRace();
 oNIB.createEthics();
 oNIB.createGender();
 oNIB.createEarlyChildhoodInstruction();
+oNIB.createFormalEducation();
 oNIB.printCharacter();
