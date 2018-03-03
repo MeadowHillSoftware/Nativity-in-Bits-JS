@@ -186,6 +186,19 @@ oNIB.createEthics = function() {
             oNIB.createElvenEthics(sMorals);
         }
     }
+    var sClass = oCharacter.sClass;
+    if (sClass === "Wizard") {
+        oNIB.checkForSpecialization();
+    }
+};
+
+oNIB.createGender = function() {
+    var iRoll = oNIB.roll(4);
+    if (iRoll < 3) {
+        oNIB.oCharacter["sGender"] = "Female";
+    } else {
+        oNIB.oCharacter["sGender"] = "Male";
+    }
 };
 
 oNIB.createHinEthics = function(sMorals) {
@@ -822,10 +835,6 @@ oNIB.createRace = function() {
         }
     }
     oCharacter["sRace"] = sRace;
-    var sClass = oCharacter.sClass;
-    if (sClass === "Wizard") {
-        oNIB.checkForSpecialization();
-    }
 };
 
 oNIB.createSpecialistWizard = function() {
@@ -1001,6 +1010,10 @@ oNIB.oCharacter = {};
 
 oNIB.printCharacter = function() {
     var oCharacter = oNIB.oCharacter;
+    var sGender = oCharacter.sGender;
+    var gender = $("<p></p>")
+        .attr('id', 'gender')
+        .text(("Gender: " + sGender));
     var sRace = oCharacter.sRace;
     var race = $("<p></p>")
         .attr('id', 'race')
@@ -1014,6 +1027,7 @@ oNIB.printCharacter = function() {
         .attr('id', 'alignment')
         .text(("Alignment: " + sAlignment));
     var body = $("#body")
+        .append(gender)
         .append(race)
         .append(characterClass)
         .append(alignment);
@@ -1027,4 +1041,5 @@ oNIB.createMorals();
 oNIB.createClass();
 oNIB.createRace();
 oNIB.createEthics();
+oNIB.createGender();
 oNIB.printCharacter();
