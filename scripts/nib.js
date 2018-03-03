@@ -21,6 +21,26 @@ oNIB.addNonlawfulEthics = function(sMorals) {
     }
 };
 
+oNIB.checkForSpecialization = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sRace = oCharacter.sRace;
+    var iRoll = oNIB.roll(85);
+    if (sRace === "Gnome") {
+        if (iRoll < 66) {
+            oCharacter.sClass = "Illusionist";
+        } else {
+            iRoll = oNIB.roll(85);
+            if (iRoll > 65) {
+                oNIB.createSpecialistWizard();
+            }
+        }
+    } else {
+        if (iRoll > 65) {
+            oNIB.createSpecialistWizard();
+        }
+    }
+};
+
 oNIB.createClass = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
@@ -802,16 +822,185 @@ oNIB.createRace = function() {
         }
     }
     oCharacter["sRace"] = sRace;
+    var sClass = oCharacter.sClass;
+    if (sClass === "Wizard") {
+        oNIB.checkForSpecialization();
+    }
+};
+
+oNIB.createSpecialistWizard = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sAlignment = oCharacter.sAlignment;
+    var iRoll = oNIB.roll(100);
+    if (sAlignment === "Lawful Good") {
+        if (iRoll < 52) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 54) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 69) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 73) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 85) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 89) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 97) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Lawful Neutral") {
+        if (iRoll < 18) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 23) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 71) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 75) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 89) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 93) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 97) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Lawful Evil") {
+        if (iRoll < 12) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 18) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 38) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 43) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 59) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 64) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 96) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Neutral Good") {
+        if (iRoll < 24) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 31) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 38) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 49) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 67) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 78) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 90) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "True Neutral") {
+        if (iRoll < 8) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 22) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 42) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 54) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 73) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 84) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 90) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Neutral Evil") {
+        if (iRoll < 4) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 16) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 22) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 32) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 48) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 58) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 91) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Chaotic Good") {
+        if (iRoll < 8) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 20) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 22) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 43) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 53) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 74) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 80) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else if (sAlignment === "Chaotic Neutral") {
+        if (iRoll < 3) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 26) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 32) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 51) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 60) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 79) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 82) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    } else {
+        if (iRoll < 2) {
+            oCharacter.sClass = "Abjurer";
+        } else if (iRoll < 23) {
+            oCharacter.sClass = "Conjurer";
+        } else if (iRoll < 25) {
+            oCharacter.sClass = "Diviner";
+        } else if (iRoll < 42) {
+            oCharacter.sClass = "Enchanter";
+        } else if (iRoll < 50) {
+            oCharacter.sClass = "Evoker";
+        } else if (iRoll < 67) {
+            oCharacter.sClass = "Illusionist";
+        } else if (iRoll < 84) {
+            oCharacter.sClass = "Necromancer";
+        } else {
+            oCharacter.sClass = "Transmuter";
+        }
+    }
 };
 
 oNIB.oCharacter = {};
 
 oNIB.printCharacter = function() {
     var oCharacter = oNIB.oCharacter;
-    var sAlignment = oCharacter.sAlignment;
-    var alignment = $("<p></p>")
-        .attr('id', 'alignment')
-        .text(("Alignment: " + sAlignment));
     var sRace = oCharacter.sRace;
     var race = $("<p></p>")
         .attr('id', 'race')
@@ -820,10 +1009,14 @@ oNIB.printCharacter = function() {
     var characterClass = $("<p></p>")
         .attr('id', 'class')
         .text(("Class: " + sClass));
+    var sAlignment = oCharacter.sAlignment;
+    var alignment = $("<p></p>")
+        .attr('id', 'alignment')
+        .text(("Alignment: " + sAlignment));
     var body = $("#body")
-        .append(alignment)
         .append(race)
-        .append(characterClass);
+        .append(characterClass)
+        .append(alignment);
 };
 
 oNIB.roll = function(die) {
