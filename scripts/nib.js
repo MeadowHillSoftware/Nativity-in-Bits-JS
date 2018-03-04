@@ -233,6 +233,7 @@ oNIB.createArchetype = function() {
             }
         }
         iRoll = oNIB.roll(aUncommonArchetypes.length);
+        iRoll--;
         oCharacter.sArchetype = aUncommonArchetypes[iRoll];
     }
 };
