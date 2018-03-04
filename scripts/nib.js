@@ -32,6 +32,82 @@ oNIB.checkForSpecialization = function() {
     }
 };
 
+oNIB.createAge = function() {
+    var oBaseAges = {
+        "iDwarf": 40,
+        "iElf": 110,
+        "iGnome": 40,
+        "iHalf-Elf": 20,
+        "iHalfling": 20,
+        "iHalf-Orc": 14,
+        "iHuman": 15
+    };
+    var oCharacter = oNIB.oCharacter;
+    var sClass = oCharacter.sClass;
+    var sRace = oCharacter.sRace;
+    var iNumber = 0;
+    var iDie = 0;
+    if (sClass === ("Barbarian" || "Rogue" || "Sorcerer")) {
+        if (sRace === ("Human" || "Half-Orc")) {
+            iNumber = 1;
+            iDie = 4;
+        } else if (sRace === "Dwarf") {
+            iNumber = 3;
+            iDie = 6;
+        } else if (sRace === ("Elf" || "Gnome")) {
+            iNumber = 4;
+            iDie = 6;
+        } else if (sRace === "Half-Elf") {
+            iNumber = 1;
+            iDie = 6;
+        } else {
+            iNumber = 2;
+            iDie = 4;
+        }
+    } else if (sClass === ("Bard" || "Fighter" || "Paladin" || "Ranger")) {
+        if (sRace === ("Human" || "Half-Orc")) {
+            iNumber = 1;
+            iDie = 6;
+        } else if (sRace === "Dwarf") {
+            iNumber = 5;
+            iDie = 6;
+        } else if (sRace === ("Elf" || "Gnome")) {
+            iNumber = 6;
+            iDie = 6;
+        } else if (sRace === "Half-Elf") {
+            iNumber = 2;
+            iDie = 6;
+        } else {
+            iNumber = 3;
+            iDie = 6;
+        }
+    } else {
+        if (sRace === ("Human" || "Half-Orc")) {
+            iNumber = 2;
+            iDie = 6;
+        } else if (sRace === "Dwarf") {
+            iNumber = 7;
+            iDie = 6;
+        } else if (sRace === "Elf") {
+            iNumber = 10;
+            iDie = 6;
+        } else if (sRace === "Gnome") {
+            iNumber = 9;
+            iDie = 6;
+        } else if (sRace === "Half-Elf") {
+            iNumber = 3;
+            iDie = 6;
+        } else {
+            iNumber = 4;
+            iDie = 6;
+        }
+    }
+    var iRoll = oNIB.roll(iDie, iNumber);
+    console.log(iRoll);
+    var iAge = oBaseAges[("i" + sRace)] + iRoll;
+    oCharacter.sAge = String(iAge);
+};
+
 oNIB.createArchetype = function() {
     var oCharacter = oNIB.oCharacter;
     var sClass = oCharacter.sClass;
@@ -1495,6 +1571,10 @@ oNIB.printCharacter = function() {
     var alignment = $("<p></p>")
         .attr('id', 'alignment')
         .text(("Alignment: " + sAlignment));
+    var sAge = oCharacter.sAge;
+    var age = $("<p></p>")
+        .attr('id', 'aget')
+        .text(("Age: " + sAge));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -1520,6 +1600,7 @@ oNIB.printCharacter = function() {
         .append(race)
         .append(characterClass)
         .append(alignment)
+        .append(age)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -1527,15 +1608,21 @@ oNIB.printCharacter = function() {
         .append(traits);
 };
 
-oNIB.roll = function(die) {
-    return Math.round(Math.random() * (die - 1)) + 1;
+oNIB.roll = function(iDie, iNumber = 1) {
+    var iRoll = 0;
+    while (iNumber > 0) {
+        iRoll += Math.round(Math.random() * (iDie - 1)) + 1;
+        iNumber--;
+    }
+    return iRoll;
 };
 
+oNIB.createGender();
 oNIB.createMorals();
 oNIB.createClass();
 oNIB.createRace();
 oNIB.createEthics();
-oNIB.createGender();
+oNIB.createAge();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
