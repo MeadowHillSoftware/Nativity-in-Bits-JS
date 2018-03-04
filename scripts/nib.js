@@ -553,6 +553,185 @@ oNIB.createNormalEthics = function(sMorals) {
     }
 };
 
+oNIB.createPersonalityTraits = function() {
+    var oPersonalityTraits = {
+        "aAgent": [
+            "Ambitious", 
+            "Serious"
+        ], 
+        "aChallenger": [
+            "Bold", 
+            "Disciplined"
+        ], 
+        "aCompanion": [
+            "Connected", 
+            "Funny", 
+            "Loyal"
+        ], 
+        "aCrusader": [
+            "Bold", 
+            "Patriotic", 
+            "Religious"
+        ], 
+        "aDaredevil": [
+            "Bold", 
+            "Energetic", 
+            "Flamboyant"
+        ], 
+        "aExplorer": [
+            "Driven", 
+            "Exotic"
+        ], 
+        "aInnocent": [
+            "Carefree", 
+            "Kind", 
+            "Naive"
+        ], 
+        "aLeader": [
+            "Ambitious", 
+            "Charming"
+        ], 
+        "aMartyr": [
+            "Kind", 
+            "Merciful", 
+            "Reformed"
+        ], 
+        "aMercenary": [
+            "Boastful", 
+            "Greedy"
+        ], 
+        "aOrphan": [
+            "Calm"
+        ], 
+        "aProphet": [
+            "Energetic", 
+            "Fatalistic", 
+            "Religious"
+        ], 
+        "aRebel": [
+            "Driven"
+        ], 
+        "aRenegade": [
+            "Exotic", 
+            "Skilled", 
+            "Vengeful"
+        ], 
+        "aRoyalty": [
+            "Calm", 
+            "Charming", 
+            "Connected"
+        ], 
+        "aSage": [
+            "Calm", 
+            "Erudite"
+        ], 
+        "aSavage": [
+            "Brutal", 
+            "Exotic", 
+            "Naive"
+        ], 
+        "aSeeker": [
+            "Angry", 
+            "Driven"
+        ], 
+        "aSimple Soul": [
+            "Funny", 
+            "Skilled"
+        ], 
+        "aStrategist": [
+            "Conservative", 
+            "Erudite", 
+            "Serious"
+        ], 
+        "aTheorist": [
+            "Disciplined"
+        ], 
+        "aTrickster": [
+            "Flamboyant", 
+            "Funny"
+        ], 
+        "aWanderer": [
+            "Peaceful"
+        ], 
+        "aAll": [
+            "Ambitious", 
+            "Angry", 
+            "Boastful", 
+            "Bold", 
+            "Brutal", 
+            "Calm", 
+            "Carefree", 
+            "Charming", 
+            "Connected", 
+            "Conservative", 
+            "Disciplined", 
+            "Driven", 
+            "Energetic", 
+            "Erudite", 
+            "Exotic", 
+            "Fatalistic", 
+            "Flamboyant", 
+            "Funny", 
+            "Greedy", 
+            "Kind", 
+            "Loyal", 
+            "Merciful", 
+            "Naive", 
+            "Patriotic", 
+            "Peaceful", 
+            "Reformed", 
+            "Religious", 
+            "Serious", 
+            "Skilled", 
+            "Vengeful"
+        ]
+    };
+    var oCharacter = oNIB.oCharacter;
+    var sArchetype = oCharacter.sArchetype;
+    var aCommonTraits = oPersonalityTraits[("a" + sArchetype)];
+    var aAllTraits = oPersonalityTraits.aAll;
+    var aUncommonTraits = [];
+    var sTrait = "";
+    for (var t = 0; t < aAllTraits.length; t++) {
+        sTrait = aAllTraits[t];
+        if (aCommonTraits.indexOf(sTrait) === -1) {
+            aUncommonTraits.push(sTrait);
+        }
+    }
+    var iNumberOfTraits = oNIB.roll(3);
+    iNumberOfTraits++;
+    var iIndex = 0;
+    var aPersonalityTraits = [];
+    while (iNumberOfTraits > 0) {
+        var iRoll = oNIB.roll(85);
+        if ((iRoll < 66) && (aCommonTraits.length > 0)) {
+            iIndex = oNIB.roll(aCommonTraits.length);
+            iIndex--;
+            sTrait = aCommonTraits[iIndex];
+            aPersonalityTraits.push(sTrait);
+            aCommonTraits.splice(iIndex, (iIndex + 1));
+        } else {
+            iIndex = oNIB.roll(aUncommonTraits.length);
+            iIndex--;
+            sTrait = aUncommonTraits[iIndex];
+            aPersonalityTraits.push(sTrait);
+            aUncommonTraits.splice(iIndex, (iIndex + 1));
+        }            
+        iNumberOfTraits--;
+    }
+    aPersonalityTraits.sort();
+    var sPersonalityTraits = "";
+    for (var t = 0; t < aPersonalityTraits.length; t++) {
+        sTrait = aPersonalityTraits[t];
+        if (t === 0) {
+            sPersonalityTraits += sTrait;
+        } else {
+            sPersonalityTraits += (", " + sTrait);
+        }
+    }
+    oCharacter.sPersonalityTraits = sPersonalityTraits;
+};
+
 oNIB.createRace = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
@@ -1332,6 +1511,10 @@ oNIB.printCharacter = function() {
     var archetype = $("<p></p>")
         .attr('id', 'archetype')
         .text(("Archetype: " + sArchetype));
+    var sTraits = oCharacter.sPersonalityTraits;
+    var traits = $("<p></p>")
+        .attr('id', 'traits')
+        .text(("Personality Traits: " + sTraits));
     var body = $("#body")
         .append(gender)
         .append(race)
@@ -1340,7 +1523,8 @@ oNIB.printCharacter = function() {
         .append(instruction)
         .append(education)
         .append(trade)
-        .append(archetype);
+        .append(archetype)
+        .append(traits);
 };
 
 oNIB.roll = function(die) {
@@ -1356,4 +1540,5 @@ oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
 oNIB.createArchetype();
+oNIB.createPersonalityTraits();
 oNIB.printCharacter();
