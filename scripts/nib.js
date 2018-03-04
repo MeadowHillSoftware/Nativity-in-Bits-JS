@@ -259,6 +259,34 @@ oNIB.createHinEthics = function(sMorals) {
     }
 };
 
+oNIB.createLearningATrade = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    if (iRoll < 21) {
+        oCharacter.sLearningATrade = "Farmer";
+    } else if (iRoll < 31) {
+        oCharacter.sLearningATrade = "Hunter/Trapper";
+    } else if (iRoll < 41) {
+        oCharacter.sLearningATrade = "Craft";
+    } else if (iRoll < 51) {
+        oCharacter.sLearningATrade = "Religious";
+    } else if (iRoll < 61) {
+        oCharacter.sLearningATrade = "Politics";
+    } else if (iRoll < 71) {
+        oCharacter.sLearningATrade = "Healing";
+    } else if (iRoll < 76) {
+        oCharacter.sLearningATrade = "Specialized";
+    } else if (iRoll < 86) {
+        oCharacter.sLearningATrade = "Military Training";
+    } else if (iRoll < 91) {
+        oCharacter.sLearningATrade = "Specialized Military Training";
+    } else if (iRoll < 96) {
+        oCharacter.sLearningATrade = "Monastery/Knightly Order";
+    } else {
+        oCharacter.sLearningATrade = "Arcanist";
+    }
+};
+
 oNIB.createMorals = function() {
     var iRoll = oNIB.roll(100);
     var sMorals = "";
@@ -1090,13 +1118,18 @@ oNIB.printCharacter = function() {
     var education = $("<p></p>")
         .attr('id', 'education')
         .text(("Formal Education: " + sEducation));
+    var sTrade = oCharacter.sLearningATrade;
+    var trade = $("<p></p>")
+        .attr('id', 'trade')
+        .text(("Learning a Trade: " + sTrade));
     var body = $("#body")
         .append(gender)
         .append(race)
         .append(characterClass)
         .append(alignment)
         .append(instruction)
-        .append(education);
+        .append(education)
+        .append(trade);
 };
 
 oNIB.roll = function(die) {
@@ -1110,4 +1143,5 @@ oNIB.createEthics();
 oNIB.createGender();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
+oNIB.createLearningATrade();
 oNIB.printCharacter();
