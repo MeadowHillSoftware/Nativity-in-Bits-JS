@@ -32,6 +32,211 @@ oNIB.checkForSpecialization = function() {
     }
 };
 
+oNIB.createArchetype = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sClass = oCharacter.sClass;
+    var aWizards = [
+        "Abjurer",
+        "Conjurer",
+        "Diviner",
+        "Enchanter", 
+        "Evoker", 
+        "Illusionist", 
+        "Necromancer", 
+        "Transmuter", 
+        "Wizard"
+    ];
+    var oArchetypes = {
+        "aBarbarian": [
+            "Challenger", 
+            "Explorer", 
+            "Mercenary", 
+            "Orphan", 
+            "Renegade", 
+            "Savage", 
+            "Seeker", 
+            "Simple Soul", 
+            "Wanderer"
+        ], 
+        "aBard": [
+            "Agent", 
+            "Daredevil", 
+            "Explorer", 
+            "Innocent", 
+            "Mercenary", 
+            "Orphan", 
+            "Rebel", 
+            "Renegade", 
+            "Royalty", 
+            "Trickster", 
+            "Wanderer"
+        ], 
+        "aCleric": [
+            "Agent", 
+            "Companion", 
+            "Crusader", 
+            "Innocent", 
+            "Leader", 
+            "Martyr", 
+            "Orphan", 
+            "Prophet", 
+            "Royalty", 
+            "Sage", 
+            "Seeker", 
+            "Simple Soul", 
+            "Theorist"
+        ], 
+        "aDruid": [
+            "Agent", 
+            "Crusader", 
+            "Explorer", 
+            "Innocent", 
+            "Martyr", 
+            "Orphan", 
+            "Prophet", 
+            "Renegade", 
+            "Sage", 
+            "Savage", 
+            "Wanderer"
+        ], 
+        "aFighter": [
+            "Challenger", 
+            "Companion", 
+            "Leader", 
+            "Martyr", 
+            "Mercenary", 
+            "Orphan", 
+            "Rebel", 
+            "Renegade", 
+            "Royalty", 
+            "Seeker", 
+            "Simple Soul", 
+            "Strategist", 
+            "Theorist"
+        ], 
+        "aMonk": [
+            "Agent", 
+            "Challenger", 
+            "Companion", 
+            "Crusader", 
+            "Innocent", 
+            "Martyr", 
+            "Orphan", 
+            "Prophet", 
+            "Seeker", 
+            "Wanderer"
+        ], 
+        "aPaladin": [
+            "Agent", 
+            "Companion", 
+            "Crusader", 
+            "Leader", 
+            "Martyr", 
+            "Prophet", 
+            "Royalty", 
+            "Strategist"
+        ], 
+        "aRanger": [
+            "Agent", 
+            "Explorer", 
+            "Orphan", 
+            "Savage", 
+            "Seeker", 
+            "Wanderer"
+        ], 
+        "aRogue": [
+            "Agent", 
+            "Challenger", 
+            "Daredevil", 
+            "Explorer", 
+            "Mercenary", 
+            "Orphan", 
+            "Rebel", 
+            "Renegade", 
+            "Simple Soul", 
+            "Strategist", 
+            "Trickster", 
+            "Wanderer"
+        ], 
+        "aSorcerer": [
+            "Companion", 
+            "Daredevil", 
+            "Innocent", 
+            "Mercenary", 
+            "Orphan", 
+            "Renegade", 
+            "Royalty", 
+            "Sage", 
+            "Seeker", 
+            "Simple Soul", 
+            "Wanderer"
+        ], 
+        "aWizard": [
+            "Agent", 
+            "Challenger", 
+            "Crusader", 
+            "Innocent", 
+            "Mercenary", 
+            "Renegade", 
+            "Royalty", 
+            "Sage", 
+            "Seeker", 
+            "Strategist", 
+            "Theorist"
+        ], 
+        "aAll": [
+            "Agent", 
+            "Challenger", 
+            "Companion", 
+            "Crusader", 
+            "Daredevil", 
+            "Explorer", 
+            "Innocent", 
+            "Leader", 
+            "Martyr", 
+            "Mercenary", 
+            "Orphan", 
+            "Prophet", 
+            "Rebel", 
+            "Renegade", 
+            "Royalty", 
+            "Sage", 
+            "Savage", 
+            "Seeker", 
+            "Simple Soul", 
+            "Strategist", 
+            "Theorist", 
+            "Trickster", 
+            "Wanderer"
+        ]
+    };
+    if (aWizards.indexOf(sClass) !== -1) {
+        if (sClass === "Illusionist") {
+            oArchetypes["sWizard"].push("Trickster");
+        }
+        var aCommonArchetypes = oArchetypes["aWizard"]
+    } else {
+        var aCommonArchetypes = oArchetypes[("a" + sClass)];
+    }
+    var iRoll = oNIB.roll(85);
+    if (iRoll < 66) {
+        iRoll = oNIB.roll(aCommonArchetypes.length);
+        iRoll--;
+        oCharacter.sArchetype = aCommonArchetypes[iRoll];
+    } else {
+        var aAllArchetypes = oArchetypes["aAll"];
+        var aUncommonArchetypes = [];
+        for (var a = 0; a < aAllArchetypes.length; a++) {
+            var sArchetype = aAllArchetypes[a];
+            if (aCommonArchetypes.indexOf(sArchetype) === -1) {
+                aUncommonArchetypes.push(sArchetype);
+            }
+        }
+        iRoll = oNIB.roll(aUncommonArchetypes.length);
+        oCharacter.sArchetype = aUncommonArchetypes[iRoll];
+    }
+};
+
 oNIB.createClass = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
@@ -1122,6 +1327,10 @@ oNIB.printCharacter = function() {
     var trade = $("<p></p>")
         .attr('id', 'trade')
         .text(("Learning a Trade: " + sTrade));
+    var sArchetype = oCharacter.sArchetype;
+    var archetype = $("<p></p>")
+        .attr('id', 'archetype')
+        .text(("Archetype: " + sArchetype));
     var body = $("#body")
         .append(gender)
         .append(race)
@@ -1129,7 +1338,8 @@ oNIB.printCharacter = function() {
         .append(alignment)
         .append(instruction)
         .append(education)
-        .append(trade);
+        .append(trade)
+        .append(archetype);
 };
 
 oNIB.roll = function(die) {
@@ -1144,4 +1354,5 @@ oNIB.createGender();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
+oNIB.createArchetype();
 oNIB.printCharacter();
