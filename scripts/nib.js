@@ -212,7 +212,7 @@ oNIB.createArchetype = function() {
     };
     if (aWizards.indexOf(sClass) !== -1) {
         if (sClass === "Illusionist") {
-            oArchetypes["sWizard"].push("Trickster");
+            oArchetypes["aWizard"].push("Trickster");
         }
         var aCommonArchetypes = oArchetypes["aWizard"]
     } else {
