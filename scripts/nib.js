@@ -475,24 +475,26 @@ oNIB.createDwarvenEthics = function(sMorals) {
 
 oNIB.createEarlyChildhoodInstruction = function() {
     var iRoll = oNIB.roll(100)
-    var oCharacter = oNIB.oCharacter
+    var oCharacter = oNIB.oCharacter;
+    var sInstruction = "";
     if (iRoll < 21) {
-        oCharacter.sEarlyChildhoodInstruction = "Outdoors";
+        sInstruction = "Outdoors";
     } else if (iRoll < 41) {
-        oCharacter.sEarlyChildhoodInstruction = "Book Learning";
+        sInstruction = "Book Learning";
     } else if (iRoll < 56) {
-        oCharacter.sEarlyChildhoodInstruction = "Religious";
+        sInstruction = "Religious";
     } else if (iRoll < 66) {
-        oCharacter.sEarlyChildhoodInstruction = "Language";
+        sInstruction = "Language";
     } else if (iRoll < 76) {
-        oCharacter.sEarlyChildhoodInstruction = "Arts";
+        sInstruction = "Arts";
     } else if (iRoll < 86) {
-        oCharacter.sEarlyChildhoodInstruction = "Multicultural";
+        sInstruction = "Multicultural";
     } else if (iRoll < 96) {
-        oCharacter.sEarlyChildhoodInstruction = "Business/Politics";
+        sInstruction = "Business/Politics";
     } else {
-        oCharacter.sEarlyChildhoodInstruction = "Magic";
+        sInstruction = "Magic";
     }
+    oCharacter.sEarlyChildhoodInstruction = sInstruction;
 };
 
 oNIB.createElvenEthics = function(sMorals) {
@@ -559,35 +561,37 @@ oNIB.createEthics = function() {
 oNIB.createFormalEducation = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
+    var sEducation = "";
     if (iRoll < 26) {
-        oCharacter.sFormalEducation = "Agriculture";
+        sEducation = "Agriculture";
     } else if (iRoll < 31) {
-        oCharacter.sFormalEducation = "History";
+        sEducation = "History";
     } else if (iRoll < 36) {
-        oCharacter.sFormalEducation = "Politics";
+        sEducation = "Politics";
     } else if (iRoll < 41) {
-        oCharacter.sFormalEducation = "Religion";
+        sEducation = "Religion";
     } else if (iRoll < 46) {
-        oCharacter.sFormalEducation = "Natural History";
+        sEducation = "Natural History";
     } else if (iRoll < 51) {
-        oCharacter.sFormalEducation = "Multicultural";
+        sEducation = "Multicultural";
     } else if (iRoll < 56) {
-        oCharacter.sFormalEducation = "Arts";
+        sEducation = "Arts";
     } else if (iRoll < 61) {
-        oCharacter.sFormalEducation = "Literature";
+        sEducation = "Literature";
     } else if (iRoll < 66) {
-        oCharacter.sFormalEducation = "Math";
+        sEducation = "Math";
     } else if (iRoll < 71) {
-        oCharacter.sFormalEducation = "Advanced Math";
+        sEducation = "Advanced Math";
     } else if (iRoll < 76) {
-        oCharacter.sFormalEducation = "Astronomy";
+        sEducation = "Astronomy";
     } else if (iRoll < 86) {
-        oCharacter.sFormalEducation = "Finishing School";
+        sEducation = "Finishing School";
     } else if (iRoll < 96) {
-        oCharacter.sFormalEducation = "School of Hard Knocks";
+        sEducation = "School of Hard Knocks";
     } else {
-        oCharacter.sFormalEducation = "Magic";
+        sEducation = "Magic";
     }
+    oCharacter.sFormalEducation = sEducation;
 };
 
 oNIB.createGender = function() {
@@ -676,29 +680,31 @@ oNIB.createHinEthics = function(sMorals) {
 oNIB.createLearningATrade = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
+    var sTrade = "";
     if (iRoll < 21) {
-        oCharacter.sLearningATrade = "Farmer";
+        sTrade = "Farmer";
     } else if (iRoll < 31) {
-        oCharacter.sLearningATrade = "Hunter/Trapper";
+        sTrade = "Hunter/Trapper";
     } else if (iRoll < 41) {
-        oCharacter.sLearningATrade = "Craft";
+        sTrade = "Craft";
     } else if (iRoll < 51) {
-        oCharacter.sLearningATrade = "Religious";
+        sTrade = "Religious";
     } else if (iRoll < 61) {
-        oCharacter.sLearningATrade = "Politics";
+        sTrade = "Politics";
     } else if (iRoll < 71) {
-        oCharacter.sLearningATrade = "Healing";
+        sTrade = "Healing";
     } else if (iRoll < 76) {
-        oCharacter.sLearningATrade = "Specialized";
+        sTrade = "Specialized";
     } else if (iRoll < 86) {
-        oCharacter.sLearningATrade = "Military Training";
+        sTrade = "Military Training";
     } else if (iRoll < 91) {
-        oCharacter.sLearningATrade = "Specialized Military Training";
+        sTrade = "Specialized Military Training";
     } else if (iRoll < 96) {
-        oCharacter.sLearningATrade = "Monastery/Knightly Order";
+        sTrade = "Monastery/Knightly Order";
     } else {
-        oCharacter.sLearningATrade = "Arcanist";
+        sTrade = "Arcanist";
     }
+    oCharacter.sLearningATrade = sTrade;
 };
 
 oNIB.createMorals = function() {
@@ -1514,173 +1520,201 @@ oNIB.createRace = function() {
     oCharacter.sRace = sRace;
 };
 
+oNIB.createSiblings = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sSiblings = "";
+    if (iRoll < 26) {
+        sSiblings = "No Siblings";
+    } else if (iRoll < 46) {
+        var iNumber = oNIB.roll(4);
+        var sNumber = String(iNumber);
+        sSiblings = "Oldest (Younger Siblings: " + sNumber + ")";
+    } else if (iRoll < 76) {
+        var iYounger = oNIB.roll(3);
+        var iOlder = oNIB.roll(3);
+        var sYounger = String(iYounger);
+        var sOlder = String(iOlder);
+        sSiblings = "Middle (Younger Siblings: " + sYounger + ", Older Siblings: " + sOlder + ")";
+    } else if (iRoll < 96) {
+        var iNumber = oNIB.roll(4);
+        var sNumber = String(iNumber);
+        sSiblings = "Youngest (Older Siblings: " + sNumber + ")";
+    } else {
+        sSiblings = "Twin";
+    }
+    oCharacter.sSiblings = sSiblings;
+};
+
 oNIB.createSpecialistWizard = function() {
     var oCharacter = oNIB.oCharacter;
     var sAlignment = oCharacter.sAlignment;
     var iRoll = oNIB.roll(100);
+    var sClass = "";
     if (sAlignment === "Lawful Good") {
         if (iRoll < 52) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 54) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 69) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 73) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 85) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 89) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 97) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Lawful Neutral") {
         if (iRoll < 18) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 23) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 71) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 75) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 89) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 93) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 97) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Lawful Evil") {
         if (iRoll < 12) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 18) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 38) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 43) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 59) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 64) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 96) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Neutral Good") {
         if (iRoll < 24) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 31) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 38) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 49) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 67) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 78) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 90) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "True Neutral") {
         if (iRoll < 8) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 22) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 42) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 54) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 73) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 84) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 90) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Neutral Evil") {
         if (iRoll < 4) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 16) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 22) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 32) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 48) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 58) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 91) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Chaotic Good") {
         if (iRoll < 8) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 20) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 22) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 43) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 53) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 74) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 80) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else if (sAlignment === "Chaotic Neutral") {
         if (iRoll < 3) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 26) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 32) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 51) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 60) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 79) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 82) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     } else {
         if (iRoll < 2) {
-            oCharacter.sClass = "Abjurer";
+            sClass = "Abjurer";
         } else if (iRoll < 23) {
-            oCharacter.sClass = "Conjurer";
+            sClass = "Conjurer";
         } else if (iRoll < 25) {
-            oCharacter.sClass = "Diviner";
+            sClass = "Diviner";
         } else if (iRoll < 42) {
-            oCharacter.sClass = "Enchanter";
+            sClass = "Enchanter";
         } else if (iRoll < 50) {
-            oCharacter.sClass = "Evoker";
+            sClass = "Evoker";
         } else if (iRoll < 67) {
-            oCharacter.sClass = "Illusionist";
+            sClass = "Illusionist";
         } else if (iRoll < 84) {
-            oCharacter.sClass = "Necromancer";
+            sClass = "Necromancer";
         } else {
-            oCharacter.sClass = "Transmuter";
+            sClass = "Transmuter";
         }
     }
+    oCharacter.sClass = sClass;
 };
 
 oNIB.getDwarvenCommunity = function() {
@@ -1818,6 +1852,10 @@ oNIB.printCharacter = function() {
     var trade = $("<p></p>")
         .attr('id', 'trade')
         .text(("Learning a Trade: " + sTrade));
+    var sSiblings = oCharacter.sSiblings;
+    var siblings = $("<p></p>")
+        .attr('id', 'siblings')
+        .text(("Siblings: " + sSiblings));
     var sArchetype = oCharacter.sArchetype;
     var archetype = $("<p></p>")
         .attr('id', 'archetype')
@@ -1837,6 +1875,7 @@ oNIB.printCharacter = function() {
         .append(instruction)
         .append(education)
         .append(trade)
+        .append(siblings)
         .append(archetype)
         .append(traits);
 };
@@ -1861,6 +1900,7 @@ oNIB.createCommunity();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
+oNIB.createSiblings();
 oNIB.createArchetype();
 oNIB.createPersonalityTraits();
 oNIB.printCharacter();
