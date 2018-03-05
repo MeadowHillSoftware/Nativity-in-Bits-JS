@@ -392,6 +392,76 @@ oNIB.createClass = function() {
     oCharacter.sClass = sClass;
 };
 
+oNIB.createCommunity = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sRace = oCharacter.sRace;
+    var iRoll = 0;
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        iRoll = oNIB.roll(10);
+        if (iRoll < 10) {
+            sCommunity = oNIB.getDwarvenCommunity();
+        } else {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        }
+    } else if (sRace === "Elf") {
+        iRoll = oNIB.roll(20);
+        if (iRoll < 20) {
+            sCommunity = oNIB.getElvenCommunity();
+        } else {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        }
+    } else if (sRace === "Gnome") {
+        iRoll = oNIB.roll(10);
+        if (iRoll < 8) {
+            sCommunity = oNIB.getGnomishCommunity();
+        } else if (iRoll < 9) {
+            sCommunity = oNIB.getDwarvenCommunity();
+            sCommunity = "Dwarven Area: " + sCommunity;
+        } else if (iRoll < 10) {
+            sCommunity = oNIB.getElvenCommunity();
+            sCommunity = "Elven Area: " + sCommunity;
+        } else {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        }
+    } else if (sRace === "Half-Elf") {
+        iRoll = oNIB.roll(100);
+        if (iRoll < 21) {
+            sCommunity = "Fringe Community";
+        } else if (iRoll < 86) {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        } else {
+            sCommunity = oNIB.getElvenCommunity();
+            sCommunity = "Elven Area: " + sCommunity;
+        }
+    } else if (sRace === "Halfling") {
+        iRoll = oNIB.roll(20);
+        if (iRoll < 20) {
+            sCommunity = oNIB.getHinCommunity();
+        } else {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        }
+    } else if (sRace === "Half-Orc") {
+        iRoll = oNIB.roll(100);
+        if (iRoll < 21) {
+            sCommunity = "Fringe Community";
+        } else if (iRoll < 86) {
+            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = "Human Area: " + sCommunity;
+        } else {
+            sCommunity = "Orc-Dominated Area";
+        }
+    } else if (sRace === "Human") {
+        sCommunity = oNIB.getHumanCommunity();
+    }
+    oCharacter.sCommunity = sCommunity;
+};
+
 oNIB.createDwarvenEthics = function(sMorals) {
     var iRoll = oNIB.roll(96);
     if (iRoll < 66) {
@@ -1613,6 +1683,97 @@ oNIB.createSpecialistWizard = function() {
     }
 };
 
+oNIB.getDwarvenCommunity = function() {
+    var iRoll = oNIB.roll(90);
+    var sCommunity = ""
+    if (iRoll < 11) {
+        sCommunity = "Single-Family Redoubt";
+    } else if (iRoll < 21) {
+        sCommunity = "Prospecting Camp";
+    } else if (iRoll < 31) {
+        sCommunity = "Small Mine";
+    } else if (iRoll < 46) {
+        sCommunity = "Large Mine";
+    } else if (iRoll < 66) {
+        sCommunity = "Delve";
+    } else {
+        sCommunity = "Large Delve";
+    }
+    return sCommunity;
+};
+
+oNIB.getElvenCommunity = function() {
+    var iRoll = oNIB.roll(95);
+    var sCommunity = ""
+    if (iRoll < 51) {
+        sCommunity = "Encampment";
+    } else if (iRoll < 86) {
+        sCommunity = "Village";
+    } else {
+        sCommunity = "City";
+    }
+    return sCommunity;
+};
+
+oNIB.getGnomishCommunity = function() {
+    var iRoll = oNIB.roll(70);
+    var sCommunity = ""
+    if (iRoll < 11) {
+        sCommunity = "Solitary Family";
+    } else if (iRoll < 41) {
+        sCommunity = "Cluster";
+    } else {
+        sCommunity = "Gathering";
+    }
+    return sCommunity;
+};
+
+oNIB.getHinCommunity = function() {
+    var iRoll = oNIB.roll(95);
+    var sCommunity = ""
+    if (iRoll < 31) {
+        sCommunity = "Clan";
+    } else if (iRoll < 66) {
+        sCommunity = "Troupe";
+    } else if (iRoll < 81) {
+        sCommunity = "Shire";
+    } else if (iRoll < 91) {
+        sCommunity = "Town";
+    } else {
+        sCommunity = "County";
+    }
+    return sCommunity;
+};
+
+oNIB.getHumanCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 6) {
+        sCommunity = "Small Tribe";
+    } else if (iRoll < 11) {
+        sCommunity = "Religious, Arcane, Monastic, or Military Compound";
+    } else if (iRoll < 21) {
+        sCommunity = "Frontier Homestead";
+    } else if (iRoll < 36) {
+        sCommunity = "Thorp";
+    } else if (iRoll < 56) {
+        sCommunity = "Hamlet";
+    } else if (iRoll < 76) {
+        sCommunity = "Village";
+    } else if (iRoll < 81) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 86) {
+        sCommunity = "Large Town";
+    } else if (iRoll < 91) {
+        sCommunity = "Small City";
+    } else if (iRoll < 96) {
+        sCommunity = "Large City";
+    } else {
+        sCommunity = "Metropolis";
+    }
+    return sCommunity;
+};
+
 oNIB.oCharacter = {};
 
 oNIB.printCharacter = function() {
@@ -1641,6 +1802,10 @@ oNIB.printCharacter = function() {
     var height = $("<p></p>")
         .attr('id', 'height')
         .text(("Height: " + sHeight));
+    var sCommunity = oCharacter.sCommunity;
+    var community = $("<p></p>")
+        .attr('id', 'community')
+        .text(("Community: " + sCommunity));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -1656,7 +1821,7 @@ oNIB.printCharacter = function() {
     var sArchetype = oCharacter.sArchetype;
     var archetype = $("<p></p>")
         .attr('id', 'archetype')
-        .text(("Archetype: " + sArchetype));
+        .text(("Personality Archetype: " + sArchetype));
     var sTraits = oCharacter.sPersonalityTraits;
     var traits = $("<p></p>")
         .attr('id', 'traits')
@@ -1668,6 +1833,7 @@ oNIB.printCharacter = function() {
         .append(alignment)
         .append(age)
         .append(height)
+        .append(community)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -1691,6 +1857,7 @@ oNIB.createRace();
 oNIB.createEthics();
 oNIB.createAge();
 oNIB.createHeight();
+oNIB.createCommunity();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
