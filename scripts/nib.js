@@ -107,6 +107,70 @@ oNIB.createAge = function() {
     oCharacter.sAge = String(iAge);
 };
 
+oNIB.createAncestorsOfNote = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sAncestors = "";
+    if (iRoll < 50) {
+        sAncestors = "None";
+    } else if (iRoll < 56) {
+        sAncestors = "Forgotten";
+    } else if (iRoll < 61) {
+        sAncestors = "Immigrant";
+    } else if (iRoll < 64) {
+        sAncestors = "Master Artisan";
+    } else if (iRoll < 67) {
+        sAncestors = "Successful Merchant";
+    } else if (iRoll < 70) {
+        sAncestors = "Unsuccessful Merchant";
+    } else if (iRoll < 73) {
+        sAncestors = "Cleric";
+    } else if (iRoll < 76) {
+        sAncestors = "Arcanist";
+    } else if (iRoll < 78) {
+        sAncestors = "Magic Item";
+    } else if (iRoll < 79) {
+        sAncestors = "Spell Creator";
+    } else if (iRoll < 80) {
+        sAncestors = "Item Creator";
+    } else if (iRoll < 82) {
+        sAncestors = "Victorious Hero";
+    } else if (iRoll < 84) {
+        sAncestors = "Defeated Hero";
+    } else if (iRoll < 85) {
+        sAncestors = "Successful Founder";
+    } else if (iRoll < 86) {
+        sAncestors = "Unsuccessful Founder";
+    } else if (iRoll < 87) {
+        sAncestors = "Successful Leader";
+    } else if (iRoll < 88) {
+        sAncestors = "Unsuccessful Leader";
+    } else if (iRoll < 91) {
+        sAncestors = "Successful Hero";
+    } else if (iRoll < 92) {
+        sAncestors = "Disbelieved Hero";
+    } else if (iRoll < 93) {
+        sAncestors = "False Hero";
+    } else if (iRoll < 94) {
+        sAncestors = "Exile";
+    } else if (iRoll < 95) {
+        sAncestors = "Failed Rebel";
+    } else if (iRoll < 96) {
+        sAncestors = "Traitor";
+    } else if (iRoll < 97) {
+        sAncestors = "Cultist";
+    } else if (iRoll < 98) {
+        sAncestors = "Villain";
+    } else if (iRoll < 99) {
+        sAncestors = "Prophecy";
+    } else if (iRoll < 100) {
+        sAncestors = "God-Touched";
+    } else {
+        sAncestors = "Otherworldly";
+    }
+    oCharacter.sAncestorsOfNote = sAncestors;
+};
+
 oNIB.createArchetype = function() {
     var oCharacter = oNIB.oCharacter;
     var sClass = oCharacter.sClass;
@@ -1124,6 +1188,60 @@ oNIB.createPersonalityTraits = function() {
     oCharacter.sPersonalityTraits = sPersonalityTraits;
 };
 
+oNIB.createFamilyPoliticalViews = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sPolitics = "";
+    if (iRoll < 16) {
+        sPolitics = "Apolitical";
+    } else if (iRoll < 31) {
+        sPolitics = "Supportive";
+    } else if (iRoll < 41) {
+        sPolitics = "Enfranchised";
+    } else if (iRoll < 46) {
+        sPolitics = "Enfranchised Progressive";
+    } else if (iRoll < 51) {
+        sPolitics = "Enfranchised Radical";
+    } else if (iRoll < 66) {
+        sPolitics = "Loyal Opposition";
+    } else if (iRoll < 76) {
+        sPolitics = "Dissatisified";
+    } else if (iRoll < 86) {
+        sPolitics = "Dissident";
+    } else if (iRoll < 91) {
+        sPolitics = "Radical";
+    } else {
+        sPolitics = "Mixed";
+    }
+    oCharacter.sFamilyPoliticalViews = sPolitics;
+};
+
+oNIB.createFamilyPowerStructure = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sPower = "";
+    if (iRoll < 11) {
+        sPower = "Unorganized";
+    } else if (iRoll < 31) {
+        sPower = "Elders";
+    } else if (iRoll < 41) {
+        sPower = "Patriarchy";
+    } else if (iRoll < 51) {
+        sPower = "Matriarchy";
+    } else if (iRoll < 61) {
+        sPower = "Oligarchy";
+    } else if (iRoll < 71) {
+        sPower = "Meritocracy";
+    } else if (iRoll < 91) {
+        sPower = "Divided";
+    } else if (iRoll < 96) {
+        sPower = "External";
+    } else {
+        sPower = "Domination";
+    }
+    oCharacter.sFamilyPowerStructure = sPower;
+};
+
 oNIB.createRace = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
@@ -2094,6 +2212,18 @@ oNIB.printCharacter = function() {
     var reputation = $("<p></p>")
         .attr('id', 'reputation')
         .text(("Family Reputation: " + sReputation));
+    var sPolitics = oCharacter.sFamilyPoliticalViews;
+    var politics = $("<p></p>")
+        .attr('id', 'politics')
+        .text(("Family Political Views: " + sPolitics));
+    var sPower = oCharacter.sFamilyPowerStructure;
+    var power = $("<p></p>")
+        .attr('id', 'power')
+        .text(("Family Power Structure: " + sPower));
+    var sAncestors = oCharacter.sAncestorsOfNote;
+    var ancestors = $("<p></p>")
+        .attr('id', 'ancestors')
+        .text(("Ancestors of Note: " + sAncestors));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -2139,6 +2269,9 @@ oNIB.printCharacter = function() {
         .append(publicEthics)
         .append(religion)
         .append(reputation)
+        .append(politics)
+        .append(power)
+        .append(ancestors)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -2174,6 +2307,9 @@ oNIB.createFamilyPrivateEthics();
 oNIB.createFamilyPublicEthics();
 oNIB.createFamilyReligiousCommitment();
 oNIB.createFamilyReputation();
+oNIB.createFamilyPoliticalViews();
+oNIB.createFamilyPowerStructure();
+oNIB.createAncestorsOfNote();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
