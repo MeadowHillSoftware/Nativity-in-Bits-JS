@@ -578,6 +578,86 @@ oNIB.createExtendedFamily = function() {
     oCharacter.sExtendedFamily = sFamily;
 };
 
+oNIB.createFamilyDefenseReadiness = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sDefense = "";
+    if (iRoll < 11) {
+        sDefense = "None";
+    } else if (iRoll < 21) {
+        sDefense = "Low";
+    } else if (iRoll < 41) {
+        sDefense = "Rudimentary";
+    } else if (iRoll < 56) {
+        sDefense = "Medium";
+    } else if (iRoll < 71) {
+        sDefense = "High";
+    } else if (iRoll < 81) {
+        sDefense = "Outstanding";
+    } else if (iRoll < 91) {
+        sDefense = "Hired";
+    } else if (iRoll < 96) {
+        sDefense = "Magical";
+    } else {
+        sDefense = "Mixed";
+    }
+    oCharacter.sFamilyDefenseReadiness = sDefense;
+};
+
+oNIB.createFamilyEconomicStatus = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sEconomics = "";
+    if (iRoll < 6) {
+        sEconomics = "Orphan";
+    } else if (iRoll < 16) {
+        sEconomics = "Refugee";
+    } else if (iRoll < 41) {
+        sEconomics = "Poor";
+    } else if (iRoll < 61) {
+        sEconomics = "Moderate";
+    } else if (iRoll < 76) {
+        sEconomics = "Wealthy";
+    } else if (iRoll < 81) {
+        sEconomics = "Religious Order";
+    } else if (iRoll < 86) {
+        sEconomics = "Arcane Order";
+    } else if (iRoll < 91) {
+        sEconomics = "Monastic Order";
+    } else if (iRoll < 96) {
+        sEconomics = "Wealth Unimportant";
+    } else {
+        sEconomics = "Military Support";
+    }
+    oCharacter.sFamilyEconomicStatus = sEconomics;
+};
+
+oNIB.createFamilySocialStanding = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sStanding = "";
+    if (iRoll < 11) {
+        sStanding = "Newcomer";
+    } else if (iRoll < 16) {
+        sStanding = "Criminal";
+    } else if (iRoll < 21) {
+        sStanding = "Slave";
+    } else if (iRoll < 46) {
+        sStanding = "Lower Class";
+    } else if (iRoll < 66) {
+        sStanding = "Skilled Trade or Merchant Family";
+    } else if (iRoll < 76) {
+        sStanding = "Positive Religious, Arcane, Monastic, or Military Order";
+    } else if (iRoll < 86) {
+        sStanding = "Negative Religious, Arcane, Monastic, or Military Order";
+    } else if (iRoll < 96) {
+        sStanding = "Upper Class";
+    } else {
+        sStanding = "Noble";
+    }
+    oCharacter.sFamilySocialStanding = sStanding;
+};
+
 oNIB.createFormalEducation = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
@@ -1751,6 +1831,32 @@ oNIB.createTemperatureZone = function() {
     oCharacter.sTemperatureZone = sTemperature;
 };
 
+oNIB.createTerrain = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sTerrain = "";
+    if (iRoll < 11) {
+        sTerrain = "Desert";
+    } else if (iRoll < 31) {
+        sTerrain = "Plains";
+    } else if (iRoll < 46) {
+        sTerrain = "Forest";
+    } else if (iRoll < 61) {
+        sTerrain = "Hills";
+    } else if (iRoll < 71) {
+        sTerrain = "Mountains";
+    } else if (iRoll < 81) {
+        sTerrain = "Marsh";
+    } else if (iRoll < 86) {
+        sTerrain = "Aquatic";
+    } else if (iRoll < 91) {
+        sTerrain = "Underground";
+    } else {
+        sTerrain = "Nomadic";
+    }
+    oCharacter.sTerrain = sTerrain;
+};
+
 oNIB.getDwarvenCommunity = function() {
     var iRoll = oNIB.roll(90);
     var sCommunity = ""
@@ -1874,10 +1980,26 @@ oNIB.printCharacter = function() {
     var temperature = $("<p></p>")
         .attr('id', 'temperature')
         .text(("Temperature Zone: " + sTemperature));
+    var sTerrain = oCharacter.sTerrain;
+    var terrain = $("<p></p>")
+        .attr('id', 'terrain')
+        .text(("Terrain: " + sTerrain));
     var sCommunity = oCharacter.sCommunity;
     var community = $("<p></p>")
         .attr('id', 'community')
         .text(("Community: " + sCommunity));
+    var sEconomics = oCharacter.sFamilyEconomicStatus;
+    var economics = $("<p></p>")
+        .attr('id', 'economics')
+        .text(("Family Economic Status: " + sEconomics));
+    var sStanding = oCharacter.sFamilySocialStanding;
+    var standing = $("<p></p>")
+        .attr('id', 'standing')
+        .text(("Family Social Standing: " + sStanding));
+    var sDefense = oCharacter.sFamilyDefenseReadiness;
+    var defense = $("<p></p>")
+        .attr('id', 'defense')
+        .text(("Family Defense Readiness: " + sDefense));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -1914,7 +2036,11 @@ oNIB.printCharacter = function() {
         .append(age)
         .append(height)
         .append(temperature)
+        .append(terrain)
         .append(community)
+        .append(standing)
+        .append(economics)
+        .append(defense)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -1941,7 +2067,11 @@ oNIB.createEthics();
 oNIB.createAge();
 oNIB.createHeight();
 oNIB.createTemperatureZone();
+oNIB.createTerrain();
 oNIB.createCommunity();
+oNIB.createFamilyEconomicStatus();
+oNIB.createFamilySocialStanding();
+oNIB.createFamilyDefenseReadiness();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
