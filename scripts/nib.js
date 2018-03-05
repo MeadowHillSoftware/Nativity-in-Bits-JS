@@ -632,6 +632,84 @@ oNIB.createFamilyEconomicStatus = function() {
     oCharacter.sFamilyEconomicStatus = sEconomics;
 };
 
+oNIB.createFamilyPrivateEthics = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sEthics = "";
+    if (iRoll < 26) {
+        sEthics = "Neutral";
+    } else if (iRoll < 51) {
+        sEthics = "Fair";
+    } else if (iRoll < 76) {
+        sEthics = "Good";
+    } else if (iRoll < 91) {
+        sEthics = "Untrustworthy";
+    } else {
+        sEthics = "Evil";
+    }
+    oCharacter.sFamilyPrivateEthics = sEthics;
+};
+
+oNIB.createFamilyPublicEthics = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sEthics = "";
+    if (iRoll < 61) {
+        sEthics = "Normal";
+    } else if (iRoll < 76) {
+        sEthics = "Undeserved";
+    } else if (iRoll < 91) {
+        sEthics = "Recent Change";
+    } else {
+        sEthics = "Beyond Reproach/Beyond Contempt";
+    }
+    oCharacter.sFamilyPublicEthics = sEthics;
+};
+
+oNIB.createFamilyReligiousCommitment = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sReligion = "";
+    if (iRoll < 21) {
+        sReligion = "Neutral/Uninterested";
+    } else if (iRoll < 41) {
+        sReligion = "Strong";
+    } else if (iRoll < 61) {
+        sReligion = "Historical";
+    } else if (iRoll < 71) {
+        sReligion = "Enmity";
+    } else if (iRoll < 81) {
+        sReligion = "Participatory";
+    } else if (iRoll < 86) {
+        sReligion = "Open Heretics";
+    } else if (iRoll < 91) {
+        sReligion = "Hidden Heretics";
+    } else {
+        sReligion = "Mixed";
+    }
+    oCharacter.sFamilyReligiousCommitment = sReligion;
+};
+
+oNIB.createFamilyReputation = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sReputation = "";
+    if (iRoll < 41) {
+        sReputation = "Unknown";
+    } else if (iRoll < 56) {
+        sReputation = "Good";
+    } else if (iRoll < 66) {
+        sReputation = "Outstanding";
+    } else if (iRoll < 76) {
+        sReputation = "A Black Sheep or Two";
+    } else if (iRoll < 91) {
+        sReputation = "Mostly Bad";
+    } else {
+        sReputation = "Bad";
+    }
+    oCharacter.sFamilyReputation = sReputation;
+};
+
 oNIB.createFamilySocialStanding = function() {
     var oCharacter = oNIB.oCharacter;
     var iRoll = oNIB.roll(100);
@@ -2000,6 +2078,22 @@ oNIB.printCharacter = function() {
     var defense = $("<p></p>")
         .attr('id', 'defense')
         .text(("Family Defense Readiness: " + sDefense));
+    var sPrivate = oCharacter.sFamilyPrivateEthics;
+    var privateEthics = $("<p></p>")
+        .attr('id', 'private')
+        .text(("Family Private Ethics: " + sPrivate));
+    var sPublic = oCharacter.sFamilyPublicEthics;
+    var publicEthics = $("<p></p>")
+        .attr('id', 'public')
+        .text(("Family Public Ethics: " + sPublic));
+    var sReligion = oCharacter.sFamilyReligiousCommitment;
+    var religion = $("<p></p>")
+        .attr('id', 'religion')
+        .text(("Family Religious Commitment: " + sReligion));
+    var sReputation = oCharacter.sFamilyReputation;
+    var reputation = $("<p></p>")
+        .attr('id', 'reputation')
+        .text(("Family Reputation: " + sReputation));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -2038,9 +2132,13 @@ oNIB.printCharacter = function() {
         .append(temperature)
         .append(terrain)
         .append(community)
-        .append(standing)
         .append(economics)
+        .append(standing)
         .append(defense)
+        .append(privateEthics)
+        .append(publicEthics)
+        .append(religion)
+        .append(reputation)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -2072,6 +2170,10 @@ oNIB.createCommunity();
 oNIB.createFamilyEconomicStatus();
 oNIB.createFamilySocialStanding();
 oNIB.createFamilyDefenseReadiness();
+oNIB.createFamilyPrivateEthics();
+oNIB.createFamilyPublicEthics();
+oNIB.createFamilyReligiousCommitment();
+oNIB.createFamilyReputation();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
