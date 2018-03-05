@@ -1737,6 +1737,20 @@ oNIB.createSpecialistWizard = function() {
     oCharacter.sClass = sClass;
 };
 
+oNIB.createTemperatureZone = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sTemperature = "";
+    if (iRoll < 16) {
+        sTemperature = "Cold";
+    } else if (iRoll < 66) {
+        sTemperature = "Temperate";
+    } else {
+        sTemperature = "Warm";
+    }
+    oCharacter.sTemperatureZone = sTemperature;
+};
+
 oNIB.getDwarvenCommunity = function() {
     var iRoll = oNIB.roll(90);
     var sCommunity = ""
@@ -1856,6 +1870,10 @@ oNIB.printCharacter = function() {
     var height = $("<p></p>")
         .attr('id', 'height')
         .text(("Height: " + sHeight));
+    var sTemperature = oCharacter.sTemperatureZone;
+    var temperature = $("<p></p>")
+        .attr('id', 'temperature')
+        .text(("Temperature Zone: " + sTemperature));
     var sCommunity = oCharacter.sCommunity;
     var community = $("<p></p>")
         .attr('id', 'community')
@@ -1895,6 +1913,7 @@ oNIB.printCharacter = function() {
         .append(alignment)
         .append(age)
         .append(height)
+        .append(temperature)
         .append(community)
         .append(instruction)
         .append(education)
@@ -1921,6 +1940,7 @@ oNIB.createRace();
 oNIB.createEthics();
 oNIB.createAge();
 oNIB.createHeight();
+oNIB.createTemperatureZone();
 oNIB.createCommunity();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
