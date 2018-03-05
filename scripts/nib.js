@@ -103,7 +103,6 @@ oNIB.createAge = function() {
         }
     }
     var iRoll = oNIB.roll(iDie, iNumber);
-    console.log(iRoll);
     var iAge = oBaseAges[("i" + sRace)] + iRoll;
     oCharacter.sAge = String(iAge);
 };
@@ -528,6 +527,69 @@ oNIB.createGender = function() {
     } else {
         oNIB.oCharacter.sGender = "Male";
     }
+};
+
+oNIB.createHeight = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sRace = oCharacter.sRace;
+    var sGender = oCharacter.sGender;
+    var iBaseHeight = 0;
+    var iDie = 4;
+    var iNumber = 2;
+    if (sRace === "Human") {
+        if (sGender === "Male") {
+            iBaseHeight = 58;
+        } else {
+            iBaseHeight = 53;
+        }
+        iDie = 10;
+    } else if (sRace === "Dwarf") {
+        if (sGender === "Male") {
+            iBaseHeight = 45;
+        } else {
+            iBaseHeight = 43;
+        }
+    } else if (sRace === "Elf") {
+        if (sGender === "Male") {
+            iBaseHeight = 53;
+        } else {
+            iBaseHeight = 53;
+        }
+        iDie = 6;
+    } else if (sRace === "Gnome") {
+        if (sGender === "Male") {
+            iBaseHeight = 36;
+        } else {
+            iBaseHeight = 34;
+        }
+    } else if (sRace === "Half-Elf") {
+        if (sGender === "Male") {
+            iBaseHeight = 55;
+        } else {
+            iBaseHeight = 53;
+        }
+        iDie = 8;
+    } else if (sRace === "Half-Orc") {
+        if (sGender === "Male") {
+            iBaseHeight = 58;
+        } else {
+            iBaseHeight = 53;
+        }
+        iDie = 12;
+    } else {
+        if (sGender === "Male") {
+            iBaseHeight = 32;
+        } else {
+            iBaseHeight = 30;
+        }
+    }
+    var iRoll = oNIB.roll(iDie, iNumber);
+    var iTotal = iBaseHeight + iRoll;
+    var iFeet = Math.floor((iTotal / 12));
+    var iMultiple = iFeet * 12;
+    var iInches = iTotal - iMultiple;
+    var sHeight = String(iFeet) + " ft. " + String(iInches) + " in.";
+    oCharacter.sHeight = sHeight;
 };
 
 oNIB.createHinEthics = function(sMorals) {
@@ -1573,8 +1635,12 @@ oNIB.printCharacter = function() {
         .text(("Alignment: " + sAlignment));
     var sAge = oCharacter.sAge;
     var age = $("<p></p>")
-        .attr('id', 'aget')
+        .attr('id', 'age')
         .text(("Age: " + sAge));
+    var sHeight = oCharacter.sHeight;
+    var height = $("<p></p>")
+        .attr('id', 'height')
+        .text(("Height: " + sHeight));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
     var instruction = $("<p></p>")
         .attr('id', 'instruction')
@@ -1601,6 +1667,7 @@ oNIB.printCharacter = function() {
         .append(characterClass)
         .append(alignment)
         .append(age)
+        .append(height)
         .append(instruction)
         .append(education)
         .append(trade)
@@ -1623,6 +1690,7 @@ oNIB.createClass();
 oNIB.createRace();
 oNIB.createEthics();
 oNIB.createAge();
+oNIB.createHeight();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
