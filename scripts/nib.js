@@ -558,6 +558,26 @@ oNIB.createEthics = function() {
     }
 };
 
+oNIB.createExtendedFamily = function() {
+    var oCharacter = oNIB.oCharacter;
+    var iRoll = oNIB.roll(100);
+    var sFamily = "";
+    if (iRoll < 11) {
+        sFamily = "None";
+    } else if (iRoll < 21) {
+        sFamily = "No Known Relatives";
+    } else if (iRoll < 56) {
+        var iNumber = oNIB.roll(10);
+        sFamily = String(iNumber) + " Living Relatives";
+    } else if (iRoll < 91) {
+        var iNumber = oNIB.roll(12, 2);
+        sFamily = String(iNumber) + " Living Relatives";
+    } else {
+        sFamily = "Huge Extended Family";
+    }
+    oCharacter.sExtendedFamily = sFamily;
+};
+
 oNIB.createFormalEducation = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
@@ -1856,6 +1876,10 @@ oNIB.printCharacter = function() {
     var siblings = $("<p></p>")
         .attr('id', 'siblings')
         .text(("Siblings: " + sSiblings));
+    var sFamily = oCharacter.sExtendedFamily;
+    var family = $("<p></p>")
+        .attr('id', 'family')
+        .text(("Extended Family: " + sFamily));
     var sArchetype = oCharacter.sArchetype;
     var archetype = $("<p></p>")
         .attr('id', 'archetype')
@@ -1876,6 +1900,7 @@ oNIB.printCharacter = function() {
         .append(education)
         .append(trade)
         .append(siblings)
+        .append(family)
         .append(archetype)
         .append(traits);
 };
@@ -1901,6 +1926,7 @@ oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
 oNIB.createSiblings();
+oNIB.createExtendedFamily();
 oNIB.createArchetype();
 oNIB.createPersonalityTraits();
 oNIB.printCharacter();
