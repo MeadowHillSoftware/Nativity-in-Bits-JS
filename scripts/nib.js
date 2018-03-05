@@ -537,6 +537,34 @@ oNIB.createDwarvenEthics = function(sMorals) {
     }
 };
 
+oNIB.createEarlyChildhoodEvents = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sEvent = "";
+    if (iRoll < 16) {
+        sEvent = "Survived Childhood Danger";
+    } else if (iRoll < 31) {
+        sEvent = "Survived Major Danger to Community";
+    } else if (iRoll < 46) {
+        sEvent = "Undertook a Long Journey";
+    } else if (iRoll < 56) {
+        sEvent = "Witness";
+    } else if (iRoll < 61) {
+        sEvent = "Astronomical Event";
+    } else if (iRoll < 66) {
+        sEvent = "Personal Epiphany";
+    } else if (iRoll < 76) {
+        sEvent = "Became a Refugee";
+    } else if (iRoll < 86) {
+        sEvent = "Death in the Family";
+    } else if (iRoll < 96) {
+        sEvent = "Illness";
+    } else {
+        sEvent = "Injury or Physical Defect";
+    }
+    oCharacter.sEarlyChildhoodEvents = sEvent;
+};
+
 oNIB.createEarlyChildhoodInstruction = function() {
     var iRoll = oNIB.roll(100)
     var oCharacter = oNIB.oCharacter;
@@ -1186,6 +1214,30 @@ oNIB.createPersonalityTraits = function() {
         }
     }
     oCharacter.sPersonalityTraits = sPersonalityTraits;
+};
+
+oNIB.createPivotalEvents = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sEvent = "";
+    if (iRoll < 56) {
+        sEvent = "No Pivotal Events";
+    } else if (iRoll < 66) {
+        sEvent = "Refugee";
+    } else if (iRoll < 71) {
+        sEvent = "Cultural Shift";
+    } else if (iRoll < 76) {
+        sEvent = "Under Siege";
+    } else if (iRoll < 81) {
+        sEvent = "Climactic Battle";
+    } else if (iRoll < 86) {
+        sEvent = "All-Out War";
+    } else if (iRoll < 96) {
+        sEvent = "Community Crisis";
+    } else {
+        sEvent = "Religious Awakening";
+    }
+    oCharacter.sPivotalEvents = sEvent;
 };
 
 oNIB.createFamilyPoliticalViews = function() {
@@ -2053,6 +2105,32 @@ oNIB.createTerrain = function() {
     oCharacter.sTerrain = sTerrain;
 };
 
+oNIB.createYouthEvents = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sEvent = "";
+    if (iRoll < 16) {
+        sEvent = "Battle";
+    } else if (iRoll < 26) {
+        sEvent = "Adventure";
+    } else if (iRoll < 36) {
+        sEvent = "Politics";
+    } else if (iRoll < 51) {
+        sEvent = "Great Romance";
+    } else if (iRoll < 61) {
+        sEvent = "Religion";
+    } else if (iRoll < 71) {
+        sEvent = "Arcane";
+    } else if (iRoll < 81) {
+        sEvent = "Healing";
+    } else if (iRoll < 96) {
+        sEvent = "Crime";
+    } else {
+        sEvent = "Discovery";
+    }
+    oCharacter.sYouthEvents = sEvent;
+};
+
 oNIB.getDwarvenCommunity = function() {
     var iRoll = oNIB.roll(90);
     var sCommunity = ""
@@ -2236,6 +2314,18 @@ oNIB.printCharacter = function() {
     var trade = $("<p></p>")
         .attr('id', 'trade')
         .text(("Learning a Trade: " + sTrade));
+    var sChildhood = oCharacter.sEarlyChildhoodEvents;
+    var childhood = $("<p></p>")
+        .attr('id', 'childhood')
+        .text(("Early Childhood Events: " + sChildhood));
+    var sYouth = oCharacter.sYouthEvents;
+    var youth = $("<p></p>")
+        .attr('id', 'youth')
+        .text(("Youth Events: " + sYouth));
+    var sPivotal = oCharacter.sPivotalEvents;
+    var pivotal = $("<p></p>")
+        .attr('id', 'pivotal')
+        .text(("Pivotal Events: " + sPivotal));
     var sSiblings = oCharacter.sSiblings;
     var siblings = $("<p></p>")
         .attr('id', 'siblings')
@@ -2276,6 +2366,9 @@ oNIB.printCharacter = function() {
         .append(education)
         .append(trade)
         .append(siblings)
+        .append(childhood)
+        .append(youth)
+        .append(pivotal)
         .append(family)
         .append(archetype)
         .append(traits);
@@ -2313,6 +2406,9 @@ oNIB.createAncestorsOfNote();
 oNIB.createEarlyChildhoodInstruction();
 oNIB.createFormalEducation();
 oNIB.createLearningATrade();
+oNIB.createEarlyChildhoodEvents();
+oNIB.createYouthEvents();
+oNIB.createPivotalEvents();
 oNIB.createSiblings();
 oNIB.createExtendedFamily();
 oNIB.createArchetype();
