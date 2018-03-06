@@ -600,6 +600,46 @@ oNIB.createElvenEthics = function(sMorals) {
     }
 };
 
+oNIB.createEnemies = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sEnemies = "";
+    if (iRoll < 16) {
+        sEnemies = "No Enemies. Yet...";
+    } else if (iRoll < 26) {
+        sEnemies = "Minor Childhood Enemy";
+    } else if (iRoll < 31) {
+        sEnemies = "Jilted Lover";
+    } else if (iRoll < 36) {
+        sEnemies = "Jilted Lover's Friend or Relative";
+    } else if (iRoll < 41) {
+        sEnemies = "Romantic Rival";
+    } else if (iRoll < 51) {
+        sEnemies = "Enemy of the Family";
+    } else if (iRoll < 56) {
+        sEnemies = "The Enemy of My Friend Is My Enemy";
+    } else if (iRoll < 61) {
+        sEnemies = "Social Rival";
+    } else if (iRoll < 66) {
+        sEnemies = "Villain";
+    } else if (iRoll < 71) {
+        sEnemies = "Monster";
+    } else if (iRoll < 76) {
+        sEnemies = "Alignment Enemy";
+    } else if (iRoll < 81) {
+        sEnemies = "Political Enemy";
+    } else if (iRoll < 86) {
+        sEnemies = "Arcane Rival";
+    } else if (iRoll < 91) {
+        sEnemies = "Diabolic Enemy";
+    } else if (iRoll < 96) {
+        sEnemies = "Enemy Within";
+    } else {
+        sEnemies = "Imaginary Foe";
+    }
+    oCharacter.sEnemies = sEnemies;
+};
+
 oNIB.createEthics = function() {
     var oCharacter = oNIB.oCharacter;
     var sClass = oCharacter.sClass;
@@ -722,6 +762,60 @@ oNIB.createFamilyEconomicStatus = function() {
         sEconomics = "Military Support";
     }
     oCharacter.sFamilyEconomicStatus = sEconomics;
+};
+
+oNIB.createFamilyPoliticalViews = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sPolitics = "";
+    if (iRoll < 16) {
+        sPolitics = "Apolitical";
+    } else if (iRoll < 31) {
+        sPolitics = "Supportive";
+    } else if (iRoll < 41) {
+        sPolitics = "Enfranchised";
+    } else if (iRoll < 46) {
+        sPolitics = "Enfranchised Progressive";
+    } else if (iRoll < 51) {
+        sPolitics = "Enfranchised Radical";
+    } else if (iRoll < 66) {
+        sPolitics = "Loyal Opposition";
+    } else if (iRoll < 76) {
+        sPolitics = "Dissatisified";
+    } else if (iRoll < 86) {
+        sPolitics = "Dissident";
+    } else if (iRoll < 91) {
+        sPolitics = "Radical";
+    } else {
+        sPolitics = "Mixed";
+    }
+    oCharacter.sFamilyPoliticalViews = sPolitics;
+};
+
+oNIB.createFamilyPowerStructure = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sPower = "";
+    if (iRoll < 11) {
+        sPower = "Unorganized";
+    } else if (iRoll < 31) {
+        sPower = "Elders";
+    } else if (iRoll < 41) {
+        sPower = "Patriarchy";
+    } else if (iRoll < 51) {
+        sPower = "Matriarchy";
+    } else if (iRoll < 61) {
+        sPower = "Oligarchy";
+    } else if (iRoll < 71) {
+        sPower = "Meritocracy";
+    } else if (iRoll < 91) {
+        sPower = "Divided";
+    } else if (iRoll < 96) {
+        sPower = "External";
+    } else {
+        sPower = "Domination";
+    }
+    oCharacter.sFamilyPowerStructure = sPower;
 };
 
 oNIB.createFamilyPrivateEthics = function() {
@@ -864,6 +958,24 @@ oNIB.createFormalEducation = function() {
     oCharacter.sFormalEducation = sEducation;
 };
 
+oNIB.createFriends = function() {
+    var iRoll = oNIB.roll(100)
+    var oCharacter = oNIB.oCharacter;
+    var sFriends = "";
+    if (iRoll < 16) {
+        sFriends = "No Friends";
+    } else if (iRoll < 31) {
+        sFriends = "Lost";
+    } else if (iRoll < 51) {
+        sFriends = "Few";
+    } else if (iRoll < 81) {
+        sFriends = "Some";
+    } else {
+        sFriends = "Many";
+    }
+    oCharacter.sFriends = sFriends;
+};
+
 oNIB.createGender = function() {
     var iRoll = oNIB.roll(4);
     if (iRoll < 3) {
@@ -871,6 +983,28 @@ oNIB.createGender = function() {
     } else {
         oNIB.oCharacter.sGender = "Male";
     }
+};
+
+oNIB.createGrandparents = function() {
+    var iRoll = oNIB.roll(100)
+    var oCharacter = oNIB.oCharacter;
+    var sGrandparents = "";
+    if (iRoll < 21) {
+        sGrandparents = "No Grandparents";
+    } else if (iRoll < 31) {
+        sGrandparents = "Mother's Parents Alive";
+    } else if (iRoll < 41) {
+        sGrandparents = "Father's Parents Alive";
+    } else if (iRoll < 61) {
+        sGrandparents = "One Grandparent on Each Side";
+    } else if (iRoll < 71) {
+        sGrandparents = "Three Grandparents Alive";
+    } else if (iRoll < 81) {
+        sGrandparents = "Great-Grandparent Alive";
+    } else {
+        sGrandparents = "Grandparents Unknown";
+    }
+    oCharacter.sGrandparents = sGrandparents;
 };
 
 oNIB.createHeight = function() {
@@ -945,6 +1079,34 @@ oNIB.createHinEthics = function(sMorals) {
     } else {
         oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
     }
+};
+
+oNIB.createInstructors = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sInstructors = "";
+    if (iRoll < 16) {
+        sInstructors = "No Instructors of Note";
+    } else if (iRoll < 41) {
+        sInstructors = "Basic";
+    } else if (iRoll < 51) {
+        sInstructors = "Advanced";
+    } else if (iRoll < 56) {
+        sInstructors = "Angry";
+    } else if (iRoll < 61) {
+        sInstructors = "Vanished";
+    } else if (iRoll < 66) {
+        sInstructors = "Favor";
+    } else if (iRoll < 81) {
+        sInstructors = "Unrelated";
+    } else if (iRoll < 91) {
+        sInstructors = "Lower Class";
+    } else if (iRoll < 96) {
+        sInstructors = "Other Race";
+    } else {
+        sInstructors = "Exotic";
+    }
+    oCharacter.sInstructors = sInstructors;
 };
 
 oNIB.createLearningATrade = function() {
@@ -1035,6 +1197,28 @@ oNIB.createNormalEthics = function(sMorals) {
     } else {
         oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
     }
+};
+
+oNIB.createParents = function() {
+    var iRoll = oNIB.roll(100)
+    var oCharacter = oNIB.oCharacter;
+    var sParents = "";
+    if (iRoll < 56) {
+        sParents = "Two Living Parents";
+    } else if (iRoll < 66) {
+        sParents = "One Living Parent";
+    } else if (iRoll < 71) {
+        sParents = "Both Parents Dead";
+    } else if (iRoll < 81) {
+        sParents = "One Ill";
+    } else if (iRoll < 86) {
+        sParents = "Both Ill";
+    } else if (iRoll < 96) {
+        sParents = "Parents Lost or Unknown";
+    } else {
+        sParents = "Adoptive or Foster Parents";
+    }
+    oCharacter.sParents = sParents;
 };
 
 oNIB.createPersonalityTraits = function() {
@@ -1238,60 +1422,6 @@ oNIB.createPivotalEvents = function() {
         sEvent = "Religious Awakening";
     }
     oCharacter.sPivotalEvents = sEvent;
-};
-
-oNIB.createFamilyPoliticalViews = function() {
-    var iRoll = oNIB.roll(100);
-    var oCharacter = oNIB.oCharacter;
-    var sPolitics = "";
-    if (iRoll < 16) {
-        sPolitics = "Apolitical";
-    } else if (iRoll < 31) {
-        sPolitics = "Supportive";
-    } else if (iRoll < 41) {
-        sPolitics = "Enfranchised";
-    } else if (iRoll < 46) {
-        sPolitics = "Enfranchised Progressive";
-    } else if (iRoll < 51) {
-        sPolitics = "Enfranchised Radical";
-    } else if (iRoll < 66) {
-        sPolitics = "Loyal Opposition";
-    } else if (iRoll < 76) {
-        sPolitics = "Dissatisified";
-    } else if (iRoll < 86) {
-        sPolitics = "Dissident";
-    } else if (iRoll < 91) {
-        sPolitics = "Radical";
-    } else {
-        sPolitics = "Mixed";
-    }
-    oCharacter.sFamilyPoliticalViews = sPolitics;
-};
-
-oNIB.createFamilyPowerStructure = function() {
-    var iRoll = oNIB.roll(100);
-    var oCharacter = oNIB.oCharacter;
-    var sPower = "";
-    if (iRoll < 11) {
-        sPower = "Unorganized";
-    } else if (iRoll < 31) {
-        sPower = "Elders";
-    } else if (iRoll < 41) {
-        sPower = "Patriarchy";
-    } else if (iRoll < 51) {
-        sPower = "Matriarchy";
-    } else if (iRoll < 61) {
-        sPower = "Oligarchy";
-    } else if (iRoll < 71) {
-        sPower = "Meritocracy";
-    } else if (iRoll < 91) {
-        sPower = "Divided";
-    } else if (iRoll < 96) {
-        sPower = "External";
-    } else {
-        sPower = "Domination";
-    }
-    oCharacter.sFamilyPowerStructure = sPower;
 };
 
 oNIB.createRace = function() {
@@ -2326,14 +2456,34 @@ oNIB.printCharacter = function() {
     var pivotal = $("<p></p>")
         .attr('id', 'pivotal')
         .text(("Pivotal Events: " + sPivotal));
+    var sParents = oCharacter.sParents;
+    var parents = $("<p></p>")
+        .attr('id', 'parents')
+        .text(("Parents: " + sParents));
     var sSiblings = oCharacter.sSiblings;
     var siblings = $("<p></p>")
         .attr('id', 'siblings')
         .text(("Siblings: " + sSiblings));
+    var sGrandparents = oCharacter.sGrandparents;
+    var grandparents = $("<p></p>")
+        .attr('id', 'grandparents')
+        .text(("Grandparents: " + sGrandparents));
     var sFamily = oCharacter.sExtendedFamily;
     var family = $("<p></p>")
         .attr('id', 'family')
         .text(("Extended Family: " + sFamily));
+    var sFriends = oCharacter.sFriends;
+    var friends = $("<p></p>")
+        .attr('id', 'friends')
+        .text(("Friends: " + sFriends));
+    var sEnemies = oCharacter.sEnemies;
+    var enemies = $("<p></p>")
+        .attr('id', 'enemie')
+        .text(("Enemies: " + sEnemies));
+    var sInstructors = oCharacter.sInstructors;
+    var instructors = $("<p></p>")
+        .attr('id', 'instructors')
+        .text(("Instructors: " + sInstructors));
     var sArchetype = oCharacter.sArchetype;
     var archetype = $("<p></p>")
         .attr('id', 'archetype')
@@ -2365,11 +2515,16 @@ oNIB.printCharacter = function() {
         .append(instruction)
         .append(education)
         .append(trade)
-        .append(siblings)
         .append(childhood)
         .append(youth)
         .append(pivotal)
+        .append(parents)
+        .append(siblings)
+        .append(grandparents)
         .append(family)
+        .append(friends)
+        .append(enemies)
+        .append(instructors)
         .append(archetype)
         .append(traits);
 };
@@ -2409,8 +2564,13 @@ oNIB.createLearningATrade();
 oNIB.createEarlyChildhoodEvents();
 oNIB.createYouthEvents();
 oNIB.createPivotalEvents();
+oNIB.createParents();
 oNIB.createSiblings();
+oNIB.createGrandparents();
 oNIB.createExtendedFamily();
+oNIB.createFriends();
+oNIB.createEnemies();
+oNIB.createInstructors();
 oNIB.createArchetype();
 oNIB.createPersonalityTraits();
 oNIB.printCharacter();
