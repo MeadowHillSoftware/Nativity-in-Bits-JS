@@ -1,6 +1,8 @@
 //Copyright 2018 Meadow Hill Software. Some rights reserved.
 //Affero GPL 3 or Later
-
+//
+//
+//
 "use strict";
 var oNIB = {};
 
@@ -377,85 +379,6 @@ oNIB.createArchetype = function() {
     }
 };
 
-oNIB.createClass = function() {
-    var oCharacter = oNIB.oCharacter;
-    var sMorals = oCharacter.sAlignment;
-    var iRoll= oNIB.roll(100);
-    var sClass = "";
-    if (sMorals === "Good") {
-        if (iRoll < 6) {
-            sClass = "Barbarian";
-        } else if (iRoll < 11) {
-            sClass = "Bard";
-        } else if (iRoll < 31) {
-            sClass = "Cleric";
-        } else if (iRoll < 36) {
-            sClass = "Druid";
-        } else if (iRoll < 46) {
-            sClass = "Fighter";
-        } else if (iRoll < 51) {
-            sClass = "Monk";
-        } else if (iRoll < 56) {
-            sClass = "Paladin";
-        } else if (iRoll < 66) {
-            sClass = "Ranger";
-        } else if (iRoll < 76) {
-            sClass = "Rogue";
-        } else if (iRoll < 81) {
-            sClass = "Sorcerer";
-        } else {
-            sClass = "Wizard";
-        }
-    }
-    if (sMorals === "Neutral") {
-        if (iRoll < 6) {
-            sClass = "Barbarian";
-        } else if (iRoll < 11) {
-            sClass = "Bard";
-        } else if (iRoll < 16) {
-            sClass = "Cleric";
-        } else if (iRoll < 26) {
-            sClass = "Druid";
-        } else if (iRoll < 46) {
-            sClass = "Fighter";
-        } else if (iRoll < 51) {
-            sClass = "Monk";
-        } else if (iRoll < 56) {
-            sClass = "Ranger";
-        } else if (iRoll < 76) {
-            sClass = "Rogue";
-        } else if (iRoll < 81) {
-            sClass = "Sorcerer";
-        } else {
-            sClass = "Wizard";
-        }
-    }
-    if (sMorals === "Evil") {
-        if (iRoll < 11) {
-            sClass = "Barbarian";
-        } else if (iRoll < 16) {
-            sClass = "Bard";
-        } else if (iRoll < 36) {
-            sClass = "Cleric";
-        } else if (iRoll < 41) {
-            sClass = "Druid";
-        } else if (iRoll < 51) {
-            sClass = "Fighter";
-        } else if (iRoll < 56) {
-            sClass = "Monk";
-        } else if (iRoll < 61) {
-            sClass = "Ranger";
-        } else if (iRoll < 81) {
-            sClass = "Rogue";
-        } else if (iRoll < 86) {
-            sClass = "Sorcerer";
-        } else {
-            sClass = "Wizard";
-        }
-    }
-    oCharacter.sClass = sClass;
-};
-
 oNIB.createCommunity = function() {
     var oCharacter = oNIB.oCharacter;
     var sRace = oCharacter.sRace;
@@ -464,31 +387,31 @@ oNIB.createCommunity = function() {
     if (sRace === "Dwarf") {
         iRoll = oNIB.roll(10);
         if (iRoll < 10) {
-            sCommunity = oNIB.getDwarvenCommunity();
+            sCommunity = oNIB.createDwarvenCommunity();
         } else {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         }
     } else if (sRace === "Elf") {
         iRoll = oNIB.roll(20);
         if (iRoll < 20) {
-            sCommunity = oNIB.getElvenCommunity();
+            sCommunity = oNIB.createElvenCommunity();
         } else {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         }
     } else if (sRace === "Gnome") {
         iRoll = oNIB.roll(10);
         if (iRoll < 8) {
-            sCommunity = oNIB.getGnomishCommunity();
+            sCommunity = oNIB.createGnomishCommunity();
         } else if (iRoll < 9) {
-            sCommunity = oNIB.getDwarvenCommunity();
+            sCommunity = oNIB.createDwarvenCommunity();
             sCommunity = "Dwarven Area: " + sCommunity;
         } else if (iRoll < 10) {
-            sCommunity = oNIB.getElvenCommunity();
+            sCommunity = oNIB.createElvenCommunity();
             sCommunity = "Elven Area: " + sCommunity;
         } else {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         }
     } else if (sRace === "Half-Elf") {
@@ -496,18 +419,18 @@ oNIB.createCommunity = function() {
         if (iRoll < 21) {
             sCommunity = "Fringe Community";
         } else if (iRoll < 86) {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         } else {
-            sCommunity = oNIB.getElvenCommunity();
+            sCommunity = oNIB.createElvenCommunity();
             sCommunity = "Elven Area: " + sCommunity;
         }
     } else if (sRace === "Halfling") {
         iRoll = oNIB.roll(20);
         if (iRoll < 20) {
-            sCommunity = oNIB.getHinCommunity();
+            sCommunity = oNIB.createHinCommunity();
         } else {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         }
     } else if (sRace === "Half-Orc") {
@@ -515,15 +438,38 @@ oNIB.createCommunity = function() {
         if (iRoll < 21) {
             sCommunity = "Fringe Community";
         } else if (iRoll < 86) {
-            sCommunity = oNIB.getHumanCommunity();
+            sCommunity = oNIB.createHumanCommunity();
             sCommunity = "Human Area: " + sCommunity;
         } else {
             sCommunity = "Orc-Dominated Area";
         }
     } else if (sRace === "Human") {
-        sCommunity = oNIB.getHumanCommunity();
+        sCommunity = oNIB.createHumanCommunity();
     }
     oCharacter.sCommunity = sCommunity;
+};
+
+oNIB.createDwarvenCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 11) {
+        sCommunity = "Fortress";
+    } else if (iRoll < 21) {
+        sCommunity = "Citadel";
+    } else if (iRoll < 36) {
+        sCommunity = "Village";
+    } else if (iRoll < 51) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 76) {
+        sCommunity = "Large Town";
+    } else if (iRoll < 86) {
+        sCommunity = "Small City";
+    } else if (iRoll < 96) {
+        sCommunity = "Large City";
+    } else {
+        sCommunity = "Metropolis";
+    }
+    return sCommunity;
 };
 
 oNIB.createDwarvenEthics = function(sMorals) {
@@ -587,6 +533,29 @@ oNIB.createEarlyChildhoodInstruction = function() {
         sInstruction = "Magic";
     }
     oCharacter.sEarlyChildhoodInstruction = sInstruction;
+};
+
+oNIB.createElvenCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 16) {
+        sCommunity = "Camp";
+    } else if (iRoll < 31) {
+        sCommunity = "Outpost";
+    } else if (iRoll < 51) {
+        sCommunity = "Village";
+    } else if (iRoll < 71) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 91) {
+        sCommunity = "Large Town";
+    } else if (iRoll < 96) {
+        sCommunity = "Small City";
+    } else if (iRoll < 100) {
+        sCommunity = "Large City";
+    } else {
+        sCommunity = "Metropolis";
+    }
+    return sCommunity;
 };
 
 oNIB.createElvenEthics = function(sMorals) {
@@ -985,6 +954,25 @@ oNIB.createGender = function() {
     }
 };
 
+oNIB.createGnomishCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 21) {
+        sCommunity = "Thorp";
+    } else if (iRoll < 41) {
+        sCommunity = "Hamlet";
+    } else if (iRoll < 61) {
+        sCommunity = "Village";
+    } else if (iRoll < 81) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 96) {
+        sCommunity = "Large Town";
+    } else {
+        sCommunity = "Small City";
+    }
+    return sCommunity;
+};
+
 oNIB.createGrandparents = function() {
     var iRoll = oNIB.roll(100)
     var oCharacter = oNIB.oCharacter;
@@ -1070,6 +1058,29 @@ oNIB.createHeight = function() {
     oCharacter.sHeight = sHeight;
 };
 
+oNIB.createHinCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 21) {
+        sCommunity = "Thorp";
+    } else if (iRoll < 41) {
+        sCommunity = "Hamlet";
+    } else if (iRoll < 61) {
+        sCommunity = "Village";
+    } else if (iRoll < 81) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 81) {
+        sCommunity = "Large Town";
+    } else if (iRoll < 81) {
+        sCommunity = "Small City";
+    } else if (iRoll < 81) {
+        sCommunity = "Large City";
+    } else {
+        sCommunity = "Metropolis";
+    }
+    return sCommunity;
+};
+
 oNIB.createHinEthics = function(sMorals) {
     var iRoll = oNIB.roll(100);
     if (iRoll < 61) {
@@ -1079,6 +1090,35 @@ oNIB.createHinEthics = function(sMorals) {
     } else {
         oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
     }
+};
+
+oNIB.createHumanCommunity = function() {
+    var iRoll = oNIB.roll(100);
+    var sCommunity = ""
+    if (iRoll < 6) {
+        sCommunity = "Small Tribe";
+    } else if (iRoll < 11) {
+        sCommunity = "Religious, Arcane, Monastic, or Military Compound";
+    } else if (iRoll < 21) {
+        sCommunity = "Frontier Homestead";
+    } else if (iRoll < 36) {
+        sCommunity = "Thorp";
+    } else if (iRoll < 56) {
+        sCommunity = "Hamlet";
+    } else if (iRoll < 76) {
+        sCommunity = "Village";
+    } else if (iRoll < 81) {
+        sCommunity = "Small Town";
+    } else if (iRoll < 86) {
+        sCommunity = "Large Town";
+    } else if (iRoll < 91) {
+        sCommunity = "Small City";
+    } else if (iRoll < 96) {
+        sCommunity = "Large City";
+    } else {
+        sCommunity = "Metropolis";
+    }
+    return sCommunity;
 };
 
 oNIB.createInstructors = function() {
@@ -1137,19 +1177,6 @@ oNIB.createLearningATrade = function() {
         sTrade = "Arcanist";
     }
     oCharacter.sLearningATrade = sTrade;
-};
-
-oNIB.createMorals = function() {
-    var iRoll = oNIB.roll(100);
-    var sMorals = "";
-    if (iRoll < 51) {
-        sMorals = "Good";
-    } else if (iRoll < 91) {
-        sMorals = "Neutral";
-    } else {
-        sMorals = "Evil";
-    }
-    oNIB.oCharacter.sAlignment = sMorals;
 };
 
 oNIB.createNonlawfulDwarf = function(sMorals) {
@@ -1219,6 +1246,98 @@ oNIB.createParents = function() {
         sParents = "Adoptive or Foster Parents";
     }
     oCharacter.sParents = sParents;
+};
+
+oNIB.createPCClass = function() {
+    var oCharacter = oNIB.oCharacter;
+    var sMorals = oCharacter.sAlignment;
+    var iRoll= oNIB.roll(100);
+    var sClass = "";
+    if (sMorals === "Good") {
+        if (iRoll < 6) {
+            sClass = "Barbarian";
+        } else if (iRoll < 11) {
+            sClass = "Bard";
+        } else if (iRoll < 31) {
+            sClass = "Cleric";
+        } else if (iRoll < 36) {
+            sClass = "Druid";
+        } else if (iRoll < 46) {
+            sClass = "Fighter";
+        } else if (iRoll < 51) {
+            sClass = "Monk";
+        } else if (iRoll < 56) {
+            sClass = "Paladin";
+        } else if (iRoll < 66) {
+            sClass = "Ranger";
+        } else if (iRoll < 76) {
+            sClass = "Rogue";
+        } else if (iRoll < 81) {
+            sClass = "Sorcerer";
+        } else {
+            sClass = "Wizard";
+        }
+    }
+    if (sMorals === "Neutral") {
+        if (iRoll < 6) {
+            sClass = "Barbarian";
+        } else if (iRoll < 11) {
+            sClass = "Bard";
+        } else if (iRoll < 16) {
+            sClass = "Cleric";
+        } else if (iRoll < 26) {
+            sClass = "Druid";
+        } else if (iRoll < 46) {
+            sClass = "Fighter";
+        } else if (iRoll < 51) {
+            sClass = "Monk";
+        } else if (iRoll < 56) {
+            sClass = "Ranger";
+        } else if (iRoll < 76) {
+            sClass = "Rogue";
+        } else if (iRoll < 81) {
+            sClass = "Sorcerer";
+        } else {
+            sClass = "Wizard";
+        }
+    }
+    if (sMorals === "Evil") {
+        if (iRoll < 11) {
+            sClass = "Barbarian";
+        } else if (iRoll < 16) {
+            sClass = "Bard";
+        } else if (iRoll < 36) {
+            sClass = "Cleric";
+        } else if (iRoll < 41) {
+            sClass = "Druid";
+        } else if (iRoll < 51) {
+            sClass = "Fighter";
+        } else if (iRoll < 56) {
+            sClass = "Monk";
+        } else if (iRoll < 61) {
+            sClass = "Ranger";
+        } else if (iRoll < 81) {
+            sClass = "Rogue";
+        } else if (iRoll < 86) {
+            sClass = "Sorcerer";
+        } else {
+            sClass = "Wizard";
+        }
+    }
+    oCharacter.sClass = sClass;
+};
+
+oNIB.createPCMorals = function() {
+    var iRoll = oNIB.roll(100);
+    var sMorals = "";
+    if (iRoll < 51) {
+        sMorals = "Good";
+    } else if (iRoll < 81) {
+        sMorals = "Neutral";
+    } else {
+        sMorals = "Evil";
+    }
+    oNIB.oCharacter.sAlignment = sMorals;
 };
 
 oNIB.createPersonalityTraits = function() {
@@ -2261,235 +2380,144 @@ oNIB.createYouthEvents = function() {
     oCharacter.sYouthEvents = sEvent;
 };
 
-oNIB.getDwarvenCommunity = function() {
-    var iRoll = oNIB.roll(90);
-    var sCommunity = ""
-    if (iRoll < 11) {
-        sCommunity = "Single-Family Redoubt";
-    } else if (iRoll < 21) {
-        sCommunity = "Prospecting Camp";
-    } else if (iRoll < 31) {
-        sCommunity = "Small Mine";
-    } else if (iRoll < 46) {
-        sCommunity = "Large Mine";
-    } else if (iRoll < 66) {
-        sCommunity = "Delve";
-    } else {
-        sCommunity = "Large Delve";
-    }
-    return sCommunity;
-};
-
-oNIB.getElvenCommunity = function() {
-    var iRoll = oNIB.roll(95);
-    var sCommunity = ""
-    if (iRoll < 51) {
-        sCommunity = "Encampment";
-    } else if (iRoll < 86) {
-        sCommunity = "Village";
-    } else {
-        sCommunity = "City";
-    }
-    return sCommunity;
-};
-
-oNIB.getGnomishCommunity = function() {
-    var iRoll = oNIB.roll(70);
-    var sCommunity = ""
-    if (iRoll < 11) {
-        sCommunity = "Solitary Family";
-    } else if (iRoll < 41) {
-        sCommunity = "Cluster";
-    } else {
-        sCommunity = "Gathering";
-    }
-    return sCommunity;
-};
-
-oNIB.getHinCommunity = function() {
-    var iRoll = oNIB.roll(95);
-    var sCommunity = ""
-    if (iRoll < 31) {
-        sCommunity = "Clan";
-    } else if (iRoll < 66) {
-        sCommunity = "Troupe";
-    } else if (iRoll < 81) {
-        sCommunity = "Shire";
-    } else if (iRoll < 91) {
-        sCommunity = "Town";
-    } else {
-        sCommunity = "County";
-    }
-    return sCommunity;
-};
-
-oNIB.getHumanCommunity = function() {
-    var iRoll = oNIB.roll(100);
-    var sCommunity = ""
-    if (iRoll < 6) {
-        sCommunity = "Small Tribe";
-    } else if (iRoll < 11) {
-        sCommunity = "Religious, Arcane, Monastic, or Military Compound";
-    } else if (iRoll < 21) {
-        sCommunity = "Frontier Homestead";
-    } else if (iRoll < 36) {
-        sCommunity = "Thorp";
-    } else if (iRoll < 56) {
-        sCommunity = "Hamlet";
-    } else if (iRoll < 76) {
-        sCommunity = "Village";
-    } else if (iRoll < 81) {
-        sCommunity = "Small Town";
-    } else if (iRoll < 86) {
-        sCommunity = "Large Town";
-    } else if (iRoll < 91) {
-        sCommunity = "Small City";
-    } else if (iRoll < 96) {
-        sCommunity = "Large City";
-    } else {
-        sCommunity = "Metropolis";
-    }
-    return sCommunity;
-};
-
 oNIB.oCharacter = {};
 
 oNIB.printCharacter = function() {
     var oCharacter = oNIB.oCharacter;
     var sGender = oCharacter.sGender;
-    var gender = $("<p></p>")
+    var gender = $('<p></p>')
         .attr('id', 'gender')
         .text(("Gender: " + sGender));
     var sRace = oCharacter.sRace;
-    var race = $("<p></p>")
+    var race = $('<p></p>')
         .attr('id', 'race')
         .text(("Race: " + sRace));
     var sClass = oCharacter.sClass;
-    var characterClass = $("<p></p>")
+    var characterClass = $('<p></p>')
         .attr('id', 'class')
         .text(("Class: " + sClass));
     var sAlignment = oCharacter.sAlignment;
-    var alignment = $("<p></p>")
+    var alignment = $('<p></p>')
         .attr('id', 'alignment')
         .text(("Alignment: " + sAlignment));
     var sAge = oCharacter.sAge;
-    var age = $("<p></p>")
+    var age = $('<p></p>')
         .attr('id', 'age')
         .text(("Age: " + sAge));
     var sHeight = oCharacter.sHeight;
-    var height = $("<p></p>")
+    var height = $('<p></p>')
         .attr('id', 'height')
         .text(("Height: " + sHeight));
     var sTemperature = oCharacter.sTemperatureZone;
-    var temperature = $("<p></p>")
+    var temperature = $('<p></p>')
         .attr('id', 'temperature')
         .text(("Temperature Zone: " + sTemperature));
     var sTerrain = oCharacter.sTerrain;
-    var terrain = $("<p></p>")
+    var terrain = $('<p></p>')
         .attr('id', 'terrain')
         .text(("Terrain: " + sTerrain));
     var sCommunity = oCharacter.sCommunity;
-    var community = $("<p></p>")
+    var community = $('<p></p>')
         .attr('id', 'community')
         .text(("Community: " + sCommunity));
     var sEconomics = oCharacter.sFamilyEconomicStatus;
-    var economics = $("<p></p>")
+    var economics = $('<p></p>')
         .attr('id', 'economics')
         .text(("Family Economic Status: " + sEconomics));
     var sStanding = oCharacter.sFamilySocialStanding;
-    var standing = $("<p></p>")
+    var standing = $('<p></p>')
         .attr('id', 'standing')
         .text(("Family Social Standing: " + sStanding));
     var sDefense = oCharacter.sFamilyDefenseReadiness;
-    var defense = $("<p></p>")
+    var defense = $('<p></p>')
         .attr('id', 'defense')
         .text(("Family Defense Readiness: " + sDefense));
     var sPrivate = oCharacter.sFamilyPrivateEthics;
-    var privateEthics = $("<p></p>")
+    var privateEthics = $('<p></p>')
         .attr('id', 'private')
         .text(("Family Private Ethics: " + sPrivate));
     var sPublic = oCharacter.sFamilyPublicEthics;
-    var publicEthics = $("<p></p>")
+    var publicEthics = $('<p></p>')
         .attr('id', 'public')
         .text(("Family Public Ethics: " + sPublic));
     var sReligion = oCharacter.sFamilyReligiousCommitment;
-    var religion = $("<p></p>")
+    var religion = $('<p></p>')
         .attr('id', 'religion')
         .text(("Family Religious Commitment: " + sReligion));
     var sReputation = oCharacter.sFamilyReputation;
-    var reputation = $("<p></p>")
+    var reputation = $('<p></p>')
         .attr('id', 'reputation')
         .text(("Family Reputation: " + sReputation));
     var sPolitics = oCharacter.sFamilyPoliticalViews;
-    var politics = $("<p></p>")
+    var politics = $('<p></p>')
         .attr('id', 'politics')
         .text(("Family Political Views: " + sPolitics));
     var sPower = oCharacter.sFamilyPowerStructure;
-    var power = $("<p></p>")
+    var power = $('<p></p>')
         .attr('id', 'power')
         .text(("Family Power Structure: " + sPower));
     var sAncestors = oCharacter.sAncestorsOfNote;
-    var ancestors = $("<p></p>")
+    var ancestors = $('<p></p>')
         .attr('id', 'ancestors')
         .text(("Ancestors of Note: " + sAncestors));
     var sInstruction = oCharacter.sEarlyChildhoodInstruction;
-    var instruction = $("<p></p>")
+    var instruction = $('<p></p>')
         .attr('id', 'instruction')
         .text(("Early Childhood Instruction: " + sInstruction));
     var sEducation = oCharacter.sFormalEducation;
-    var education = $("<p></p>")
+    var education = $('<p></p>')
         .attr('id', 'education')
         .text(("Formal Education: " + sEducation));
     var sTrade = oCharacter.sLearningATrade;
-    var trade = $("<p></p>")
+    var trade = $('<p></p>')
         .attr('id', 'trade')
         .text(("Learning a Trade: " + sTrade));
     var sChildhood = oCharacter.sEarlyChildhoodEvents;
-    var childhood = $("<p></p>")
+    var childhood = $('<p></p>')
         .attr('id', 'childhood')
         .text(("Early Childhood Events: " + sChildhood));
     var sYouth = oCharacter.sYouthEvents;
-    var youth = $("<p></p>")
+    var youth = $('<p></p>')
         .attr('id', 'youth')
         .text(("Youth Events: " + sYouth));
     var sPivotal = oCharacter.sPivotalEvents;
-    var pivotal = $("<p></p>")
+    var pivotal = $('<p></p>')
         .attr('id', 'pivotal')
         .text(("Pivotal Events: " + sPivotal));
     var sParents = oCharacter.sParents;
-    var parents = $("<p></p>")
+    var parents = $('<p></p>')
         .attr('id', 'parents')
         .text(("Parents: " + sParents));
     var sSiblings = oCharacter.sSiblings;
-    var siblings = $("<p></p>")
+    var siblings = $('<p></p>')
         .attr('id', 'siblings')
         .text(("Siblings: " + sSiblings));
     var sGrandparents = oCharacter.sGrandparents;
-    var grandparents = $("<p></p>")
+    var grandparents = $('<p></p>')
         .attr('id', 'grandparents')
         .text(("Grandparents: " + sGrandparents));
     var sFamily = oCharacter.sExtendedFamily;
-    var family = $("<p></p>")
+    var family = $('<p></p>')
         .attr('id', 'family')
         .text(("Extended Family: " + sFamily));
     var sFriends = oCharacter.sFriends;
-    var friends = $("<p></p>")
+    var friends = $('<p></p>')
         .attr('id', 'friends')
         .text(("Friends: " + sFriends));
     var sEnemies = oCharacter.sEnemies;
-    var enemies = $("<p></p>")
+    var enemies = $('<p></p>')
         .attr('id', 'enemie')
         .text(("Enemies: " + sEnemies));
     var sInstructors = oCharacter.sInstructors;
-    var instructors = $("<p></p>")
+    var instructors = $('<p></p>')
         .attr('id', 'instructors')
         .text(("Instructors: " + sInstructors));
     var sArchetype = oCharacter.sArchetype;
-    var archetype = $("<p></p>")
+    var archetype = $('<p></p>')
         .attr('id', 'archetype')
         .text(("Personality Archetype: " + sArchetype));
     var sTraits = oCharacter.sPersonalityTraits;
-    var traits = $("<p></p>")
+    var traits = $('<p></p>')
         .attr('id', 'traits')
         .text(("Personality Traits: " + sTraits));
     var body = $("#body")
@@ -2539,8 +2567,8 @@ oNIB.roll = function(iDie, iNumber = 1) {
 };
 
 oNIB.createGender();
-oNIB.createMorals();
-oNIB.createClass();
+oNIB.createPCMorals();
+oNIB.createPCClass();
 oNIB.createRace();
 oNIB.createEthics();
 oNIB.createAge();
