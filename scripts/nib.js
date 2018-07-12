@@ -6,6 +6,15 @@
 "use strict";
 var oNIB = {};
 
+oNIB.addMainEventListeners = function() {
+    $('#generate')
+        .on('click', oNIB.handleGenerateButton);
+    $('#npc')
+        .on('click', oNIB.handleHandleTypeCheckboxes);
+    $('#pc')
+        .on('click', oNIB.handleHandleTypeCheckboxes);
+};
+
 oNIB.addNeutralEthics = function(sMorals) {
     if (sMorals === "Neutral") {
         oNIB.oCharacter.sAlignment = "True Neutral";
@@ -359,6 +368,13 @@ oNIB.createArchetype = function() {
     } else {
         var aCommonArchetypes = oArchetypes[("a" + sClass)];
     }
+    if (aCommonArchetypes === undefined) {
+        if (sClass === "Warrior") {
+            var aCommonArchetypes = oArchetypes["aFighter"];
+        } else {
+            var aCommonArchetypes = oArchetypes["aAll"];
+        }
+    }
     var iRoll = oNIB.roll(85);
     if (iRoll < 66) {
         iRoll = oNIB.roll(aCommonArchetypes.length);
@@ -366,16 +382,37 @@ oNIB.createArchetype = function() {
         oCharacter.sArchetype = aCommonArchetypes[iRoll];
     } else {
         var aAllArchetypes = oArchetypes["aAll"];
-        var aUncommonArchetypes = [];
-        for (var a = 0; a < aAllArchetypes.length; a++) {
-            var sArchetype = aAllArchetypes[a];
-            if (aCommonArchetypes.indexOf(sArchetype) === -1) {
-                aUncommonArchetypes.push(sArchetype);
+        var aNPCClasses = ["Adept", "Aristocrat", "Commoner", "Expert"];
+        if (aNPCClasses.indexOf(sClass) === -1) {
+            var aUncommonArchetypes = [];
+            for (var a = 0; a < aAllArchetypes.length; a++) {
+                var sArchetype = aAllArchetypes[a];
+                if (aCommonArchetypes.indexOf(sArchetype) === -1) {
+                    aUncommonArchetypes.push(sArchetype);
+                }
             }
+        } else {
+            var aUncommonArchetypes = aAllArchetypes;
         }
         iRoll = oNIB.roll(aUncommonArchetypes.length);
         iRoll--;
         oCharacter.sArchetype = aUncommonArchetypes[iRoll];
+    }
+};
+
+oNIB.createClass = function() {
+    if ($('#' + 'pc').is(":checked")) {
+        oNIB.createPCClass();
+    } else {
+        oNIB.createNPCClass();
+    }
+};
+
+oNIB.createRace = function() {
+    if ($('#' + 'pc').is(":checked")) {
+        oNIB.createPCRace();
+    } else {
+        oNIB.createNPCRace();
     }
 };
 
@@ -1179,6 +1216,14 @@ oNIB.createLearningATrade = function() {
     oCharacter.sLearningATrade = sTrade;
 };
 
+oNIB.createMorals = function() {
+    if ($('#' + 'pc').is(":checked")) {
+        oNIB.createPCMorals();
+    } else {
+        oNIB.createNPCMorals();
+    }
+};
+
 oNIB.createNonlawfulDwarf = function(sMorals) {
     var iRoll = oNIB.roll(36);
     if (iRoll < 26) {
@@ -1224,6 +1269,63 @@ oNIB.createNormalEthics = function(sMorals) {
     } else {
         oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
     }
+};
+
+oNIB.createNPCClass = function() {
+    var iRoll = oNIB.roll(96);
+    var oCharacter = oNIB.oCharacter;
+    var sClass = "";
+    if (iRoll < 66) {
+        oCharacter.sClass = "Commoner";
+    } else if (iRoll < 86) {
+        var iRollTwo = oNIB.roll(4);
+        if (iRollTwo === 1) {
+            sClass = "Adept";
+        } else if (iRollTwo === 2) {
+            sClass = "Aristocrat";
+        } else if (iRollTwo === 3) {
+            sClass = "Expert";
+        } else {
+            sClass = "Warrior";
+        }
+        oCharacter.sClass = sClass;
+    } else {
+        oNIB.createPCClass();
+    }
+};
+
+oNIB.createNPCMorals = function() {
+    var iRoll = oNIB.roll(100);
+    var sMorals = "";
+    if (iRoll < 21) {
+        sMorals = "Good";
+    } else if (iRoll < 51) {
+        sMorals = "Neutral";
+    } else {
+        sMorals = "Evil";
+    }
+    oNIB.oCharacter.sAlignment = sMorals;
+};
+
+oNIB.createNPCRace = function() {
+    var iRoll = oNIB.roll(85);
+    var sRace = "";
+    if (iRoll < 38) {
+        sRace = "Human";
+    } else if (iRoll < 52) {
+        sRace = "Elf";
+    } else if (iRoll < 62) {
+        sRace = "Half-Elf";
+    } else if (iRoll < 71) {
+        sRace = "Halfling";
+    } else if (iRoll < 78) {
+        sRace = "Dwarf";
+    } else if (iRoll < 84) {
+        sRace = "Half-Orc";
+    } else {
+        sRace = "Gnome";
+    }
+    oNIB.oCharacter.sRace = sRace;
 };
 
 oNIB.createParents = function() {
@@ -1340,210 +1442,7 @@ oNIB.createPCMorals = function() {
     oNIB.oCharacter.sAlignment = sMorals;
 };
 
-oNIB.createPersonalityTraits = function() {
-    var oPersonalityTraits = {
-        "aAgent": [
-            "Ambitious", 
-            "Serious"
-        ], 
-        "aChallenger": [
-            "Bold", 
-            "Disciplined"
-        ], 
-        "aCompanion": [
-            "Connected", 
-            "Funny", 
-            "Loyal"
-        ], 
-        "aCrusader": [
-            "Bold", 
-            "Patriotic", 
-            "Religious"
-        ], 
-        "aDaredevil": [
-            "Bold", 
-            "Energetic", 
-            "Flamboyant"
-        ], 
-        "aExplorer": [
-            "Driven", 
-            "Exotic"
-        ], 
-        "aInnocent": [
-            "Carefree", 
-            "Kind", 
-            "Naive"
-        ], 
-        "aLeader": [
-            "Ambitious", 
-            "Charming"
-        ], 
-        "aMartyr": [
-            "Kind", 
-            "Merciful", 
-            "Reformed"
-        ], 
-        "aMercenary": [
-            "Boastful", 
-            "Greedy"
-        ], 
-        "aOrphan": [
-            "Calm"
-        ], 
-        "aProphet": [
-            "Energetic", 
-            "Fatalistic", 
-            "Religious"
-        ], 
-        "aRebel": [
-            "Driven"
-        ], 
-        "aRenegade": [
-            "Exotic", 
-            "Skilled", 
-            "Vengeful"
-        ], 
-        "aRoyalty": [
-            "Calm", 
-            "Charming", 
-            "Connected"
-        ], 
-        "aSage": [
-            "Calm", 
-            "Erudite"
-        ], 
-        "aSavage": [
-            "Brutal", 
-            "Exotic", 
-            "Naive"
-        ], 
-        "aSeeker": [
-            "Angry", 
-            "Driven"
-        ], 
-        "aSimple Soul": [
-            "Funny", 
-            "Skilled"
-        ], 
-        "aStrategist": [
-            "Conservative", 
-            "Erudite", 
-            "Serious"
-        ], 
-        "aTheorist": [
-            "Disciplined"
-        ], 
-        "aTrickster": [
-            "Flamboyant", 
-            "Funny"
-        ], 
-        "aWanderer": [
-            "Peaceful"
-        ], 
-        "aAll": [
-            "Ambitious", 
-            "Angry", 
-            "Boastful", 
-            "Bold", 
-            "Brutal", 
-            "Calm", 
-            "Carefree", 
-            "Charming", 
-            "Connected", 
-            "Conservative", 
-            "Disciplined", 
-            "Driven", 
-            "Energetic", 
-            "Erudite", 
-            "Exotic", 
-            "Fatalistic", 
-            "Flamboyant", 
-            "Funny", 
-            "Greedy", 
-            "Kind", 
-            "Loyal", 
-            "Merciful", 
-            "Naive", 
-            "Patriotic", 
-            "Peaceful", 
-            "Reformed", 
-            "Religious", 
-            "Serious", 
-            "Skilled", 
-            "Vengeful"
-        ]
-    };
-    var oCharacter = oNIB.oCharacter;
-    var sArchetype = oCharacter.sArchetype;
-    var aCommonTraits = oPersonalityTraits[("a" + sArchetype)];
-    var aAllTraits = oPersonalityTraits.aAll;
-    var aUncommonTraits = [];
-    var sTrait = "";
-    for (var t = 0; t < aAllTraits.length; t++) {
-        sTrait = aAllTraits[t];
-        if (aCommonTraits.indexOf(sTrait) === -1) {
-            aUncommonTraits.push(sTrait);
-        }
-    }
-    var iNumberOfTraits = oNIB.roll(3);
-    iNumberOfTraits++;
-    var iIndex = 0;
-    var aPersonalityTraits = [];
-    while (iNumberOfTraits > 0) {
-        var iRoll = oNIB.roll(85);
-        if ((iRoll < 66) && (aCommonTraits.length > 0)) {
-            iIndex = oNIB.roll(aCommonTraits.length);
-            iIndex--;
-            sTrait = aCommonTraits[iIndex];
-            aPersonalityTraits.push(sTrait);
-            aCommonTraits.splice(iIndex, (iIndex + 1));
-        } else {
-            iIndex = oNIB.roll(aUncommonTraits.length);
-            iIndex--;
-            sTrait = aUncommonTraits[iIndex];
-            aPersonalityTraits.push(sTrait);
-            aUncommonTraits.splice(iIndex, (iIndex + 1));
-        }            
-        iNumberOfTraits--;
-    }
-    aPersonalityTraits.sort();
-    var sPersonalityTraits = "";
-    for (var t = 0; t < aPersonalityTraits.length; t++) {
-        sTrait = aPersonalityTraits[t];
-        if (t === 0) {
-            sPersonalityTraits += sTrait;
-        } else {
-            sPersonalityTraits += (", " + sTrait);
-        }
-    }
-    oCharacter.sPersonalityTraits = sPersonalityTraits;
-};
-
-oNIB.createPivotalEvents = function() {
-    var iRoll = oNIB.roll(100);
-    var oCharacter = oNIB.oCharacter;
-    var sEvent = "";
-    if (iRoll < 56) {
-        sEvent = "No Pivotal Events";
-    } else if (iRoll < 66) {
-        sEvent = "Refugee";
-    } else if (iRoll < 71) {
-        sEvent = "Cultural Shift";
-    } else if (iRoll < 76) {
-        sEvent = "Under Siege";
-    } else if (iRoll < 81) {
-        sEvent = "Climactic Battle";
-    } else if (iRoll < 86) {
-        sEvent = "All-Out War";
-    } else if (iRoll < 96) {
-        sEvent = "Community Crisis";
-    } else {
-        sEvent = "Religious Awakening";
-    }
-    oCharacter.sPivotalEvents = sEvent;
-};
-
-oNIB.createRace = function() {
+oNIB.createPCRace = function() {
     var oCharacter = oNIB.oCharacter;
     var sMorals = oCharacter.sAlignment;
     var sClass = oCharacter.sClass;
@@ -2117,6 +2016,209 @@ oNIB.createRace = function() {
     oCharacter.sRace = sRace;
 };
 
+oNIB.createPersonalityTraits = function() {
+    var oPersonalityTraits = {
+        "aAgent": [
+            "Ambitious", 
+            "Serious"
+        ], 
+        "aChallenger": [
+            "Bold", 
+            "Disciplined"
+        ], 
+        "aCompanion": [
+            "Connected", 
+            "Funny", 
+            "Loyal"
+        ], 
+        "aCrusader": [
+            "Bold", 
+            "Patriotic", 
+            "Religious"
+        ], 
+        "aDaredevil": [
+            "Bold", 
+            "Energetic", 
+            "Flamboyant"
+        ], 
+        "aExplorer": [
+            "Driven", 
+            "Exotic"
+        ], 
+        "aInnocent": [
+            "Carefree", 
+            "Kind", 
+            "Naive"
+        ], 
+        "aLeader": [
+            "Ambitious", 
+            "Charming"
+        ], 
+        "aMartyr": [
+            "Kind", 
+            "Merciful", 
+            "Reformed"
+        ], 
+        "aMercenary": [
+            "Boastful", 
+            "Greedy"
+        ], 
+        "aOrphan": [
+            "Calm"
+        ], 
+        "aProphet": [
+            "Energetic", 
+            "Fatalistic", 
+            "Religious"
+        ], 
+        "aRebel": [
+            "Driven"
+        ], 
+        "aRenegade": [
+            "Exotic", 
+            "Skilled", 
+            "Vengeful"
+        ], 
+        "aRoyalty": [
+            "Calm", 
+            "Charming", 
+            "Connected"
+        ], 
+        "aSage": [
+            "Calm", 
+            "Erudite"
+        ], 
+        "aSavage": [
+            "Brutal", 
+            "Exotic", 
+            "Naive"
+        ], 
+        "aSeeker": [
+            "Angry", 
+            "Driven"
+        ], 
+        "aSimple Soul": [
+            "Funny", 
+            "Skilled"
+        ], 
+        "aStrategist": [
+            "Conservative", 
+            "Erudite", 
+            "Serious"
+        ], 
+        "aTheorist": [
+            "Disciplined"
+        ], 
+        "aTrickster": [
+            "Flamboyant", 
+            "Funny"
+        ], 
+        "aWanderer": [
+            "Peaceful"
+        ], 
+        "aAll": [
+            "Ambitious", 
+            "Angry", 
+            "Boastful", 
+            "Bold", 
+            "Brutal", 
+            "Calm", 
+            "Carefree", 
+            "Charming", 
+            "Connected", 
+            "Conservative", 
+            "Disciplined", 
+            "Driven", 
+            "Energetic", 
+            "Erudite", 
+            "Exotic", 
+            "Fatalistic", 
+            "Flamboyant", 
+            "Funny", 
+            "Greedy", 
+            "Kind", 
+            "Loyal", 
+            "Merciful", 
+            "Naive", 
+            "Patriotic", 
+            "Peaceful", 
+            "Reformed", 
+            "Religious", 
+            "Serious", 
+            "Skilled", 
+            "Vengeful"
+        ]
+    };
+    var oCharacter = oNIB.oCharacter;
+    var sArchetype = oCharacter.sArchetype;
+    var aCommonTraits = oPersonalityTraits[("a" + sArchetype)];
+    var aAllTraits = oPersonalityTraits.aAll;
+    var aUncommonTraits = [];
+    var sTrait = "";
+    for (var t = 0; t < aAllTraits.length; t++) {
+        sTrait = aAllTraits[t];
+        if (aCommonTraits.indexOf(sTrait) === -1) {
+            aUncommonTraits.push(sTrait);
+        }
+    }
+    var iNumberOfTraits = oNIB.roll(3);
+    iNumberOfTraits++;
+    var iIndex = 0;
+    var aPersonalityTraits = [];
+    while (iNumberOfTraits > 0) {
+        var iRoll = oNIB.roll(85);
+        if ((iRoll < 66) && (aCommonTraits.length > 0)) {
+            iIndex = oNIB.roll(aCommonTraits.length);
+            iIndex--;
+            sTrait = aCommonTraits[iIndex];
+            aPersonalityTraits.push(sTrait);
+            aCommonTraits.splice(iIndex, (iIndex + 1));
+        } else {
+            iIndex = oNIB.roll(aUncommonTraits.length);
+            iIndex--;
+            sTrait = aUncommonTraits[iIndex];
+            aPersonalityTraits.push(sTrait);
+            aUncommonTraits.splice(iIndex, (iIndex + 1));
+        }            
+        iNumberOfTraits--;
+    }
+    aPersonalityTraits.sort();
+    var sPersonalityTraits = "";
+    for (var t = 0; t < aPersonalityTraits.length; t++) {
+        sTrait = aPersonalityTraits[t];
+        if (t === 0) {
+            sPersonalityTraits += sTrait;
+        } else {
+            sPersonalityTraits += (", " + sTrait);
+        }
+    }
+    oCharacter.sPersonalityTraits = sPersonalityTraits;
+};
+
+oNIB.createPivotalEvents = function() {
+    var iRoll = oNIB.roll(100);
+    var oCharacter = oNIB.oCharacter;
+    var sEvent = "";
+    if (iRoll < 56) {
+        sEvent = "No Pivotal Events";
+    } else if (iRoll < 66) {
+        sEvent = "Refugee";
+    } else if (iRoll < 71) {
+        sEvent = "Cultural Shift";
+    } else if (iRoll < 76) {
+        sEvent = "Under Siege";
+    } else if (iRoll < 81) {
+        sEvent = "Climactic Battle";
+    } else if (iRoll < 86) {
+        sEvent = "All-Out War";
+    } else if (iRoll < 96) {
+        sEvent = "Community Crisis";
+    } else {
+        sEvent = "Religious Awakening";
+    }
+    oCharacter.sPivotalEvents = sEvent;
+};
+
 oNIB.createSiblings = function() {
     var oCharacter = oNIB.oCharacter;
     var iRoll = oNIB.roll(100);
@@ -2380,10 +2482,75 @@ oNIB.createYouthEvents = function() {
     oCharacter.sYouthEvents = sEvent;
 };
 
+oNIB.handleGenerateButton = function() {
+    $('#character').empty();
+    oNIB.createGender();
+    oNIB.createMorals();
+    oNIB.createClass();
+    //oNIB.createPCMorals();
+    //oNIB.createPCClass();
+    oNIB.createRace();
+    oNIB.createEthics();
+    oNIB.createAge();
+    oNIB.createHeight();
+    oNIB.createTemperatureZone();
+    oNIB.createTerrain();
+    oNIB.createCommunity();
+    oNIB.createFamilyEconomicStatus();
+    oNIB.createFamilySocialStanding();
+    oNIB.createFamilyDefenseReadiness();
+    oNIB.createFamilyPrivateEthics();
+    oNIB.createFamilyPublicEthics();
+    oNIB.createFamilyReligiousCommitment();
+    oNIB.createFamilyReputation();
+    oNIB.createFamilyPoliticalViews();
+    oNIB.createFamilyPowerStructure();
+    oNIB.createAncestorsOfNote();
+    oNIB.createEarlyChildhoodInstruction();
+    oNIB.createFormalEducation();
+    oNIB.createLearningATrade();
+    oNIB.createEarlyChildhoodEvents();
+    oNIB.createYouthEvents();
+    oNIB.createPivotalEvents();
+    oNIB.createParents();
+    oNIB.createSiblings();
+    oNIB.createGrandparents();
+    oNIB.createExtendedFamily();
+    oNIB.createFriends();
+    oNIB.createEnemies();
+    oNIB.createInstructors();
+    oNIB.createArchetype();
+    oNIB.createPersonalityTraits();
+    oNIB.printCharacter();
+};
+
+oNIB.handleHandleTypeCheckboxes = function(event) {
+    event.stopPropagation();
+    var target = $(event.target);
+    var sId = target.attr('id');
+    var bValue = target.is(':checked');
+    if (sId === "npc") {
+        if (bValue === true) {
+            $('#pc').prop('checked', false);
+        } else {
+            $('#pc').prop('checked', true);
+        }
+    } else {
+        if (bValue === true) {
+            $('#npc').prop('checked', false);
+        } else {
+            $('#npc').prop('checked', true);
+        }
+    }
+};
+
 oNIB.oCharacter = {};
 
 oNIB.printCharacter = function() {
     var oCharacter = oNIB.oCharacter;
+    var header = $('<p></p>')
+        .attr('id', 'header')
+        .text("--------------------Character--------------------");
     var sGender = oCharacter.sGender;
     var gender = $('<p></p>')
         .attr('id', 'gender')
@@ -2520,7 +2687,8 @@ oNIB.printCharacter = function() {
     var traits = $('<p></p>')
         .attr('id', 'traits')
         .text(("Personality Traits: " + sTraits));
-    var body = $("#body")
+    var character = $("#character")
+        .append(header)
         .append(gender)
         .append(race)
         .append(characterClass)
@@ -2566,39 +2734,4 @@ oNIB.roll = function(iDie, iNumber = 1) {
     return iRoll;
 };
 
-oNIB.createGender();
-oNIB.createPCMorals();
-oNIB.createPCClass();
-oNIB.createRace();
-oNIB.createEthics();
-oNIB.createAge();
-oNIB.createHeight();
-oNIB.createTemperatureZone();
-oNIB.createTerrain();
-oNIB.createCommunity();
-oNIB.createFamilyEconomicStatus();
-oNIB.createFamilySocialStanding();
-oNIB.createFamilyDefenseReadiness();
-oNIB.createFamilyPrivateEthics();
-oNIB.createFamilyPublicEthics();
-oNIB.createFamilyReligiousCommitment();
-oNIB.createFamilyReputation();
-oNIB.createFamilyPoliticalViews();
-oNIB.createFamilyPowerStructure();
-oNIB.createAncestorsOfNote();
-oNIB.createEarlyChildhoodInstruction();
-oNIB.createFormalEducation();
-oNIB.createLearningATrade();
-oNIB.createEarlyChildhoodEvents();
-oNIB.createYouthEvents();
-oNIB.createPivotalEvents();
-oNIB.createParents();
-oNIB.createSiblings();
-oNIB.createGrandparents();
-oNIB.createExtendedFamily();
-oNIB.createFriends();
-oNIB.createEnemies();
-oNIB.createInstructors();
-oNIB.createArchetype();
-oNIB.createPersonalityTraits();
-oNIB.printCharacter();
+oNIB.addMainEventListeners();
