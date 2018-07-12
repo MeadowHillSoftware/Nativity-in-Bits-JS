@@ -2482,6 +2482,41 @@ oNIB.createYouthEvents = function() {
     oCharacter.sYouthEvents = sEvent;
 };
 
+oNIB.demographize = function(oArea, sArea) {
+    var aProperties = Object.keys(oArea);
+    var aOther = ["iPopulation", "sSource", "sType"];
+    var aRaces = [];
+    var iPopulation = oArea["iPopulation"];
+    for (var p = 0; p < aProperties.length; p++) {
+        var sProperty = aProperties[p];
+        if (aOther.indexOf(sProperty) === -1) {
+            aRaces.push(sProperty);
+        }
+    }
+    if (aRaces.length > 0) {
+        var oDemographics = {};
+        for (var r = 0; r < aRaces.length; r++) {
+            var sRace = aRaces[r];
+            var iRace = oArea[sRace];
+            var iRatio = iRace / 100;
+            var iDemographic = iPopulation * iRatio;
+            oDemographics[sRace] = iDemographic;
+        }
+        console.log(sArea, oDemographics);
+    }
+};
+
+oNIB.getDemographics = function(oSetting) {
+    var aProperties = Object.keys(oSetting);
+    for (var p = 0; p < aProperties.length; p++) {
+        var sProperty = aProperties[p];
+        if (sProperty[0] !== "a") {
+            var oArea = oSetting[sProperty];
+            oNIB.demographize(oArea, sProperty);
+        }
+    }
+};
+
 oNIB.handleGenerateButton = function() {
     $('#character').empty();
     oNIB.createGender();
