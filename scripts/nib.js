@@ -23,6 +23,29 @@ oNIB.addNeutralEthics = function(sMorals) {
     }
 };
 
+oNIB.checkForDemographics = function(oSetting) {
+    var aProperties = Object.keys(oSetting);
+    var aNonDemographic = ["iPopulation", "sSource", "sType"];
+    var iCorrect = 0;
+    for (var p = 0; p < aProperties.length; p++) {
+        var sName = aProperties[p];
+        if (sName[0] !== "a") {
+            var oObject = oSetting[sName];
+            var aInfo = Object.keys(oObject);
+            for (var i = 0; i < aInfo.length; i++) {
+                var sInfo = aInfo[i];
+                if (aNonDemographic.indexOf(sInfo) === -1) {
+                    if (aInfo.indexOf("other") === -1) {
+                        console.log(sName);
+                    } else {
+                        iCorrect++
+                    }
+                }
+            }
+        }
+    }
+};
+
 oNIB.checkForSpecialization = function() {
     var oCharacter = oNIB.oCharacter;
     var sRace = oCharacter.sRace;
