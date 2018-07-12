@@ -4124,4 +4124,33 @@ oNIB.roll = function(iDie, iNumber = 1) {
     return iRoll;
 };
 
+oNIB.testObject = function(oObject) {
+    var aProperties = Object.keys(oObject);
+    for (var o = 0; o < aProperties.length; o++) {
+        var sProperty = aProperties[o];
+        if (sProperty[0] !== "a" && sProperty[0] !== "s") {
+            var oDictionary = oObject[sProperty];
+            var aKeys = Object.keys(oDictionary);
+            var iPercent = 0;
+            for (var k = 0; k < aKeys.length; k++) {
+                var sKey = aKeys[k];
+                if (sKey !== "sSource" && sKey !== "sType" && sKey !== "iPopulation") {
+                    iPercent += oDictionary[sKey];
+                }
+            }
+            if (iPercent !== 100) {
+                console.log(sProperty, iPercent);
+            }
+            if (aKeys.length > 0) {
+                if (aKeys.indexOf("sSource") === -1) {
+                    console.log(sProperty, "sSource");
+                }
+                if (aKeys.indexOf("sType") === -1) {
+                    console.log(sProperty, "sType");
+                }
+            }
+        }
+    }
+};
+
 oNIB.addMainEventListeners();
