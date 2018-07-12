@@ -2517,6 +2517,91 @@ oNIB.getDemographics = function(oSetting) {
     }
 };
 
+oNIB.getGenericDemographics = function() {
+    var aPrefixes = ["oGood", "oNeutral", "oEvil"];
+    var oDemographics = {};
+    var oInfo = {oGoodClasses: {Barbarian: 5, Bard: 5, Cleric: 20, Druid: 5, Fighter: 10, Monk: 5, Paladin: 5, Ranger: 10, Rogue: 10, Sorcerer: 5, Wizard: 20}, 
+        oNeutralClasses: {Barbarian: 5, Bard: 5, Cleric: 5, Druid: 10, Fighter: 20, Monk: 5, Ranger: 5, Rogue: 20, Sorcerer: 5, Wizard: 20}, 
+        oEvilClasses: {Barbarian: 10, Bard: 5, Cleric: 20, Druid: 5, Fighter: 10, Monk: 5, Ranger: 5, Rogue: 20, Sorcerer: 5, Wizard: 15},
+        oGoodBarbarians: {dwarf: 2, elf: 32, "half-elf": 1, halfling: 1, "half-orc": 25, human: 37, "half-celestial": 1, "half-dragon": 1},
+        oGoodBards: {aasimar: 1, dwarf: 5, elf: 32, gnome: 7, "half-elf": 9, halfling: 3, "half-orc": 1, human: 40, "half-celestial": 1, "half-dragon": 1},
+        oGoodClerics: {aasimar: 1, dwarf: 23, elf: 17, gnome: 11, "half-elf": 5, halfling: 13, "half-orc": 1, human: 25, "half-celestial": 2, "half-dragon": 1, werebear: 1},
+        oGoodDruids: {elf: 31, gnome: 6, "half-elf": 9, halfling: 2, "half-orc": 1, human: 50, "half-celestial": 1},
+        oGoodFighters: {dwarf: 41, elf: 6, gnome: 1, "half-elf": 2, halfling: 2, "half-orc": 5, human: 40, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oGoodMonks: {aasimar: 2, dwarf: 1, elf: 10, "half-elf": 5, halfling: 2, "half-orc": 5, human: 72, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oGoodPaladins: {aasimar: 10, dwarf: 11, gnome: 1, "half-elf": 5, halfling: 2, "half-orc": 1, human: 67, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oGoodRangers: {dwarf: 5, elf: 31, gnome: 6, "half-elf": 15, halfling: 2, "half-orc": 5, human: 33, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oGoodRogues: {dwarf: 6, elf: 13, gnome: 7, "half-elf": 10, halfling: 37, "half-orc": 5, human: 19, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oGoodSorcerers: {aasimar: 2, dwarf: 4, elf: 31, gnome: 4, "half-elf": 5, halfling: 11, "half-orc": 2, human: 37, "half-celestial": 1, "half-dragon": 2, werebear: 1},
+        oGoodWizards: {aasimar: 1, dwarf: 1, elf: 40, gnome: 7, "half-elf": 10, halfling: 9, "half-orc": 1, human: 28, "half-celestial": 1, "half-dragon": 1, werebear: 1},
+        oNeutralBarbarians: {dwarf: 2, elf: 12, "half-elf": 2, halfling: 3, "half-orc": 39, human: 29, lizardfolk: 11, wereboar: 1, weretiger: 1},
+        oNeutralBards: {dwarf: 3, elf: 18, gnome: 2, "half-elf": 10, halfling: 5, "half-orc": 2, human: 58, wereboar: 1, weretiger: 1},
+        oNeutralClerics: {dwarf: 26, elf: 12, gnome: 1, "half-elf": 9, halfling: 12, "half-orc": 2, human: 28, lizardfolk: 7, doppelganger: 1, wereboar: 1, weretiger: 1},
+        oNeutralDruids: {elf: 31, gnome: 1, "half-elf": 5, halfling: 2, "half-orc": 1, human: 48, lizardfolk: 10, wereboar: 1, weretiger: 1},
+        oNeutralFighters: {dwarf: 34, elf: 7, "half-elf": 5, halfling: 2, "half-orc": 10, human: 38, lizardfolk: 1, doppelganger: 1, wereboar: 1, weretiger: 1},
+        oNeutralMonks: {elf: 3, "half-elf": 10, halfling: 2, "half-orc": 10, human: 75},
+        oNeutralRangers: {dwarf: 1, elf: 35, gnome: 2, "half-elf": 17, halfling: 2, "half-orc": 10, human: 29, lizardfolk: 2, wereboar: 1, weretiger: 1},
+        oNeutralRogues: {dwarf: 4, elf: 5, gnome: 1, "half-elf": 15, halfling: 38, "half-orc": 10, human: 24, doppelganger: 1, wereboar: 1, weretiger: 1},
+        oNeutralSorcerers: {dwarf: 1, elf: 14, gnome: 1, "half-elf": 15, halfling: 12, "half-orc": 5, human: 47, lizardfolk: 2, doppelganger: 1, wereboar: 1, weretiger: 1},
+        oNeutralWizards: {elf: 28, gnome: 1, "half-elf": 15, halfling: 5, "half-orc": 1, human: 47, doppelganger: 1, wereboar: 1, weretiger: 1},
+        oEvilBarbarians: {elf: 3, "half-elf": 1, halfling: 2, "half-orc": 23, human: 10, lizardfolk: 5, goblin: 1, hobgoblin: 1, kobold: 1, orc: 30, tiefling: 1, gnoll: 5, troglodyte: 1, bugbear: 2, ogre: 4, minotaur: 4, werewolf: 2, "half-fiend": 2, "half-dragon": 2},
+        oEvilBards: {elf: 2, "half-elf": 15, halfling: 3, "half-orc": 2, human: 75, goblin: 1, tiefling: 1, werewolf: 1},
+        oEvilClerics: {dwarf: 3, elf: 5, "half-elf": 10, halfling: 4, "half-orc": 3, human: 31, lizardfolk: 7, goblin: 1, hobgoblin: 1, kobold: 1, orc: 1, tiefling: 1, drow: 3, duergar: 1, gnoll: 2, troglodyte: 15, bugbear: 2, ogre: 1, minotaur: 1, "mind flayer": 1, "ogre mage": 1, wererat: 1, werewolf: 1, "half-fiend": 2, "half-dragon": 1},
+        oEvilDruids: {elf: 2, "half-elf": 1, halfling: 1, "half-orc": 2, human: 50, lizardfolk: 15, goblin: 1, hobgoblin: 1, kobold: 1, orc: 1, gnoll: 25},
+        oEvilFighters: {dwarf: 4, elf: 3, "half-elf": 5, halfling: 2, "half-orc": 9, human: 30, lizardfolk: 1, goblin: 1, hobgoblin: 25, kobold: 1, orc: 5, drow: 2, duergar: 1, derro: 1, gnoll: 1, troglodyte: 1, bugbear: 1, ogre: 1, "mind flayer": 1, "ogre mage": 1, wererat: 1, werewolf: 1, "half-fiend": 1, "half-dragon": 1},
+        oEvilMonks: {"half-elf": 10, "half-orc": 10, human: 70, hobgoblin: 3, tiefling: 1, "ogre mage": 2, wererat: 2, "half-fiend": 1, "half-dragon": 1},
+        oEvilRangers: {elf: 11, "half-elf": 17, halfling: 2, "half-orc": 9, human: 30, lizardfolk: 2, hobgoblin: 1, gnoll: 20, troglodyte: 1, bugbear: 1, ogre: 1, wererat: 1, werewolf: 2, "half-fiend": 1, "half-dragon": 1},
+        oEvilRogues: {dwarf: 1, elf: 2, "half-elf": 15, halfling: 22, "half-orc": 10, human: 20, goblin: 15, hobgoblin: 1, kobold: 1, tiefling: 2, bugbear: 4, "mind flayer": 1, wererat: 2, werewolf: 1, "half-fiend": 2, "half-dragon": 1},
+        oEvilSorcerers: {elf: 1, "half-elf": 15, halfling: 7, "half-orc": 5, human: 40, lizardfolk: 1, goblin: 1, hobgoblin: 1, kobold: 15, gnoll: 1, troglodyte: 3, bugbear: 1, ogre: 1, minotaur: 1, "mind flayer": 1, "ogre mage": 1, wererat: 1, werewolf: 1, "half-fiend": 1, "half-dragon": 2},
+        oEvilWizards: {elf: 11, "half-elf": 15, halfling: 2, human: 50, hobgoblin: 2, tiefling: 1, drow: 10, gnoll: 1, bugbear: 1, "mind flayer": 1, "ogre mage": 2, wererat: 1, werewolf: 1, "half-fiend": 1, "half-dragon": 1}
+    }
+    for (var p = 0; p < aPrefixes.length; p++) {
+        var sPrefix = aPrefixes[p];
+        var sClasses = sPrefix + "Classes";
+        var oClasses = oInfo[sClasses]
+        var aClasses = Object.keys(oClasses);
+        for (var c = 0; c < aClasses.length; c++) {
+            var sClass = aClasses[c];
+            var iPercent = oClasses[sClass];
+            var iMultiplier = iPercent / 5;
+            var sRaces = sPrefix + sClass + "s";
+            var oRaces = oInfo[sRaces]
+            var aRaces = Object.keys(oRaces);
+            for (var r = 0; r < aRaces.length; r++) {
+                var sRace = aRaces[r];
+                iPercent = oRaces[sRace];
+                var iProduct = iPercent * iMultiplier;
+                var aDemographics = Object.keys(oDemographics);
+                if (aDemographics.indexOf(sRace) === -1) {
+                    oDemographics[sRace] = 0;
+                }
+                oDemographics[sRace] += iProduct;
+            }
+        }
+    }
+    aDemographics = Object.keys(oDemographics);
+    var oPercentages = {};
+    for (var d = 0; d < aDemographics.length; d++) {
+        var sRace = aDemographics[d];
+        var iTotal = oDemographics[sRace];
+        var iQuotient = iTotal / 6000
+        var iPercent = iQuotient * 100
+        oPercentages[sRace] = iPercent;
+    }
+    var aPercentages = Object.keys(oPercentages);
+    var oNew = {"other": 0}
+    for (var p = 0; p < aPercentages.length; p++) {
+        var sRace = aPercentages[p];
+        var iPercent = oPercentages[sRace];
+        if (iPercent < 0.5) {
+            oNew["other"] += iPercent;
+        } else {
+            oNew[sRace] = iPercent;
+        }
+    }
+    console.log(oNew);
+};
+
 oNIB.handleGenerateButton = function() {
     $('#character').empty();
     oNIB.createGender();
@@ -2584,6 +2669,13 @@ oNIB.iDefined = 0;
 oNIB.iUndefined = 0;
 
 oNIB.oCharacter = {};
+
+oNIB.oGeneric = {
+    Human: 37, Elf: 14, "Half-Elf": 10, Halfling: 9, Dwarf: 7, 
+    "Half-Orc": 6, Gnome: 2, Lizardfolk: 2, Bugbear: 1, Drow: 1, 
+    Gnoll: 1, Goblin: 1, "Half-Dragon": 1, Hobgoblin: 1, Orc: 1, 
+    Troglodyte: 1, other: 5
+};
 
 oNIB.oSettings = {
     "Birthright": {}, 
