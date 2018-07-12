@@ -7,12 +7,56 @@
 var oNIB = {};
 
 oNIB.addMainEventListeners = function() {
+    $('#birthright')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#blackmoor')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#council')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#dark')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#dragonlance')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#eberron')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#fist')
+        .on('click', oNIB.handleSettingCheckboxes);
     $('#generate')
         .on('click', oNIB.handleGenerateButton);
+    $('#generic')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#ghostwalk')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#greyhawk')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#jakandor')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#lankhmar')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#mahasarpa')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#mystara')
+        .on('click', oNIB.handleSettingCheckboxes);
     $('#npc')
         .on('click', oNIB.handleTypeCheckboxes);
     $('#pc')
         .on('click', oNIB.handleTypeCheckboxes);
+    $('#pelinore')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#planescape')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#ravenloft')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#realms')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#rokugan')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#spelljammer')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#warcraft')
+        .on('click', oNIB.handleSettingCheckboxes);
+    $('#wilderlands')
+        .on('click', oNIB.handleSettingCheckboxes);
 };
 
 oNIB.addNeutralEthics = function(sMorals) {
@@ -20,6 +64,75 @@ oNIB.addNeutralEthics = function(sMorals) {
         oNIB.oCharacter.sAlignment = "True Neutral";
     } else {
         oNIB.oCharacter.sAlignment = "Neutral " + sMorals;
+    }
+};
+
+oNIB.analyzeCommunity = function(oSetting, sArea) {
+    var oArea = oSetting[sArea];
+    var aPlurality = [];
+    var iHighest = 0
+    var sType = oArea.sType;
+    var aProperties = Object.keys(oArea);
+    for (var p = 0; p < aProperties.length; p++) {
+        var sProperty = aProperties[p];
+        if (sProperty[0] !== "i" && sProperty[0] !== "s" && sProperty[0] !== "o") {
+            var iPercentage = oArea[sProperty];
+            if (iPercentage > iHighest) {
+                aPlurality = [sProperty];
+            } else if (iPercentage === iHighest) {
+                aPlurality.push(sProperty);
+            }
+        }
+    }
+    var oCharacter = oNIB.oCharacter;
+    var sRace = oCharacter.sRace;
+    if (iHighest === 0) {
+        aPlurality = ["Human"];
+    }
+    var iIndex = oNIB.roll(aPlurality.length);
+    iIndex--;
+    var sPlurality = aPlurality[iIndex];
+    var iPopulation = oArea.iPopulation;
+    var sSize = "";
+    if (sType === "compound") {
+        sSize = "Religious, Arcane, Monastic, or Military Compound";
+    } else {
+        if (iPopulation < 20) {
+            sSize = "Frontier Homestead";
+        } else if (iPopulation < 81) {
+            if (sPlurality === "Dwarf") {
+                sSize = "Fortress";
+            } else if (sPlurality === "Elf") {
+                sSize = "Camp";
+            } else {
+                sSize = "Thorp";
+            }
+        } else if (iPopulation < 401) {
+            if (sPlurality === "Dwarf") {
+                sSize = "Citadel";
+            } else if (sPlurality === "Elf") {
+                sSize = "Outpost";
+            } else {
+                sSize = "Hamlet";
+            }
+        } else if (iPopulation < 901) {
+            sSize = "Village";
+        } else if (iPopulation < 2001) {
+            sSize = "Small Town";
+        } else if (iPopulation < 5001) {
+            sSize = "Large Town";
+        } else if (iPopulation < 12001) {
+            sSize = "Small City";
+        } else if (iPopulation < 25001) {
+            sSize = "Large City";
+        } else {
+            sSize = "Metropolis";
+        }
+    }
+    if (sRace !== sPlurality) {
+        oCharacter.sCommunity = sPlurality + " Community: " + sSize;
+    } else {
+        oCharacter.sCommunity = sSize;
     }
 };
 
@@ -439,6 +552,70 @@ oNIB.createRace = function() {
     }
 };
 
+oNIB.createHomeCommunity = function() {
+    var aSettings = ["generic", "birthright", "blackmoor", "council",
+        "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
+        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
+        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
+        "warcraft", "wilderlands"];
+    var sChecked = "";
+    for (var b = 0; b < aSettings.length; b++) {
+        var sBox = aSettings[b];
+        var box = $(('#' + sBox));
+        var bValue = box.is(':checked');
+        if (bValue === true) {
+            sChecked = sBox;
+        }
+    }
+    if (sChecked === "generic" || sChecked === "") {
+        oNIB.createCommunity();
+    } else {
+        if (sChecked === "birthright") {
+            oNIB.getSpecificCommunity("Birthright");
+        } else if (sChecked === "blackmoor") {
+            oNIB.getSpecificCommunity("Blackmoor");
+        } else if (sChecked === "council") {
+            oNIB.getSpecificCommunity("Council of Wyrms");
+        } else if (sChecked === "dark") {
+            oNIB.getSpecificCommunity("Dark Sun");
+        } else if (sChecked === "fist") {
+            oNIB.getSpecificCommunity("Dragon Fist");
+        } else if (sChecked === "dragonlance") {
+            oNIB.getSpecificCommunity("Dragonlance");
+        } else if (sChecked === "eberron") {
+            oNIB.getSpecificCommunity("Eberron");
+        } else if (sChecked === "realms") {
+            oNIB.getSpecificCommunity("Forgotten Realms");
+        } else if (sChecked === "ghostwalk") {
+            oNIB.getSpecificCommunity("Ghostwalk");
+        } else if (sChecked === "greyhawk") {
+            oNIB.getSpecificCommunity("Greyhawk");
+        } else if (sChecked === "jakandor") {
+            oNIB.getSpecificCommunity("Jakandor");
+        } else if (sChecked === "lankhmar") {
+            oNIB.getSpecificCommunity("Lankhmar");
+        } else if (sChecked === "mahasarpa") {
+            oNIB.getSpecificCommunity("Mahasarpa");
+        } else if (sChecked === "mystara") {
+            oNIB.getSpecificCommunity("Mystara");
+        } else if (sChecked === "pelinore") {
+            oNIB.getSpecificCommunity("Pelinore");
+        } else if (sChecked === "planescape") {
+            oNIB.getSpecificCommunity("Planescape");
+        } else if (sChecked === "ravenloft") {
+            oNIB.getSpecificCommunity("Ravenloft");
+        } else if (sChecked === "spelljammer") {
+            oNIB.getSpecificCommunity("Spelljammer");
+        } else if (sChecked === "warcraft") {
+            oNIB.getSpecificCommunity("Warcraft");
+        } else if (sChecked === "wilderlands") {
+            oNIB.getSpecificCommunity("Wilderlands of High Fantasy");
+        } else if (sChecked === "blackmoor") {
+            oNIB.getSpecificCommunity("Blackmoor");
+        }
+    }
+};
+
 oNIB.createCommunity = function() {
     var oCharacter = oNIB.oCharacter;
     var sRace = oCharacter.sRace;
@@ -507,6 +684,17 @@ oNIB.createCommunity = function() {
         sCommunity = oNIB.createHumanCommunity();
     }
     oCharacter.sCommunity = sCommunity;
+};
+
+oNIB.createCommunityString = function(sCommunity, oAreaObject) {
+    var aHistory = oAreaObject.aHistory;
+    for (var a = 0; a < aHistory.length; a++) {
+        var sArea = aHistory[a];
+        if (sArea.indexOf("(undefined)") === -1) {
+            sCommunity += (" (" + sArea + ")");
+        }
+    }
+    oNIB.oCharacter.sCommunity = sCommunity;
 };
 
 oNIB.createDwarvenCommunity = function() {
@@ -1011,6 +1199,56 @@ oNIB.createGender = function() {
         oNIB.oCharacter.sGender = "Female";
     } else {
         oNIB.oCharacter.sGender = "Male";
+    }
+};
+
+oNIB.createGenericCommunity = function(oSetting, sArea) {
+    var oArea = oSetting[sArea];
+    var iPopulation = oArea.iPopulation;
+    var oCharacter = oNIB.oCharacter;
+    var sRace = oCharacter.sRace;
+    var bTooLarge = true;
+    var iResidents = 0;
+    while (bTooLarge === true) {
+        oNIB.createCommunity();
+        var sCommunity = oCharacter.sCommunity;
+        if (sCommunity.indexOf("Tribe") !== -1) {
+            iResidents = 25;
+        } else if (sCommunity.indexOf("Compound") !== -1) {
+            iResidents = 50;
+        } else if (sCommunity.indexOf("Homestead") !== -1) {
+            iResidents = 5;
+        } else if (sCommunity.indexOf("Thorp") !== -1) {
+            iResidents = 100;
+        } else if (sCommunity.indexOf("Hamlet") !== -1) {
+            iResidents = 81;
+        } else if (sCommunity.indexOf("Village") !== -1) {
+            iResidents = 401;
+        } else if (sCommunity.indexOf("Small Town") !== -1) {
+            iResidents = 901;
+        } else if (sCommunity.indexOf("Large Town") !== -1) {
+            iResidents = 2001;
+        } else if (sCommunity.indexOf("Small City") !== -1) {
+            iResidents = 5001;
+        } else if (sCommunity.indexOf("Large City") !== -1) {
+            iResidents = 12001;
+        } else if (sCommunity.indexOf("Metropolis") !== -1) {
+            iResidents = 25001;
+        } else if (sCommunity.indexOf("Fortress") !== -1) {
+            iResidents = 20;
+        } else if (sCommunity.indexOf("Citadel") !== -1) {
+            iResidents = 81;
+        } else if (sCommunity.indexOf("Camp") !== -1) {
+            iResidents = 20;
+        } else if (sCommunity.indexOf("Outpost") !== -1) {
+            iResidents = 81;
+        } else if (sCommunity.indexOf("Fringe") !== -1) {
+            iResidents = 5;
+        }
+        if (iResidents <= iPopulation) {
+            bTooLarge = false;
+        }
+        return sCommunity;
     }
 };
 
@@ -2529,6 +2767,68 @@ oNIB.demographize = function(oArea, sArea) {
     }
 };
 
+oNIB.findArea = function(oSetting, oAreaObject) {
+    var aAreas = oAreaObject.aAreas;
+    var iDie = 0;
+    var oNumbers = {};
+    var sRace = oNIB.oCharacter.sRace;
+    for (var a = 0; a < aAreas.length; a++) {
+        var sArea = aAreas[a];
+        console.log(sArea);
+        var oArea = oSetting[sArea];
+        var aDemographics = Object.keys(oArea);
+        if (aDemographics.indexOf(sRace) !== -1) {
+            var iPercent = oArea[sRace];
+        } else if (aDemographics.indexOf("other") !== -1) {
+            var iPercent = oArea["other"];
+        } else {
+            var iPercent = oNIB.oGeneric[sRace];
+        }
+        var iMultiplier = iPercent / 100;
+        var iProduct = oArea.iPopulation * iMultiplier;
+        var iNumber = Math.round(iProduct);
+        oNumbers[sArea] = iNumber;
+        iDie += iNumber;
+    }
+    var iRoll = oNIB.roll(iDie);
+    var iTotal = 0;
+    var aNumbers = Object.keys(oNumbers);
+    var sArea = "";
+    for (var a = 0; a < aNumbers.length; a++) {
+        sArea = aNumbers[a];
+        var iPopulation = oNumbers[sArea];
+        iTotal += iPopulation
+        if (iTotal >= iRoll) {
+            break;
+        }
+    }
+    oAreaObject.aHistory.unshift(sArea);
+    var oArea = oSetting[sArea];
+    var sType = oArea.sType;
+    if (sType === "region") {
+        var sSubregions = "a" + sArea.replace(/ /g, "");
+        var aProperties = Object.keys(oSetting);
+        if (aProperties.indexOf(sSubregions) !== -1) {
+            var aSubregions = oSetting[sSubregions];
+            oAreaObject.aAreas = aSubregions;
+            var oAreaObject = oNIB.findArea(oSetting, oAreaObject);
+        } else {
+            oAreaObject.aAreas = [sArea];
+            var sCommunity = oNIB.createGenericCommunity(oSetting, sArea);
+            oNIB.createCommunityString(sCommunity, oAreaObject);
+        }
+    } else if (sType === "undefined") {
+        oAreaObject.aAreas = [sArea];
+        var sCommunity = oNIB.createGenericCommunity(oSetting, sArea);
+        oNIB.createCommunityString(sCommunity, oAreaObject);
+    } else {
+        oNIB.analyzeCommunity(oSetting, sArea);
+        var sCommunity = oNIB.oCharacter.sCommunity;
+        oNIB.createCommunityString(sCommunity, oAreaObject);
+    }
+    return oAreaObject;
+};
+
 oNIB.getChildDemographics = function(oSetting) {
     var aProperties = Object.keys(oSetting);
     for (var p = 0; p < aProperties.length; p++) {
@@ -2673,20 +2973,32 @@ oNIB.getGenericDemographics = function() {
     console.log(oNew);
 };
 
-oNIB.handleGenerateButton = function() {
+oNIB.getSpecificCommunity = function(sSetting) {
+    var sArray = "a" + sSetting.replace(/ /g, "");
+    var oSetting = oNIB.oSettings[sSetting];
+    var aTopLevel = oNIB.oSettings[sSetting][sArray];
+    var oAreaObject = {aAreas: [], aHistory: []};
+    for (var a = 0; a < aTopLevel.length; a++) {
+        var sArea = aTopLevel[a];
+        oAreaObject.aAreas.push(sArea);
+    }
+    oAreaObject = oNIB.findArea(oSetting, oAreaObject);
+    console.log(oNIB.oCharacter.sCommunity);
+};
+
+oNIB.handleGenerateButton = function(event) {
+    event.stopPropagation();
     $('#character').empty();
     oNIB.createGender();
     oNIB.createMorals();
     oNIB.createClass();
-    //oNIB.createPCMorals();
-    //oNIB.createPCClass();
     oNIB.createRace();
     oNIB.createEthics();
     oNIB.createAge();
     oNIB.createHeight();
     oNIB.createTemperatureZone();
     oNIB.createTerrain();
-    oNIB.createCommunity();
+    oNIB.createHomeCommunity();
     oNIB.createFamilyEconomicStatus();
     oNIB.createFamilySocialStanding();
     oNIB.createFamilyDefenseReadiness();
@@ -2713,6 +3025,32 @@ oNIB.handleGenerateButton = function() {
     oNIB.createArchetype();
     oNIB.createPersonalityTraits();
     oNIB.printCharacter();
+};
+
+oNIB.handleSettingCheckboxes = function(event) {
+    event.stopPropagation();
+    var aSettings = ["generic", "birthright", "blackmoor", "council",
+        "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
+        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
+        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
+        "warcraft", "wilderlands"];
+    var target = $(event.target);
+    var bValue = target.is(':checked');
+    if (bValue === true) {
+        var sId = target.attr('id');
+        var aOther = [];
+        for (var b = 0; b < aSettings.length; b++) {
+            var sSetting = aSettings[b];
+            if (sSetting !== sId) {
+                aOther.push(sSetting);
+            }
+        }
+        for (var b = 0; b < aOther.length; b++) {
+            var sSetting = aOther[b];
+            var button = $(('#' + sSetting));
+            button.prop('checked', false);
+        }
+    }
 };
 
 oNIB.handleTypeCheckboxes = function(event) {
