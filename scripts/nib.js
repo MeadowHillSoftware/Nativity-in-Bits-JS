@@ -544,78 +544,6 @@ oNIB.createClass = function() {
     }
 };
 
-oNIB.createRace = function() {
-    if ($('#' + 'pc').is(":checked")) {
-        oNIB.createPCRace();
-    } else {
-        oNIB.createNPCRace();
-    }
-};
-
-oNIB.createHomeCommunity = function() {
-    var aSettings = ["generic", "birthright", "blackmoor", "council",
-        "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
-        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
-        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
-        "warcraft", "wilderlands"];
-    var sChecked = "";
-    for (var b = 0; b < aSettings.length; b++) {
-        var sBox = aSettings[b];
-        var box = $(('#' + sBox));
-        var bValue = box.is(':checked');
-        if (bValue === true) {
-            sChecked = sBox;
-        }
-    }
-    if (sChecked === "generic" || sChecked === "") {
-        oNIB.createCommunity();
-    } else {
-        if (sChecked === "birthright") {
-            oNIB.getSpecificCommunity("Birthright");
-        } else if (sChecked === "blackmoor") {
-            oNIB.getSpecificCommunity("Blackmoor");
-        } else if (sChecked === "council") {
-            oNIB.getSpecificCommunity("Council of Wyrms");
-        } else if (sChecked === "dark") {
-            oNIB.getSpecificCommunity("Dark Sun");
-        } else if (sChecked === "fist") {
-            oNIB.getSpecificCommunity("Dragon Fist");
-        } else if (sChecked === "dragonlance") {
-            oNIB.getSpecificCommunity("Dragonlance");
-        } else if (sChecked === "eberron") {
-            oNIB.getSpecificCommunity("Eberron");
-        } else if (sChecked === "realms") {
-            oNIB.getSpecificCommunity("Forgotten Realms");
-        } else if (sChecked === "ghostwalk") {
-            oNIB.getSpecificCommunity("Ghostwalk");
-        } else if (sChecked === "greyhawk") {
-            oNIB.getSpecificCommunity("Greyhawk");
-        } else if (sChecked === "jakandor") {
-            oNIB.getSpecificCommunity("Jakandor");
-        } else if (sChecked === "lankhmar") {
-            oNIB.getSpecificCommunity("Lankhmar");
-        } else if (sChecked === "mahasarpa") {
-            oNIB.getSpecificCommunity("Mahasarpa");
-        } else if (sChecked === "mystara") {
-            oNIB.getSpecificCommunity("Mystara");
-        } else if (sChecked === "pelinore") {
-            oNIB.getSpecificCommunity("Pelinore");
-        } else if (sChecked === "planescape") {
-            oNIB.getSpecificCommunity("Planescape");
-        } else if (sChecked === "ravenloft") {
-            oNIB.getSpecificCommunity("Ravenloft");
-        } else if (sChecked === "spelljammer") {
-            oNIB.getSpecificCommunity("Spelljammer");
-        } else if (sChecked === "warcraft") {
-            oNIB.getSpecificCommunity("Warcraft");
-        } else if (sChecked === "wilderlands") {
-            oNIB.getSpecificCommunity("Wilderlands of High Fantasy");
-        } else if (sChecked === "blackmoor") {
-            oNIB.getSpecificCommunity("Blackmoor");
-        }
-    }
-};
-
 oNIB.createCommunity = function() {
     var oCharacter = oNIB.oCharacter;
     var sRace = oCharacter.sRace;
@@ -1387,6 +1315,70 @@ oNIB.createHinEthics = function(sMorals) {
         oNIB.oCharacter.sAlignment = "Chaotic " + sMorals;
     } else {
         oNIB.oCharacter.sAlignment = "Lawful " + sMorals;
+    }
+};
+
+oNIB.createHomeCommunity = function() {
+    var aSettings = ["generic", "birthright", "blackmoor", "council",
+        "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
+        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
+        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
+        "warcraft", "wilderlands"];
+    var sChecked = "";
+    for (var b = 0; b < aSettings.length; b++) {
+        var sBox = aSettings[b];
+        var box = $(('#' + sBox));
+        var bValue = box.is(':checked');
+        if (bValue === true) {
+            sChecked = sBox;
+        }
+    }
+    if (sChecked === "generic" || sChecked === "") {
+        oNIB.createCommunity();
+    } else {
+        if (sChecked === "birthright") {
+            oNIB.getSpecificCommunity("Birthright");
+        } else if (sChecked === "blackmoor") {
+            oNIB.getSpecificCommunity("Blackmoor");
+        } else if (sChecked === "council") {
+            oNIB.getSpecificCommunity("Council of Wyrms");
+        } else if (sChecked === "dark") {
+            oNIB.getSpecificCommunity("Dark Sun");
+        } else if (sChecked === "fist") {
+            oNIB.getSpecificCommunity("Dragon Fist");
+        } else if (sChecked === "dragonlance") {
+            oNIB.getSpecificCommunity("Dragonlance");
+        } else if (sChecked === "eberron") {
+            oNIB.getSpecificCommunity("Eberron");
+        } else if (sChecked === "realms") {
+            oNIB.getSpecificCommunity("Forgotten Realms");
+        } else if (sChecked === "ghostwalk") {
+            oNIB.getSpecificCommunity("Ghostwalk");
+        } else if (sChecked === "greyhawk") {
+            oNIB.getSpecificCommunity("Greyhawk");
+        } else if (sChecked === "jakandor") {
+            oNIB.getSpecificCommunity("Jakandor");
+        } else if (sChecked === "lankhmar") {
+            oNIB.getSpecificCommunity("Lankhmar");
+        } else if (sChecked === "mahasarpa") {
+            oNIB.getSpecificCommunity("Mahasarpa");
+        } else if (sChecked === "mystara") {
+            oNIB.getSpecificCommunity("Mystara");
+        } else if (sChecked === "pelinore") {
+            oNIB.getSpecificCommunity("Pelinore");
+        } else if (sChecked === "planescape") {
+            oNIB.getSpecificCommunity("Planescape");
+        } else if (sChecked === "ravenloft") {
+            oNIB.getSpecificCommunity("Ravenloft");
+        } else if (sChecked === "spelljammer") {
+            oNIB.getSpecificCommunity("Spelljammer");
+        } else if (sChecked === "warcraft") {
+            oNIB.getSpecificCommunity("Warcraft");
+        } else if (sChecked === "wilderlands") {
+            oNIB.getSpecificCommunity("Wilderlands of High Fantasy");
+        } else if (sChecked === "blackmoor") {
+            oNIB.getSpecificCommunity("Blackmoor");
+        }
     }
 };
 
@@ -2480,6 +2472,14 @@ oNIB.createPivotalEvents = function() {
     oCharacter.sPivotalEvents = sEvent;
 };
 
+oNIB.createRace = function() {
+    if ($('#' + 'pc').is(":checked")) {
+        oNIB.createPCRace();
+    } else {
+        oNIB.createNPCRace();
+    }
+};
+
 oNIB.createSiblings = function() {
     var oCharacter = oNIB.oCharacter;
     var iRoll = oNIB.roll(100);
@@ -2774,7 +2774,6 @@ oNIB.findArea = function(oSetting, oAreaObject) {
     var sRace = oNIB.oCharacter.sRace;
     for (var a = 0; a < aAreas.length; a++) {
         var sArea = aAreas[a];
-        console.log(sArea);
         var oArea = oSetting[sArea];
         var aDemographics = Object.keys(oArea);
         if (aDemographics.indexOf(sRace) !== -1) {
@@ -2983,7 +2982,6 @@ oNIB.getSpecificCommunity = function(sSetting) {
         oAreaObject.aAreas.push(sArea);
     }
     oAreaObject = oNIB.findArea(oSetting, oAreaObject);
-    console.log(oNIB.oCharacter.sCommunity);
 };
 
 oNIB.handleGenerateButton = function(event) {
