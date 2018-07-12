@@ -2529,6 +2529,54 @@ oNIB.demographize = function(oArea, sArea) {
     }
 };
 
+oNIB.getChildDemographics = function(oSetting) {
+    var aProperties = Object.keys(oSetting);
+    for (var p = 0; p < aProperties.length; p++) {
+        var sProperty = aProperties[p];
+        if (sProperty[0] === "a") {
+            var aAreas = oSetting[sProperty];
+            var iTotal = 0;
+            var oDemographics = {};
+            for (var a = 0; a < aAreas.length; a++) {
+                var sArea = aAreas[a];
+                var oArea = oSetting[sArea];
+                var aStuff = Object.keys(oArea);
+                if (aStuff.indexOf("other") === -1) {
+                    break;
+                } else {
+                    var aRaces = Object.keys(oDemographics);
+                    var iPopulation = oArea.iPopulation;
+                    iTotal += iPopulation;
+                    for (var t = 0; t < aStuff.length; t++) {
+                        var sThing = aStuff[t];
+                        if (sThing[0] !== "s" && sThing[0] !== "i") {
+                            var iPercent = oArea[sThing];
+                            var iMultiplier = iPercent / 100;
+                            var iProduct = iPopulation * iMultiplier;
+                            var iRace = Math.round(iProduct);
+                            if (aRaces.indexOf(sThing) === -1) {
+                                oDemographics[sThing] = iRace;
+                            } else {
+                                oDemographics[sThing] += iRace;
+                            }
+                        }
+                    }
+                }
+            }
+            aRaces = Object.keys(oDemographics);
+            var oPercentages = {};
+            for (var r = 0; r < aRaces.length; r++) {
+                var sRace = aRaces[r];
+                var iNumber = oDemographics[sRace];
+                var iQuotient = iNumber / iTotal;
+                var iPercent = iQuotient * 100;
+                oPercentages[sRace] = iPercent;
+            }
+            console.log(sProperty, oPercentages);
+        }
+    }
+};
+
 oNIB.getDemographics = function(oSetting) {
     var aProperties = Object.keys(oSetting);
     for (var p = 0; p < aProperties.length; p++) {
