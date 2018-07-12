@@ -2544,6 +2544,10 @@ oNIB.handleTypeCheckboxes = function(event) {
     }
 };
 
+oNIB.iDefined = 0;
+
+oNIB.iUndefined = 0;
+
 oNIB.oCharacter = {};
 
 oNIB.oSettings = {
@@ -4149,6 +4153,60 @@ oNIB.testObject = function(oObject) {
                     console.log(sProperty, "sType");
                 }
             }
+        }
+    }
+};
+
+oNIB.testSetting = function(sSetting) {
+    var oSetting = oNIB.oSettings[sSetting];
+    var aSettingProperties = Object.keys(oSetting);
+    var iSubregions = oNIB.totalPopulation(oSetting, aSettingProperties, sSetting, true);
+    var iRatio = oNIB.iDefined / oNIB.iUndefined;
+    console.log("Defined:", oNIB.iDefined, "Undefined:", oNIB.iUndefined, "Ratio:", iRatio);
+};
+
+oNIB.totalPopulation = function(oSetting, aSettingProperties, sRegion, bWorld) {
+    if (bWorld === false) {
+        var oRegion = oSetting[sRegion];
+    } else {
+        var oRegion = oSetting;
+    }
+    var sType = oRegion.sType;
+    if (sType === "region") {
+        var sArray = "a" + sRegion.replace(/ /g, "");
+        if (aSettingProperties.indexOf(sArray) !== -1) {
+            var aArray = oSetting[sArray];
+            var aProperties = Object.keys(oRegion);
+            var iPopulation = 0;
+            if (aProperties.indexOf("iPopulation") !== -1) {
+                iPopulation = oRegion.iPopulation;
+            }
+            var iSubregions = 0;
+            for (var r = 0; r < aArray.length; r++) {
+                var sObject = aArray[r];
+                console.log(sObject);
+                var oObject = oSetting[sObject];
+                aProperties = Object.keys(oObject);
+                var iSubpopulation = 0;
+                if (aProperties.indexOf("iPopulation") !== -1) {
+                    iSubpopulation = oObject.iPopulation;
+                    if (sObject.indexOf("(undefined)") !== -1) {
+                        oNIB.iUndefined += iSubpopulation;
+                        oNIB.iDefined += iPopulation;
+                    }
+                }
+                iSubregions += iSubpopulation
+                var iSubregionsTwo = oNIB.totalPopulation(oSetting, aSettingProperties, sObject, false);
+            }
+            console.log(sRegion, iPopulation, "subregions", iSubregions);
+            if (iPopulation !== 0 && iSubregions > iPopulation) {
+                console.log(sRegion, iPopulation, "subregions", iSubregions);
+            }
+            if (iPopulation !== 0 && iSubregions < iPopulation) {
+                var iDifference = iPopulation - iSubregions;
+                console.log('"' + sRegion + ' (undefined)": {iPopulation: ' + iDifference + ', sType: "undefined"}');
+            }
+            return iSubregions;
         }
     }
 };
