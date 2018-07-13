@@ -4079,6 +4079,630 @@ oNIB.createRace = function() {
     }
 };
 
+oNIB.createReanaarianCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Reanaaria Bay)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 688) {
+            sRegion = "Courai Heights";
+            if (iRoll < 83) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 503) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 658) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 687) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8813) {
+            sRegion = "Faunee Rise";
+            sSettlement = "";
+        } else if (iRoll < 9589) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 8944) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 9338) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9560) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9588) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9606) {
+            sRegion = "Khydoban Desert";
+            sSettlement = "Thygasha";
+        } else if (iRoll < 9610) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 9607) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 9608) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9609) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9610) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9711) {
+            sRegion = "Neebau Cliffs";
+            sSettlement = "";
+        } else if (iRoll < 9715) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9794) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9847) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9996) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 40) {
+            sRegion = "Courai Heights";
+            if (iRoll < 24) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 37) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2825) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 510) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 1923) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2722) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2824) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2879) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 2850) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 2865) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2876) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2878) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3282) {
+            sRegion = "Nanakary Forest";
+            if (iRoll < 2960) {
+                sSettlement = "Baethel";
+            } else if (iRoll < 3121) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3257) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3273) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3288) {
+            sRegion = "Reanaaria Bay";
+            if (iRoll < 3288) {
+                sSettlement = "Saaniema";
+            } else if (iRoll < 3525) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3650) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3713) {
+                sSettlement = "Minor Town";
+            } else if (iRoll < 3715) {
+                sSettlement = "Farmstead";
+            } else if (iRoll < 3846) {
+                sSettlement = "Shyff";
+            } else if (iRoll < 6430) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8281) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8358) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3700) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9336) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9455) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9565) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 840) {
+            sRegion = "Courai Heights";
+            if (iRoll < 125) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 619) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 803) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 837) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 849) {
+            sRegion = "Faunee Rise";
+            sSettlement = "";
+        } else if (iRoll < 1234) {
+            sRegion = "Fautee Forest";
+            if (iRoll < 921) {
+                sSettlement = "Xaarum";
+            } else if (iRoll < 1116) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1216) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1232) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2467) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 1440) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 2061) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2413) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2458) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7885) {
+            sRegion = "Khydoban Desert";
+            if (iRoll < 4326) {
+                sSettlement = "Arajyd Hills";
+            } else if (iRoll < 4578) {
+                sSettlement = "Thygasha";
+            } else if (iRoll < 6437) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7677) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7863) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7890) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 7886) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 7887) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7888) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7889) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9207) {
+            sRegion = "Nanakary Forest";
+            if (iRoll < 8154) {
+                sSettlement = "Baethel";
+            } else if (iRoll < 8724) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9144) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9204) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9232) {
+            sRegion = "Neebau Cliffs";
+        } else if (iRoll < 9500) {
+            sRegion = "Renaaria Bay";
+            if (iRoll < 9329) {
+                sSettlement = "Shyff";
+            } else if (iRoll < 9403) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9476) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9498) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9908) {
+            sRegion = "Sotai Gagalia Headlands";
+        } else if (iRoll < 9914) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9930) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9949) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9992) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 2162) {
+            sRegion = "Courai Heights";
+            if (iRoll < 261) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 1582) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2071) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2161) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7686) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 3093) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 5885) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7467) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7670) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8238) {
+            sRegion = "Khydoban Desert";
+            if (iRoll < 8138) {
+                sSettlement = "Arajyd Hills";
+            } else {
+                sSettlement = "Thygasha";
+            }
+        } else if (iRoll < 8568) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 8396) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 8489) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8557) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8567) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9687) {
+            sRegion = "Reanaaria Bay";
+            if (iRoll < 8625) {
+                sSettlement = "Saaniema";
+            } else if (iRoll < 9197) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9497) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9648) {
+                sSettlement = "Minor Town";
+            } else if (iRoll < 9653) {
+                sSettlement = "Farmstead";
+            } else if (iRoll < 9658) {
+                sSettlement = "Shyff";
+            } else if (iRoll < 9666) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9679) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 9822) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9964) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9970) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9983) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 17) {
+            sRegion = "Courai Heights";
+            sSettlement = "Geanavue";
+        } else if (iRoll < 1643) {
+            sRegion = "Fautee Forest";
+            if (iRoll < 319) {
+                sSettlement = "Xaarum";
+            } else if (iRoll < 1134) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1557) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 5311) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 2262) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 4122) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5175) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5310) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8777) {
+            sRegion = "Khydoban Desert";
+            if (iRoll < 7833) {
+                sSettlement = "Arajyd Hills";
+            } else if (iRoll < 7925) {
+                sSettlement = "Thygasha";
+            } else if (iRoll < 8507) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8717) {
+                sSettlement = "Rual Hamlet";
+            } else if (iRoll < 8775) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8796) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 8785) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 8790) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8794) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8795) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8936) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9247) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9277) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9898) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 62) {
+            sRegion = "Courai Heights";
+            if (iRoll < 14) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 23) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 25) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 809) {
+            sRegion = "Faunee Rise";
+        } else if (iRoll < 4543) {
+            sRegion = "Fautee Peninsula"
+            if (iRoll < 1437) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 3321) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 4389) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 4526) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 4694) {
+            sRegion = "Khydroban Desert"
+            if (iRoll < 4593) {
+                sSettlement = "Arajyd Hills";
+            } else {
+                sSettlement = "Dynaj";
+            }
+        } else if (iRoll < 6388) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 5504) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 5981) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6335) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6385) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8486) {
+            sRegion = "Masau Hills"
+        } else if (iRoll < 9267) {
+            sRegion = "Neebau Cliffs";
+        } else if (iRoll < 9298) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9555) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9656) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9838) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else {
+        if (iRoll < 267) {
+            sRegion = "Courai Heights";
+            if (iRoll < 67) {
+                sSettlement = "Geanavue";
+            } else if (iRoll < 92) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 250) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 266) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 275) {
+            sRegion = "Faunee Rise";
+        } else if (iRoll < 657) {
+            sRegion = "Fautee Forest";
+            if (iRoll < 354) {
+                sSettlement = "Xaarum";
+            } else if (iRoll < 506) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 639) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 656) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3692) {
+            sRegion = "Fautee Peninsula";
+            if (iRoll < 1308) {
+                sSettlement = "Zoa";
+            } else if (iRoll < 2516) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3535) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3686) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6045) {
+            sRegion = "Khydoban Desert";
+            if (iRoll < 3702) {
+                sSettlement = "Arajyd Hills";
+            } else if (iRoll < 3774) {
+                sSettlement = "Dynaj";
+            } else if (iRoll < 4414) {
+                sSettlement = "Thygasha";
+            } else if (iRoll < 5271) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5957) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6031) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6219) {
+            sRegion = "Kaotoon Island";
+            if (iRoll < 6128) {
+                sSettlement = "Aasaer";
+            } else if (iRoll < 6177) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6213) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6218) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6848) {
+            sRegion = "Keenoa Tors";
+            if (iRoll < 6346) {
+                sSettlement = "Giilia";
+            } else if (iRoll < 6617) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6817) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6846) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7172) {
+            sRegion = "Nanakary Forest";
+            if (iRoll < 6913) {
+                sSettlement = "Baethel";
+            } else if (iRoll < 7053) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7156) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7171) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7189) {
+            sRegion = "Neebau Cliffs";
+        } else if (iRoll < 7893) {
+            sRegion = "Reanaaria Bay";
+            if (iRoll < 7275) {
+                sSettlement = "Saaniema";
+            } else if (iRoll < 7358) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7429) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7430) {
+                sSettlement = "Minor Town";
+            } else if (iRoll < 7431) {
+                sSettlement = "Farmstead";
+            } else if (iRoll < 7524) {
+                sSettlement = "Fymar";
+            } else if (iRoll < 7659) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7759) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7773) {
+                sSettlement = "Minor Town";
+            } else if (iRoll < 7774) {
+                sSettlement = "Farmstead";
+            } else if (iRoll < 7876) {
+                sSettlement = "Shyff";
+            } else if (iRoll < 7880) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7882) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7892) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7901) {
+            sRegion = "Sotai Gagalia Headlands";
+        } else if (iRoll < 7995) {
+            sRegion = "Vry Nasau Headlands";
+        } else if (iRoll < 8132) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 8981) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9351) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9941) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
+};
+
 oNIB.createSiblings = function() {
     var oCharacter = oNIB.oCharacter;
     var iRoll = oNIB.roll(100);
