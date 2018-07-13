@@ -5277,6 +5277,24 @@ oNIB.oSettings["Lankhmar"] = {
     sType: "region"
 };
 
+oNIB.oSettings["Mahasarpa"] = {
+    "aMahasarpa": ["Bhalluka", "Gardharua", "Kokaha", "Lakshmana", 
+        "Naga", "Singha", "Uriscika"],
+    "Bhalluka": {iPopulation: 60000, sSource: "Mahasarpa", 
+        sType: "region"},
+    "Gardharua": {iPopulation: 30000, sSource: "Mahasarpa", 
+        sType: "region"},
+    "Kokaha": {iPopulation: 55000, sSource: "Mahasarpa", 
+        sType: "region"},
+    "Lakshmana": {iPopulation: 45000, sSource: "Mahasarpa", 
+        sType: "region"},
+    "Naga": {iPopulation: 20000, sSource: "Mahasarpa", sType: "region"},
+    "Singha": {iPopulation: 40000, sSource: "Mahasarpa", 
+        sType: "region"},
+    "Uriscika": {iPopulation: 15000, sSource: "Mahasarpa", 
+        sType: "region"}
+};
+
 oNIB.oSettings["Mystara"] = {
     "aMystara": ["Aeryl", "Alphatia", "Anathy Archipelago", "Bellisaria", "Brun", "Dark Jungle", "Davania", "Eshu", "Iciria", "Isle of Dawn", 
         "Jibaroe", "New Alphatian Sea", "Nimmur", "Pearl Islands", "Qeodhar", "Savage Coast", "Sea of Dawn", "Sea of Dread", "Serraine", 
