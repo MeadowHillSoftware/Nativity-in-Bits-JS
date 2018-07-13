@@ -5339,6 +5339,536 @@ oNIB.createTerrain = function() {
     oCharacter.sTerrain = sTerrain;
 };
 
+oNIB.createWildLandsCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Wild Lands)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 4599) {
+            sRegion = "Byth Mountains";
+            if (iRoll < 804) {
+                sSettlement = "Draska";
+            } else if (iRoll < 2693) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 4346) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 4583) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 4742) {
+            sRegion = "Paru'Bor";
+            if (iRoll < 4648) {
+                sSettlement = "Bet Regor";
+            } else if (iRoll < 4650) {
+                sSettlement = "Paketa";
+            } else if (iRoll < 4709) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 4720) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 4737) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8439) {
+            sRegion = "Shynabyth";
+            if (iRoll < 4997) {
+                sSettlement = "Gadra Uplands";
+            } else if (iRoll < 5153) {
+                sSettlement = "Shyf Hills";
+            } else if (iRoll < 6846) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8178) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8415) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9307) {
+            sRegion = "Slen";
+            if (iRoll < 9163) {
+                sSettlement = "Deshada Mountains";
+            } else if (iRoll < 9191) {
+                sSettlement = "Hadaf Highlands";
+            } else {
+                sSettlement = "Shada Hills";
+            }
+        } else if (iRoll < 9465) {
+            sRegion = "Tharggy";
+            if (iRoll < 9452) {
+                sSettlement = "Shyf Hills";
+            } else {
+                sSettlement = "Shynako Hills";
+            }
+        } else if (iRoll < 9633) {
+            sRegion = "Thybaj";
+            if (iRoll < 9470) {
+                sSettlement = "Dakyno";
+            } else if (iRoll < 9484) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 9593) {
+                sSettlement = "Jenth Ridges";
+            } else if (iRoll < 9631) {
+                sSettlement = "Shyta-Thybaj";
+            } else {
+                sSettlement = "Vrykarr Mountains";
+            }
+        } else if (iRoll < 9640) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9822) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9934) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9980) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 1517) {
+            sRegion = "Skarrna";
+            sSettlement = "Narrajy Forest";
+        } else if (iRoll < 3316) {
+            sRegion = "Tharggy";
+            if (iRoll < 3264) {
+                sSettlement = "Fyban Forest";
+            } else {
+                sSettlement = "Rokk Woods";
+            }
+        } else if (iRoll < 6584) {
+            sRegion = "Thybaj";
+            if (iRoll < 3318) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 6312) {
+                sSettlement = "Jenth Ridges";
+            } else {
+                sSettlement = "Nyton";
+            }
+        } else if (iRoll < 7497) {
+            sRegion = "Rytarr Woods";
+            if (iRoll < 6767) {
+                sSettlement = "Narr-Rytar";
+            } else if (iRoll < 7161) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7453) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7495) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7837) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 8701) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 8758) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 8818) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 1517) {
+            sRegion = "Skarrna";
+            sSettlement = "Narrajy Forest";
+        } else if (iRoll < 3316) {
+            sRegion = "Tharggy";
+            if (iRoll < 3264) {
+                sSettlement = "Fyban Forest";
+            } else {
+                sSettlement = "Rokk Woods";
+            }
+        } else if (iRoll < 6584) {
+            sRegion = "Thybaj";
+            if (iRoll < 3318) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 6312) {
+                sSettlement = "Jenth Ridges";
+            } else {
+                sSettlement = "Nyton";
+            }
+        } else if (iRoll < 7497) {
+            sRegion = "Rytarr Woods";
+            if (iRoll < 6767) {
+                sSettlement = "Narr-Rytar";
+            } else if (iRoll < 7161) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7453) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7495) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7837) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 8701) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 8758) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 8818) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 1380) {
+            sRegion = "Tharggy";
+            if (iRoll < 1268) {
+                sSettlement = "Fyban Forest";
+            } else {
+                sSettlement = "Rokk Woods";
+            }
+        } else if (iRoll < 4860) {
+            sRegion = "Thybaj";
+            if (iRoll < 1604) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 2976) {
+                sSettlement = "Jenth Ridges";
+            } else if (iRoll < 3456) {
+                sSettlement = "Nyton";
+            } else if (iRoll < 4853) {
+                sSettlement = "Shyta-Thybaj";
+            } else {
+                sSettlement = "Vrykarr Mountains";
+            }
+        } else if (iRoll < 6596) {
+            sRegion = "Torakk";
+            sSettlement = "Korren Woods";
+        } else if (iRoll < 7643) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9105) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9608) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9632) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 602) {
+            sRegion = "Byth Mountains";
+            if (iRoll < 106) {
+                sSettlement = "Daruk";
+            } else if (iRoll < 387) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 574) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 609) {
+            sRegion = "Paru'Bor";
+            if (iRoll < 606) {
+                sSettlement = "Koreta";
+            } else if (iRoll < 607) {
+                sSettlement = "Paketa";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 7380) {
+            sRegion = "Shynabyth";
+            if (iRoll < 861) {
+                sSettlement = "Shyf Hills";
+            } else if (iRoll < 4220) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6910) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 7534) {
+            sRegion = "Skarrna";
+            sSettlement = "Narrajy Forest";
+        } else if (iRoll < 7984) {
+            sRegion = "Tharggy";
+            if (iRoll < 7700) {
+                sSettlement = "Fyban Forest";
+            } else if (iRoll < 7706) {
+                sSettlement = "Rokk Woods";
+            } else if (iRoll < 7960) {
+                sSettlement = "Shyf Hills";
+            } else {
+                sSettlement = "Shynako Hills";
+            }
+        } else if (iRoll < 9221) {
+            sRegion = "Thybaj";
+            if (iRoll < 7997) {
+                sSettlement = "Dakyno";
+            } else if (iRoll < 7999) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 8479) {
+                sSettlement = "Jenth Ridges";
+            } else if (iRoll < 8549) {
+                sSettlement = "Nyton";
+            } else if (iRoll < 8588) {
+                sSettlement = "Shyta-Thybaj";
+            } else if (iRoll < 8589) {
+                sSettlement = "Vrykarr Mountains";
+            } else if (iRoll < 8998) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9176) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9220) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9319) {
+            sRegion = "Torakk";
+            sSettlement = "Khorren Woods";
+        } else if (iRoll < 9787) {
+            sRegion = "Rytarr Woods";
+            if (iRoll < 9413) {
+                sSettlement = "Narr-Rytarr";
+            } else if (iRoll < 9615) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9765) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9786) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9820) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9918) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9932) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9936) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 8503) {
+            sRegion = "Slen";
+            sSettlement = "Hadaf Highlands";
+        } else if (iRoll < 8613) {
+            sRegion = "Thybaj";
+            if (iRoll < 8529) {
+                sSettlement = "Fashyr";
+            } else {
+                sSettlement = "Jenth Ridges";
+            }
+        } else if (iRoll < 8660) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9177) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9270) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9346) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else {
+        if (iRoll < 92) {
+            sRegion = "Byth Mountains";
+            if (iRoll < 27) {
+                sSettlement = "Daruk";
+            } else if (iRoll < 71) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 89) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 91) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3002) {
+            sRegion = "Drhokker";
+            if (iRoll < 102) {
+                sSettlement = "Gothmerr";
+            } else if (iRoll < 118) {
+                sSettlement = "Nythok";
+            } else if (iRoll < 134) {
+                sSettlement = "Trarr";
+            } else if (iRoll < 1682) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2829) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2993) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3743) {
+            sRegion = "Paru'Bor";
+            if (iRoll < 3067) {
+                sSettlement = "Bet Regor";
+            } else if (iRoll < 3090) {
+                sSettlement = "Koreta";
+            } else if (iRoll < 3147) {
+                sSettlement = "Paketa";
+            } else if (iRoll < 3466) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3710) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3742) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5216) {
+            sRegion = "Shynabyth";
+            if (iRoll < 3757) {
+                sSettlement = "Byksha";
+            } else if (iRoll < 3763) {
+                sSettlement = "Gadra Uplands";
+            } else if (iRoll < 3809) {
+                sSettlement = "Rynoshok";
+            } else if (iRoll < 3818) {
+                sSettlement = "Sarr";
+            } else if (iRoll < 3829) {
+                sSettlement = "Shyf Hills";
+            } else if (iRoll < 4616) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5146) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5213) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6934) {
+            sRegion = "Skarrna";
+            if (iRoll < 5263) {
+                sSettlement = "Ardarr-Norr";
+            } else if (iRoll < 6166) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6834) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6929) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7419) {
+            sRegion = "Slen";
+            if (iRoll < 6944) {
+                sSettlement = "Deshada Mountains";
+            } else if (iRoll < 6950) {
+                sSettlement = "Gadra Uplands";
+            } else if (iRoll < 6968) {
+                sSettlement = "Hadaf Highlands";
+            } else if (iRoll < 7026) {
+                sSettlement = "Kako-Gyr";
+            } else if (iRoll < 7161) {
+                sSettlement = "Shada Hills";
+            } else if (iRoll < 7300) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7403) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7418) {
+                sSettlement = "Minor Tower";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7925) {
+            sRegion = "Tharggy";
+            if (iRoll < 7477) {
+                sSettlement = "Bynarr";
+            } else if (iRoll < 7478) {
+                sSettlement = "Fyban Forest";
+            } else if (iRoll < 7490) {
+                sSettlement = "Kojy";
+            } else if (iRoll < 7491) {
+                sSettlement = "Rokk Woods";
+            } else if (iRoll < 7500) {
+                sSettlement = "Shaggar";
+            } else if (iRoll < 7511) {
+                sSettlement = "Shyf Forest";
+            } else if (iRoll < 7512) {
+                sSettlement = "Shynako Hills";
+            } else if (iRoll < 7735) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7900) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7924) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8896) {
+            sRegion = "Thybaj";
+            if (iRoll < 7938) {
+                sSettlement = "Dakyno";
+            } else if (iRoll < 7950) {
+                sSettlement = "Fashyr";
+            } else if (iRoll < 7965) {
+                sSettlement = "Nyton";
+            } else if (iRoll < 8006) {
+                sSettlement = "Shyta-Thybaj";
+            } else if (iRoll < 8020) {
+                sSettlement = "Vrykarr Mountains";
+            } else if (iRoll < 8489) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8845) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8895) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9230) {
+            sRegion = "Rytarr Woods";
+            if (iRoll < 8911) {
+                sSettlement = "Jorakk Mountains";
+            } else if (iRoll < 8916) {
+                sSettlement = "Khorren Woods";
+            } else if (iRoll < 8919) {
+                sSettlement = "Norr-Burr";
+            } else if (iRoll < 8928) {
+                sSettlement = "Varmorr";
+            } else if (iRoll < 9091) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9212) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9229) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9595) {
+            sRegion = "Rytarr Woods";
+            if (iRoll < 9302) {
+                sSettlement = "Narr-Rytarr";
+            } else if (iRoll < 9460) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9577) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9594) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9628) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9904) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9917) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9962) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
+};
+
 oNIB.createYouthEvents = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
