@@ -5869,6 +5869,551 @@ oNIB.createWildLandsCommunity = function(sRace) {
     return sCommunity;
 };
 
+oNIB.createYoungKingdomsCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Young Kingdoms)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 157) {
+            sRegion = "Ek'Gakel";
+            sSettlement = "Betasa";
+        } else if (iRoll < 302) {
+            sRegion = "Elos Desert";
+            if (iRoll < 236) {
+                sSettlement = "Dijishy";
+            } else {
+                sSettlement = "Prompeldia";
+            }
+        } else if (iRoll < 2218) {
+            sRegion = "Korak";
+            if (iRoll < 2164) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 2165) {
+                sSettlement = "Fopasido";
+            } else if (iRoll < 2193) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2214) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2217) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2269) {
+            sRegion = "Norga-Kangrel";
+            if (iRoll < 2227) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 2228) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 2234) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2246) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2252) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7360) {
+            sRegion = "P'Bapar";
+            if (iRoll < 4149) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 5845) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7260) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7348) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7709) {
+            sRegion = "Shashyf Hills";
+        } else if (iRoll < 8063) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 8167) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 8859) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9000) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9349) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 13) {
+            sRegion = "Ek'Gakel";
+            sSettlement = "Betasa";
+        } else if (iRoll < 137) {
+            sRegion = "Ek'Kasel";
+            if (iRoll < 35) {
+                sSettlement = "Barido";
+            } else if (iRoll < 36) {
+                sSettlement = "Bet Kasel";
+            } else if (iRoll < 87) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 123) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 129) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 152) {
+            sRegion = "Elos Desert";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 9035) {
+            sRegion = "Kalalali Forest";
+            if (iRoll < 404) {
+                sSettlement = "Cilorealon";
+            } else if (iRoll < 587) {
+                sSettlement = "Kalaleta";
+            } else if (iRoll < 5149) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8528) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9009) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9043) {
+            sRegion = "Korak";
+            sSettlement = "Adiv Hills";
+        } else if (iRoll < 9053) {
+            sRegion = "Norga-Kangrel";
+            if (iRoll < 9045) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 9046) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 9048) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9050) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9051) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9464) {
+            sRegion = "Kalokopeli Forest";
+        } else if (iRoll < 9660) {
+            sRegion = "P'Bapar";
+            if (iRoll < 9553) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 9649) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9657) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9659) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9850) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9971) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9974) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9991) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 48) {
+            sRegion = "Ek'Gakel";
+            sSettlement = "Betasa";
+        } else if (iRoll < 253) {
+            sRegion = "Elos Desert";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 6813) {
+            sRegion = "Korak";
+            if (iRoll < 3208) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 3245) {
+                sSettlement = "Fopasido";
+            } else if (iRoll < 5165) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6587) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6790) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6829) {
+            sRegion = "Norga-Krangrel";
+            if (iRoll < 6815) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 6816) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 6818) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6822) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6824) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9710) {
+            sRegion = "P'Bapar";
+            if (iRoll < 7835) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 8842) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9679) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9703) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9713) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 9773) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9828) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9883) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9930) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 211) {
+            sRegion = "Ek'Gakel";
+            sSettlement = "Betasa";
+        } else if (iRoll < 266) {
+            sRegion = "Elos Desert";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 1995) {
+            sRegion = "Korak";
+            if (iRoll < 324) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 340) {
+                sSettlement = "Fopasido";
+            } else if (iRoll < 479) {
+                sSettlement = "Salido";
+            } else if (iRoll < 487) {
+                sSettlement = "Saritido";
+            } else if (iRoll < 1301) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1905) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1990) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2003) {
+            sRegion = "Norga-Krangrel";
+            if (iRoll < 1996) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 1997) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 1998) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1999) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2000) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2800) {
+            sRegion = "Kalokopeli Forest";
+        } else if (iRoll < 8466) {
+            sRegion = "P'Bapar";
+            if (iRoll < 4681) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 6792) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8356) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8454) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8483) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 9555) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9930) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9973) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9985) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 23) {
+            sRegion = "Ek'Gakel";
+            if (iRoll < 18) {
+                sSettlement = "Betasa";
+            } else {
+                sSettlement = "Sisalasido";
+            }
+        } else if (iRoll < 403) {
+            sRegion = "Ek'Kasel";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 514) {
+            sRegion = "Elos Desert";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 3884) {
+            sRegion = "Korak";
+            if (iRoll < 789) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 821) {
+                sSettlement = "Fopasido";
+            } else if (iRoll < 2480) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3709) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 3913) {
+            sRegion = "Norga-Krangrel";
+            if (iRoll < 3889) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 3890) {
+                sSettlement = "Rinukulagh";
+            } else if (iRoll < 3894) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3900) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3903) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farstead";
+            }
+        } else if (iRoll < 8354) {
+            sRegion = "Kalokopeli Forest";
+        } else if (iRoll < 9612) {
+            sRegion = "P'Bapar";
+            if (iRoll < 8780) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 9207) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9561) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 9632) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 9776) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9882) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9887) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9895) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 346) {
+            sRegion = "Elos Desert";
+            sSettlement = "Prompeldia";
+        } else if (iRoll < 551) {
+            sRegion = "Korak";
+            if (iRoll < 426) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 495) {
+                sSettlement = "Daresido";
+            } else {
+                sSettlement = "Eb'Kakido";
+            }
+        } else if (iRoll < 1205) {
+            sRegion = "Norga-Krangrel";
+            if (iRoll < 667) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 706) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 1131) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1147) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1157) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1783) {
+            sRegion = "P'Bapar";
+            if (iRoll < 1525) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1724) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1780) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9460) {
+            sRegion = "Shashyf Hills";
+        } else if (iRoll < 9768) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 9810) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9922) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9929) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9962) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    } else {
+        if (iRoll < 3077) {
+            sRegion = "Ek'Gakel";
+            if (iRoll < 59) {
+                sSettlement = "Betasa";
+            } else if (iRoll < 75) {
+                sSettlement = "Robuselido";
+            } else if (iRoll < 93) {
+                sSettlement = "Sisalasido";
+            } else if (iRoll < 1705) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2898) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3069) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5132) {
+            sRegion = "Ek'Kasel";
+            if (iRoll < 3100) {
+                sSettlement = "Barido";
+            } else if (iRoll < 3151) {
+                sSettlement = "Bet Kasel";
+            } else if (iRoll < 3220) {
+                sSettlement = "Kaokapeta";
+            } else if (iRoll < 4253) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5018) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5127) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5597) {
+            sRegion = "Elos Desert";
+            if (iRoll < 5152) {
+                sSettlement = "Alnarma";
+            } else if (iRoll < 5182) {
+                sSettlement = "Dijishy";
+            } else if (iRoll < 5226) {
+                sSettlement = "Ehzhimahn";
+            } else if (iRoll < 5306) {
+                sSettlement = "Miclenon";
+            } else if (iRoll < 5358) {
+                sSettlement = "Prompeldia";
+            } else if (iRoll < 5370) {
+                sSettlement = "Shrogga-Pravaz";
+            } else if (iRoll < 5493) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5584) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5596) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8334) {
+            sRegion = "Korak";
+            if (iRoll < 5642) {
+                sSettlement = "Adiv Hills";
+            } else if (iRoll < 5674) {
+                sSettlement = "Daresido";
+            } else if (iRoll < 5695) {
+                sSettlement = "Eb'Kakido";
+            } else if (iRoll < 5721) {
+                sSettlement = "Fopasido";
+            } else if (iRoll < 5743) {
+                sSettlement = "Kasebapido";
+            } else if (iRoll < 5797) {
+                sSettlement = "Korem";
+            } else if (iRoll < 5813) {
+                sSettlement = "Salido";
+            } else if (iRoll < 5832) {
+                sSettlement = "Saritido";
+            } else if (iRoll < 7183) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8184) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8326) {
+                sSettlement = "Minor Thorp";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8342) {
+            sRegion = "Norga-Krangrel";
+            if (iRoll < 8335) {
+                sSettlement = "Ashakulagh";
+            } else if (iRoll < 8336) {
+                sSettlement = "Rinukagh";
+            } else if (iRoll < 8337) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8339) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8340) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8345) {
+            sRegion = "Kalokopeli Forest";
+        } else if (iRoll < 8932) {
+            sRegion = "P'Bapar";
+            if (iRoll < 8539) {
+                sSettlement = "P'Bapar";
+            } else if (iRoll < 8748) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8905) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8931) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8947) {
+            sRegion = "Sliv Elenon Mountains";
+        } else if (iRoll < 9181) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9666) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9674) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9832) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
+};
+
 oNIB.createYouthEvents = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
