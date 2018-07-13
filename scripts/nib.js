@@ -31,6 +31,8 @@ oNIB.addMainEventListeners = function() {
         .on('click', oNIB.handleSettingCheckboxes);
     $('#jakandor')
         .on('click', oNIB.handleSettingCheckboxes);
+    $('#kalamar')
+        .on('click', oNIB.handleSettingCheckboxes);
     $('#lankhmar')
         .on('click', oNIB.handleSettingCheckboxes);
     $('#mahasarpa')
@@ -534,6 +536,668 @@ oNIB.createArchetype = function() {
         iRoll--;
         oCharacter.sArchetype = aUncommonArchetypes[iRoll];
     }
+};
+
+oNIB.createBrandobianCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Brandobia)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 1734) {
+            sRegion = "Cosdol";
+            if (iRoll < 863) {
+                sSettlement = "Napalago Hills";
+            } else {
+                sSettlement = "Odril Hills";
+            }
+        } else if (iRoll < 1810) {
+            sRegion = "Eldor";
+            if (iRoll < 1735) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 1750) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1759) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1792) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3913) {
+            sRegion = "Elenon Mountains";
+            if (iRoll < 2862) {
+                sSettlement = "Welpremond Downs";
+            } else {
+                sSettlement = "Lendelwood";
+            }
+        } else if (iRoll < 5877) {
+            sRegion = "Mendarn";
+            if (iRoll < 3925) {
+                sSettlement = "Breven";
+            } else if (iRoll < 3932) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 5758) {
+                sSettlement = "Dopromond Hills";
+            } else {
+                sSettlement = "Narnolen";
+            }
+        } else if (iRoll < 9210) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 6202) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 7381) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 8923) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 9034) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9072) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9096) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9481) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9537) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9810) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9938) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 2476) {
+            sRegion = "Cosdol";
+            if (iRoll < 39) {
+                sSettlement = "Almven";
+            } else if (iRoll < 177) {
+                sSettlement = "Cosolen";
+            } else if (iRoll < 241) {
+                sSettlement = "Crandolen";
+            } else if (iRoll < 251) {
+                sSettlement = "Dorndern";
+            } else if (iRoll < 268) {
+                sSettlement = "Napalido";
+            } else if (iRoll < 738) {
+                sSettlement = "Napalago Hills";
+            } else if (iRoll < 1672) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2386) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2473) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2665) {
+            sRegion = "Eldor";
+            if (iRoll < 2655) {
+                sSettlement = "Brolador Forest";
+            } else if (iRoll < 2656) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 2661) {
+                sSettlement = "Unvolen";
+            } else if (iRoll < 2662) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2663) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2664) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8016) {
+            sRegion = "Elenon Mountains";
+            if (iRoll < 3625) {
+                sSettlement = "Welpromond Downs";
+            } else if (iRoll < 4586) {
+                sSettlement = "Lendelwood";
+            } else if (iRoll < 4729) {
+                sSettlement = "Lathlanian";
+            } else if (iRoll < 6400) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7195) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7351) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8281) {
+            sRegion = "Mendarn";
+            if (iRoll < 8224) {
+                sSettlement = "Crondor Woods";
+            } else if (iRoll < 8227) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 8228) {
+                sSettlement = "Narnolen";
+            } else {
+                sSettlement = "Ospolen";
+            }
+        } else if (iRoll < 8740) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 8375) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 8526) {
+                sSettlement = "Eldrose Forest";
+            } else if (iRoll < 8586) {
+                sSettlement = "Yan Elonen Mountains";
+            } else if (iRoll < 8646) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8666) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8679) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9878) {
+            sRegion = "Voldorwood";
+            if (iRoll < 9475) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9825) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9845) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9908) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9909) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9917) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9918) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 929) {
+            sRegion = "Cosdol";
+            if (iRoll < 497) {
+                sSettlement = "Napalago Hills";
+            } else {
+                sSettlement = "Odril Hills";
+            }
+        } else if (iRoll < 980) {
+            sRegion = "Eldor";
+            if (iRoll < 966) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 967) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 970) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 971) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2442) {
+            sRegion = "Mendarn";
+            if (iRoll < 1007) {
+                sSettlement = "Breven";
+            } else if (iRoll < 1010) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 2354) {
+                sSettlement = "Dopromond Hills";
+            } else if (iRoll < 2355) {
+                sSettlement = "Narlven";
+            } else if (iRoll < 2417) {
+                sSettlement = "Narnolen";
+            } else {
+                sSettlement = "Ospolen";
+            }
+        } else if (iRoll < 9710) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 2609) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 2688) {
+                sSettlement = "Eldrose Forest";
+            } else if (iRoll < 4520) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 9464) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 9559) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9592) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9613) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9711) {
+            sRegion = "Voldorwood";
+            sSettlement = "Rural Thorp";
+        } else if (iRoll < 9755) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9799) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9874) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9903) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 5768) {
+            sRegion = "Cosdol";
+            if (iRoll < 40) {
+                sSettlement = "Almven";
+            } else if (iRoll < 424) {
+                sSettlement = "Cosolen";
+            } else if (iRoll < 603) {
+                sSettlement = "Crandolen";
+            } else if (iRoll < 630) {
+                sSettlement = "Dorndern";
+            } else if (iRoll < 678) {
+                sSettlement = "Napalido";
+            } else if (iRoll < 3426) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5463) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5753) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5895) {
+            sRegion = "Eldor";
+            if (iRoll < 5843) {
+                sSettlement = "Brolador Forest";
+            } else if (iRoll < 5844) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 5861) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5863) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5864) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7714) {
+            sRegion = "Elenon Mountains";
+            if (iRoll < 6264) {
+                sSettlement = "Welpremond Downs";
+            } else if (iRoll < 6632) {
+                sSettlement = "Lendelwood";
+            } else  if (iRoll < 6663) {
+                sSettlement = "Lathlanian";
+            } else if (iRoll < 7290) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7540) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7589) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7743) {
+            sRegion = "Mendarn";
+            if (iRoll < 7735) {
+                sSettlement = "Crondor Woods";
+            } else if (iRoll < 7736) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 7737) {
+                sSettlement = "Narnolen";
+            } else if (iRoll < 7738) {
+                sSettlement = "Ospolen";
+            } else if (iRoll < 7740) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7741) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7742) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9846) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 7900) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 8224) {
+                sSettlement = "Eldrose Forest";
+            } else if (iRoll < 8682) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 8773) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 9108) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9305) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9398) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9972) {
+            sRegion = "Voldorwood";
+            if (iRoll < 9846) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9912) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9944) {
+                sSettlement = "Minor Town";
+            } {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9988) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9990) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9991) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9992) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 100) {
+            sRegion = "Cosdol";
+            if (iRoll < 51) {
+                sSettlement = "Napalago Hills";
+            } else {
+                sSettlement = "Odril Hills";
+            }
+        } else if (iRoll < 124) {
+            sRegion = "Eldor";
+            if (iRoll < 112) {
+                sSettlement = "Brolador Forest";
+            } else if (iRoll < 117) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 118) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 119) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 120) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6475) {
+            sRegion = "Elenon Mountains";
+            if (iRoll < 3200) {
+                sSettlement = "Welpremond Downs";
+            } else if (iRoll < 6276) {
+                sSettlement = "Lendelwood";
+            } else if (iRoll < 6376) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6426) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6451) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9026) {
+            sRegion = "Mendarn";
+            if (iRoll < 6476) {
+                sSettlement = "Breven";
+            } else if (iRoll < 6479) {
+                sSettlement = "Crondor Woods";
+            } else if (iRoll < 6481) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 6482) {
+                sSettlement = "Dopromond Hills";
+            } else if (iRoll < 6484) {
+                sSettlement = "Narlven";
+            } else if (iRoll < 6491) {
+                sSettlement = "Ospolen";
+            } else if (iRoll < 6500) {
+                sSettlement = "Yelden";
+            } else if (iRoll < 7867) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8880) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9024) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9906) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 9139) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 9233) {
+                sSettlement = "Eldrose Forest";
+            } else if (iRoll < 9463) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 9511) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 9634) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9707) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9741) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9924) {
+            sRegion = "Voldorwood";
+            if (iRoll < 9916) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9920) {
+                sSettlement = "Rual Hamlet";
+            } else if (iRoll < 9922) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9950) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9951) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9955) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9967) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 864) {
+            sRegion = "Cosdol";
+            if (iRoll < 41) {
+                sSettlement = "Dorndern";
+            } else if (iRoll < 378) {
+                sSettlement = "Odril Hills";
+            } else if (iRoll < 722) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 821) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 850) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1211) {
+            sRegion = "Elenon Mountains";
+            sSettlement = "Krond Heights";
+        } else if (iRoll < 9439) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 2016) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 2181) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 8248) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 8620) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8839) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8942) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9568) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9576) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9652) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9675) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    } else {
+        if (iRoll < 587) {
+            sRegion = "Cosdol";
+            if (iRoll < 2) {
+                sSettlement = "Almven";
+            } else if (iRoll < 41) {
+                sSettlement = "Cosolen";
+            } else if (iRoll < 59) {
+                sSettlement = "Crandolen";
+            } else if (iRoll < 62) {
+                sSettlement = "Dorndern";
+            } else if (iRoll < 67) {
+                sSettlement = "Napalido";
+            } else if (iRoll < 348) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 555) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 585) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6193) {
+            sRegion = "Eldor";
+            if (iRoll < 598) {
+                sSettlement = "Andven";
+            } else if (iRoll < 607) {
+                sSettlement = "Bronven";
+            } else if (iRoll < 818) {
+                sSettlement = "Dalen";
+            } else if (iRoll < 824) {
+                sSettlement = "Dralven";
+            } else if (iRoll < 875) {
+                sSettlement = "Inolen";
+            } else if (iRoll < 917) {
+                sSettlement = "Nordolen";
+            } else if (iRoll < 938) {
+                sSettlement = "Premolen";
+            } else if (iRoll < 957) {
+                sSettlement = "Randolen";
+            } else if (iRoll < 963) {
+                sSettlement = "Ranven";
+            } else if (iRoll < 985) {
+                sSettlement = "Unvolen";
+            } else if (iRoll < 3798) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5883) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6180) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6224) {
+            sRegion = "Elenon Mountains";
+            if (iRoll < 6194) {
+                sSettlement = "Welpremond Downs";
+            } else if (iRoll < 6198) {
+                sSettlement = "Lendelwood";
+            } else if (iRoll < 6199) {
+                sSettlement = "Lathlanian";
+            } else if (iRoll < 6212) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6218) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6221) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8329) {
+            sRegion = "Mendarn";
+            if (iRoll < 6234) {
+                sSettlement = "Breven";
+            } else if (iRoll < 6235) {
+                sSettlement = "Crondor Woods";
+            } else if (iRoll < 6264) {
+                sSettlement = "Dayolen";
+            } else if (iRoll < 6272) {
+                sSettlement = "Dopven";
+            } else if (iRoll < 6273) {
+                sSettlement = "Dopromond Hills";
+            } else if (iRoll < 6282) {
+                sSettlement = "Narlven";
+            } else if (iRoll < 6298) {
+                sSettlement = "Narnolen";
+            } else if (iRoll < 6387) {
+                sSettlement = "Ospolen";
+            } else if (iRoll < 6390) {
+                sSettlement = "Yelden";
+            } else if (iRoll < 7437) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8212) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8323) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9778) {
+            sRegion = "Pel Brolenon";
+            if (iRoll < 8451) {
+                sSettlement = "Dowon-Brandel";
+            } else if (iRoll < 8453) {
+                sSettlement = "Eldrose Forest";
+            } else if (iRoll < 8479) {
+                sSettlement = "Vrendolen";
+            } else if (iRoll < 8480) {
+                sSettlement = "Yan Elenon Mountains";
+            } else if (iRoll < 9098) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9508) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9553) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9783) {
+            sRegion = "Voldorwood";
+            if (iRoll < 9780) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9781) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9782) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9885) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+        } else if (iRoll < 9887) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace);
+        } else if (iRoll < 9954) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+        } else if (iRoll < 9972) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace);
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
 };
 
 oNIB.createClass = function() {
@@ -1321,9 +1985,9 @@ oNIB.createHinEthics = function(sMorals) {
 oNIB.createHomeCommunity = function() {
     var aSettings = ["generic", "birthright", "blackmoor", "council",
         "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
-        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
-        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
-        "warcraft", "wilderlands"];
+        "greyhawk", "jakandor", "kalamar", "lankhmar", "mahasarpa", 
+        "mystara", "pelinore", "planescape", "ravenloft", "rokugan", 
+        "spelljammer", "warcraft", "wilderlands"];
     var sChecked = "";
     for (var b = 0; b < aSettings.length; b++) {
         var sBox = aSettings[b];
@@ -1358,6 +2022,8 @@ oNIB.createHomeCommunity = function() {
             oNIB.getSpecificCommunity("Greyhawk");
         } else if (sChecked === "jakandor") {
             oNIB.getSpecificCommunity("Jakandor");
+        } else if (sChecked === "kalamar") {
+            oNIB.createKalamaranCommunity();
         } else if (sChecked === "lankhmar") {
             oNIB.getSpecificCommunity("Lankhmar");
         } else if (sChecked === "mahasarpa") {
@@ -1439,6 +2105,29 @@ oNIB.createInstructors = function() {
         sInstructors = "Exotic";
     }
     oCharacter.sInstructors = sInstructors;
+};
+
+oNIB.createKalamaranCommunity = function() {
+    var iRoll = oNIB.roll(6);
+    var sTable = "";
+    var oCharacter = oNIB.oCharacter;
+    var sCommunity = "";
+    var sRace = oCharacter.sRace;
+    if (iRoll === 1) {
+        sCommunity = oNIB.createBrandobianCommunity(sRace);
+    } else if (iRoll === 2) {
+        sCommunity = oNIB.createKalamaranEmpireCommunity(sRace);
+    } else if (iRoll === 3) {
+        sCommunity = oNIB.createReanaarianCommunity(sRace);
+    } else if (iRoll === 4) {
+        sCommunity = oNIB.createSvimozhishianCommunity(sRace);
+    } else if (iRoll === 5) {
+        sCommunity = oNIB.createWildLandsCommunity(sRace);
+    } else {
+        sCommunity = oNIB.createYoungKingdomsCommunity(sRace);
+    }
+    console.log(sCommunity);
+    oCharacter.sCommunity = sCommunity;
 };
 
 oNIB.createLearningATrade = function() {
@@ -3031,9 +3720,9 @@ oNIB.handleSettingCheckboxes = function(event) {
     event.stopPropagation();
     var aSettings = ["generic", "birthright", "blackmoor", "council",
         "dark", "fist", "dragonlance", "eberron", "realms", "ghostwalk", 
-        "greyhawk", "jakandor", "lankhmar", "mahasarpa", "mystara", 
-        "pelinore", "planescape", "ravenloft", "rokugan", "spelljammer", 
-        "warcraft", "wilderlands"];
+        "greyhawk", "jakandor", "kalamar", "lankhmar", "mahasarpa", 
+        "mystara", "pelinore", "planescape", "ravenloft", "rokugan", 
+        "spelljammer", "warcraft", "wilderlands"];
     var target = $(event.target);
     var bValue = target.is(':checked');
     if (bValue === true) {
