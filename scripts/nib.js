@@ -2130,6 +2130,914 @@ oNIB.createKalamaranCommunity = function() {
     oCharacter.sCommunity = sCommunity;
 };
 
+oNIB.createKalamaranEmpireCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Kalamaran Empire)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 30) {
+            sRegion = "Basir";
+            if (iRoll < 2) {
+                sSettlement = "Bet Urala";
+            } else {
+                sSettlement = "Ubikokeli Highlands";
+            }
+        } else if (iRoll < 164) {
+            sRegion = "Dodera";
+            sSettlement = "Kakidela Mountains";
+        } else if (iRoll < 8530) {
+            sRegion = "Kalamar";
+            if (iRoll < 237) {
+                sSettlement = "Alufalik Hills";
+            } else if (iRoll < 460) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 7851) {
+                sSettlement = "Ka'Asa Mountains";
+            } else if (iRoll < 8388) {
+                sSettlement = "Karasta";
+            } else if (iRoll < 8450) {
+                sSettlement = "Katagas Rise";
+            } else if (iRoll < 8526) {
+                sSettlement = "P'Sapas Hills";
+            } else if (iRoll < 8529) {
+                sSettlement = "Rosaleta";
+            } else {
+                sSettlement = "Segeleta";
+            }
+        } else if (iRoll < 8671) {
+            sRegion = "O'par";
+            if (iRoll < 8543) {
+                sSettlement = "Bet Birelli";
+            } else if (iRoll < 8567) {
+                sSettlement = "Tagaleta";
+            } else if (iRoll < 8589) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8610) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8670) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9025) {
+            sRegion = "Pekal";
+            if (iRoll < 8690) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 8879) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9005) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9024) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9820) {
+            sRegion = "Tarisato";
+            if (iRoll < 9027) {
+                sSettlement = "Balelido";
+            } else if (iRoll < 9032) {
+                sSettlement = "Gimbatagh";
+            } else if (iRoll < 9037) {
+                sSettlement = "Gogido";
+            } else if (iRoll < 9038) {
+                sSettlement = "Oloseta";
+            } else if (iRoll < 9785) {
+                sSettlement = "P'Rorul Peaks";
+            } else if (iRoll < 9819) {
+                sSettlement = "P'Tikor Hills";
+            } else {
+                sSettlement = "Pagalido";
+            }
+        } else if (iRoll < 9827) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9847) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9897) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9990) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 268) {
+            sRegion = "Basir";
+            if (iRoll < 224) {
+                sSettlement = "Bet Urala";
+            } else if (iRoll < 244) {
+                sSettlement = "Birirelido";
+            } else if (iRoll < 255) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 266) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 267) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 343) {
+            sRegion = "Dodera";
+            if (iRoll < 271) {
+                sSettlement = "Aroroleta";
+            } else if (iRoll < 272) {
+                sSettlement = "Bebeta";
+            } else if (iRoll < 283) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 285) {
+                sSettlement = "Eb'Sarido";
+            } else if (iRoll < 327) {
+                sSettlement = "P'Rudekela Forest";
+            } else if (iRoll < 332) {
+                sSettlement = "Ridareta";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 4132) {
+            sRegion = "Edosi Forest";
+            if (iRoll < 754) {
+                sSettlement = "Doulathanorian";
+            } else if (iRoll < 2543) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3978) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 4112) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9389) {
+            sRegion = "Kalamar";
+            if (iRoll < 4133) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 4244) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 9387) {
+                sSettlement = "Paliba Woods";
+            } else {
+                sSettlement = "Segeleta";
+            }
+        } else if (iRoll < 9404) {
+            sRegion = "O'par";
+            if (iRoll < 9397) {
+                sSettlement = "Bet Bireli";
+            } else if (iRoll < 9400) {
+                sSettlement = "Sobakaseta";
+            } else if (iRoll < 9401) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9402) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9403) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9741) {
+            sRegion = "Pekal";
+            if (iRoll < 9417) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 9497) {
+                sSettlement = "Bet Rogala";
+            } else if (iRoll < 9634) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9726) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9740) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9826) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9828) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9844) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9853) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 707) {
+            sRegion = "Basir";
+            if (iRoll < 2) {
+                sSettlement = "Birirelido";
+            } else if (iRoll < 511) {
+                sSettlement = "Ubikokeli Highlands";
+            } else if (iRoll < 616) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 626) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 634) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1351) {
+            sRegion = "Dodera";
+            if (iRoll < 708) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 1337) {
+                sSettlement = "Kakidela Mountains";
+            } else if (iRoll < 1338) {
+                sSettlement = "Ridareta";
+            } else if (iRoll < 1342) {
+                sSettlement = "Rural Thorp";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5588) {
+            sRegion = "Kalamar";
+            if (iRoll < 2853) {
+                sSettlement = "Alufalik Hills";
+            } else if (iRoll < 2854) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 2858) {
+                sSettlement = "Ka'Asa Mountains";
+            } else if (iRoll < 2866) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 4007) {
+                sSettlement = "Katagas Rise";
+            } else if (iRoll < 5240) {
+                sSettlement = "P'Sapas Hills";
+            } else if (iRoll < 5587) {
+                sSettlement = "Paliba Woods";
+            } else {
+                sSettlement = "Segeleta";
+            }
+        } else if (iRoll < 5723) {
+            sRegion = "O'par";
+            if (iRoll < 5595) {
+                sSettlement = "Sobakaseta";
+            } else if (iRoll < 5698) {
+                sSettlement = "Tagaleta";
+            } else if (iRoll < 5705) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5712) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5717) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8892) {
+            sRegion = "Pekal";
+            if (iRoll < 5849) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 6585) {
+                sSettlement = "Bet Rogala";
+            } else if (iRoll < 6669) {
+                sSettlement = "Kamarela Mounds";
+            } else if (iRoll < 7924) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8760) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8886) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9485) {
+            sRegion = "Tarisato";
+            if (iRoll < 8900) {
+                sSettlement = "Balelido";
+            } else if (iRoll < 8903) {
+                sSettlement = "Gimbatagh";
+            } else if (iRoll < 8904) {
+                sSettlement = "Oloseta";
+            } else {
+                sSettlement = "P'Tikor Hills";
+            }
+        } else if (iRoll < 9538) {
+            sRegion = "Tokis";
+            if (iRoll < 9506) {
+                sSettlement = "Bet Seder";
+            } else if (iRoll < 9507) {
+                sSettlement = "Gaketa";
+            } else if (iRoll < 9509) {
+                sSettlement = "Salirido";
+            } else if (iRoll < 9517) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9521) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9591) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9687) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9769) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9894) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 2066) {
+            sRegion = "Basir";
+            if (iRoll < 282) {
+                sSettlement = "Bet Urala";
+            } else if (iRoll < 316) {
+                sSettlement = "Birirelido";
+            } else if (iRoll < 322) {
+                sSettlement = "Ubikokeli Highlands";
+            } else if (iRoll < 1021) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1590) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2059) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3379) {
+            sRegion = "Dodera";
+            if (iRoll < 2075) {
+                sSettlement = "Aroroleta";
+            } else if (iRoll < 2077) {
+                sSettlement = "Bebeta";
+            } else if (iRoll < 2110) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 2114) {
+                sSettlement = "Eb'Sarodp";
+            } else if (iRoll < 2185) {
+                sSettlement = "P'Rudekela Forest";
+            } else if (iRoll < 2201) {
+                sSettlement = "Ridareta";
+            } else if (iRoll < 2250) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3379) {
+            sRegion = "Edosi Forest";
+            if (iRoll < 3163) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3223) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3334) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7801) {
+            sRegion = "Kalamar";
+            if (iRoll < 3382) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 3662) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 7790) {
+                sSettlement = "Paliba Woods";
+            } else if (iRoll < 7791) {
+                sSettlement = "Rosaleta";
+            } else if (iRoll < 7795) {
+                sSettlement = "Segeleta";
+            } else {
+                sSettlement = "Togeseta";
+            }
+        } else if (iRoll < 7931) {
+            sRegion = "O'par";
+            if (iRoll < 7846) {
+                sSettlement = "Bet Bireli";
+            } else if (iRoll < 7906) {
+                sSettlement = "Sobakaseta";
+            } else if (iRoll < 7911) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7915) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7920) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8761) {
+            sRegion = "Pekal";
+            if (iRoll < 7976) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 7977) {
+                sSettlement = "Bet Rogala";
+            } else if (iRoll < 8419) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8714) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8759) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8905) {
+            sRegion = "Tarisato";
+            if (iRoll < 8776) {
+                sSettlement = "Kabakosikido";
+            } else if (iRoll < 8785) {
+                sSettlement = "Oloseta";
+            } else if (iRoll < 8831) {
+                sSettlement = "Pagalido";
+            } else if (iRoll < 8867) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8890) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8896) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9806) {
+            sRegion = "Tokis";
+            if (iRoll < 8913) {
+                sSettlement = "Bet Seder";
+            } else if (iRoll < 8914) {
+                sSettlement = "Fodeta";
+            } else if (iRoll < 8915) {
+                sSettlement = "Gaketa";
+            } else if (iRoll < 8918) {
+                sSettlement = "U'Rudaketa";
+            } else if (iRoll < 9285) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9745) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9758) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9955) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9967) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9970) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9974) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 1459) {
+            sRegion = "Basir";
+            if (iRoll < 359) {
+                sSettlement = "Bet Urala";
+            } else if (iRoll < 360) {
+                sSettlement = "Birirelido";
+            } else if (iRoll < 700) {
+                sSettlement = "Ubikokeli Highlands";
+            } else if (iRoll < 1111) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1378) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1455) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1900) {
+            sRegion = "Dodera";
+            if (iRoll < 1471) {
+                sSettlement = "Aroroleta";
+            } else if (iRoll < 1477) {
+                sSettlement = "Bebeta";
+            } else if (iRoll < 1478) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 1538) {
+                sSettlement = "Eb'Sarido";
+            } else if (iRoll < 1595) {
+                sSettlement = "Kakapela Hills";
+            } else if (iRoll < 1637) {
+                sSettlement = "Kaleta";
+            } else if (iRoll < 1647) {
+                sSettlement = "P'Rudekela Forest";
+            } else if (iRoll < 1865) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1883) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1898) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1982) {
+            sRegion = "Edosi Forest";
+            if (iRoll < 1917) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1961) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1981) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2708) {
+            sRegion = "Kalamar";
+            if (iRoll < 2088) {
+                sSettlement = "Alufalik Hills";
+            } else if (iRoll < 2089) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 2324) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 2464) {
+                sSettlement = "Katagas Rise";
+            } else if (iRoll < 2579) {
+                sSettlement = "P'Sapas Hills";
+            } else if (iRoll < 2705) {
+                sSettlement = "Paliba Woods";
+            } else if (iRoll < 2706) {
+                sSettlement = "Rolutel Forest";
+            } else {
+                sSettlement = "Segeleta";
+            }
+        } else if (iRoll < 2710) {
+            sRegion = "Lopoliri Mountains";
+            sSettlement = "";
+        } else if (iRoll < 2803) {
+            sRegion = "O'par";
+            if (iRoll < 2731) {
+                sSettlement = "Bet Bireli";
+            } else if (iRoll < 2750) {
+                sSettlement = "Sobakaseta";
+            } else if (iRoll < 2763) {
+                sSettlement = "Tagaleta";
+            } else if (iRoll < 2777) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2779) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2802) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 3978) {
+            sRegion = "Pekal";
+            if (iRoll < 2829) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 2992) {
+                sSettlement = "Bet Rogala";
+            } else if (iRoll < 3531) {
+                sSettlement = "Kamarela Mounds";
+            } else if (iRoll < 3784) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 3952) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 3977) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 4467) {
+            sRegion = "Tarisato";
+            if (iRoll < 3983) {
+                sSettlement = "Balelido";
+            } else if (iRoll < 3989) {
+                sSettlement = "Gogido";
+            } else if (iRoll < 4028) {
+                sSettlement = "Kolido";
+            } else if (iRoll < 4029) {
+                sSettlement = "Oloseta";
+            } else if (iRoll < 4030) {
+                sSettlement = "Pagalido";
+            } else if (iRoll < 4216) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 4384) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 4462) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9759) {
+            sRegion = "Tokis";
+            if (iRoll < 4795) {
+                sSettlement = "Bet Seder";
+            } else if (iRoll < 4796) {
+                sSettlement = "Fodeta";
+            } else if (iRoll < 4797) {
+                sSettlement = "Gaketa";
+            } else if (iRoll < 4805) {
+                sSettlement = "Salirido";
+            } else if (iRoll < 4806) {
+                sSettlement = "U'Rudaketa";
+            } else if (iRoll < 8010) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9111) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9737) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9825) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9830) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9837) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9936) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 90) {
+            sRegion = "Basir";
+            if (iRoll < 20) {
+                sSettlement = "Ubikokeli Highlands";
+            } else if (iRoll < 43) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 62) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 64) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 126) {
+            sRegion = "Dodera";
+            if (iRoll < 91) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 104) {
+                sSettlement = "Kakapela Hills";
+            } else if (iRoll < 119) {
+                sSettlement = "Kakidela Mountains";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7652) {
+            sRegion = "Kalamar";
+            if (iRoll < 897) {
+                sSettlement = "Alufalik Hills";
+            } else if (iRoll < 7051) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 7052) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 7565) {
+                sSettlement = "P'Sapas Hills";
+            } else if (iRoll < 7580) {
+                sSettlement = "Rural Thorp";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8644) {
+            sRegion = "Pekal";
+            if (iRoll < 7705) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 8235) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8588) {
+                sSettlement = "Rual Hamlet";
+            } else if (iRoll < 8641) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9789) {
+            sRegion = "Tarisato";
+            if (iRoll < 8801) {
+                sSettlement = "Batullagh";
+            } else if (iRoll < 8816) {
+                sSettlement = "Gimbatagh";
+            } else if (iRoll < 8847) {
+                sSettlement = "Gogido";
+            } else if (iRoll < 8849) {
+                sSettlement = "Kabakosikido";
+            } else if (iRoll < 8850) {
+                sSettlement = "Oloseta";
+            } else if (iRoll < 8998) {
+                sSettlement = "P'Rorul Peaks";
+            } else if (iRoll < 9685) {
+                sSettlement = "P'Tikor Hills";
+            } else if (iRoll < 9737) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9738) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9753) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9807) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9813) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9842) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9877) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else {
+        if (iRoll < 647) {
+            sRegion = "Basir";
+            if (iRoll < 36) {
+                sSettlement = "Bet Urala";
+            } else if (iRoll < 41) {
+                sSettlement = "Birirelido";
+            } else if (iRoll < 42) {
+                sSettlement = "Ubikokeli Highlands";
+            } else if (iRoll < 372) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 617) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 646) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1187) {
+            sRegion = "Dodera";
+            if (iRoll < 672) {
+                sSettlement = "Aroroleta";
+            } else if (iRoll < 680) {
+                sSettlement = "Bebeta";
+            } else if (iRoll < 698) {
+                sSettlement = "Bet Dodera";
+            } else if (iRoll < 702) {
+                sSettlement = "Eb'Sarido";
+            } else if (iRoll < 703) {
+                sSettlement = "Kakapela Hills";
+            } else if (iRoll < 705) {
+                sSettlement = "Kakidela Mountains";
+            } else if (iRoll < 714) {
+                sSettlement = "Kaleta";
+            } else if (iRoll < 715) {
+                sSettlement = "P'Rudekela Forest";
+            } else if (iRoll < 722) {
+                sSettlement = "Ridareta";
+            } else if (iRoll < 972) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1160) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1186) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1191) {
+            sRegion = "Edosi Forest";
+            if (iRoll < 1188) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1189) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1190) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5678) {
+            sRegion = "Kalamar";
+            if (iRoll < 1193) {
+                sSettlement = "Alufalik Hills";
+            } else if (iRoll < 1445) {
+                sSettlement = "Bet Kalamar";
+            } else if (iRoll < 1450) {
+                sSettlement = "Falikido";
+            } else if (iRoll < 1455) {
+                sSettlement = "Ka'Asa Mountains";
+            } else if (iRoll < 1479) {
+                sSettlement = "Kalasali Woods";
+            } else if (iRoll < 1483) {
+                sSettlement = "Karasta";
+            } else if (iRoll < 1490) {
+                sSettlement = "Katagas Rise";
+            } else if (iRoll < 1498) {
+                sSettlement = "Lidereta";
+            } else if (iRoll < 1500) {
+                sSettlement = "P'Sapas Hills";
+            } else if (iRoll < 1501) {
+                sSettlement = "Paliba Woods";
+            } else if (iRoll < 1738) {
+                sSettlement = "Rolutel Forest";
+            } else if (iRoll < 1753) {
+                sSettlement = "Rosaleta";
+            } else if (iRoll < 1763) {
+                sSettlement = "Salireta";
+            } else if (iRoll < 1774) {
+                sSettlement = "Segeleta";
+            } else if (iRoll < 1833) {
+                sSettlement = "Sobeteta";
+            } else if (iRoll < 1840) {
+                sSettlement = "Togeseta";
+            } else if (iRoll < 3913) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5449) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5667) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6212) {
+            sRegion = "O'par";
+            if (iRoll < 5687) {
+                sSettlement = "Bet Bireli";
+            } else if (iRoll < 5692) {
+                sSettlement = "Kasido";
+            } else if (iRoll < 5701) {
+                sSettlement = "Sobakaseta";
+            } else if (iRoll < 5708) {
+                sSettlement = "Tagaleta";
+            } else if (iRoll < 5982) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6185) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6211) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 7446) {
+            sRegion = "Pekal";
+            if (iRoll < 6225) {
+                sSettlement = "Baneta";
+            } else if (iRoll < 6236) {
+                sSettlement = "Bet Rogala";
+            } else if (iRoll < 6237) {
+                sSettlement = "Kamarela Mountains";
+            } else if (iRoll < 6887) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 7373) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 7442) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8298) {
+            sRegion = "Tarisato";
+            if (iRoll < 7452) {
+                sSettlement = "Balelido";
+            } else if (iRoll < 7454) {
+                sSettlement = "Batullagh";
+            } else if (iRoll < 7456) {
+                sSettlement = "Gimbatagh";
+            } else if (iRoll < 7458) {
+                sSettlement = "Gogido";
+            } else if (iRoll < 7462) {
+                sSettlement = "Kabakosikido";
+            } else if (iRoll < 7467) {
+                sSettlement = "Kolido";
+            } else if (iRoll < 7492) {
+                sSettlement = "Oloseta";
+            } else if (iRoll < 7493) {
+                sSettlement = "P'Rorul Peaks";
+            } else if (iRoll < 7501) {
+                sSettlement = "P'Tikor Hills";
+            } else if (iRoll < 7505) {
+                sSettlement = "Pagalido";
+            } else if (iRoll < 7935) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8252) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8296) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9895) {
+            sRegion = "Tokis";
+            if (iRoll < 8341) {
+                sSettlement = "Bet Seder";
+            } else if (iRoll < 8350) {
+                sSettlement = "Fodeta";
+            } else if (iRoll < 8358) {
+                sSettlement = "Gaketa";
+            } else if (iRoll < 8363) {
+                sSettlement = "Pipido";
+            } else if (iRoll < 8366) {
+                sSettlement = "Salirido";
+            } else if (iRoll < 8383) {
+                sSettlement = "U'Rudaketa";
+            } else if (iRoll < 9211) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 9844) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 9891) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9919) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9921) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9953) {
+            sCommunity = oNIB.createSvimozhishianCommunity(sRace)
+        } else if (iRoll < 9987) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
+};
+
 oNIB.createLearningATrade = function() {
     var iRoll = oNIB.roll(100);
     var oCharacter = oNIB.oCharacter;
