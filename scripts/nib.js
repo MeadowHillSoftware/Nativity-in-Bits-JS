@@ -4900,6 +4900,405 @@ oNIB.createSpecialistWizard = function() {
     oCharacter.sClass = sClass;
 };
 
+oNIB.createSvimozhishianCommunity = function(sRace) {
+    var iRoll = oNIB.roll(10000);
+    var sSuffix = "(Svimozhish Isle)";
+    var sRegion = "";
+    var sSettlement = "";
+    var sCommunity = "";
+    if (sRace === "Dwarf") {
+        if (iRoll < 14) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 9730) {
+            sRegion = "Meznamish";
+            if (iRoll < 380) {
+                sSettlement = "Dashahn Mountains";
+            } else if (iRoll < 517) {
+                sSettlement = "Menamo Hills";
+            } else if (iRoll < 568) {
+                sSettlement = "Monam-Ahnozh";
+            } else if (iRoll < 9709) {
+                sSettlement = "Tanzeh Mountains";
+            } else {
+                sSettlement = "Zhano Headlands";
+            }
+        } else if (iRoll < 9740) {
+            sRegion = "Ozhvinmish";
+            sSettlement = "Imomena Hills";
+        } else if (iRoll < 9862) {
+            sRegion = "Ul-Karg";
+            if (iRoll < 9753) {
+                sSettlement = "Burzumagh";
+            } else if (iRoll < 9852) {
+                sSettlement = "Krimppatu";
+            } else if (iRoll < 9853) {
+                sSettlement = "Kazullagh";
+            } else {
+                sSettlement = "Ronazagh";
+            }
+        } else if (iRoll < 9867) {
+            sRegion = "Vrandol";
+            sSettlement = "Vrandol";
+        } else if (iRoll < 9896) {
+            sRegion = "Zazahni";
+            if (iRoll < 9877) {
+                sSettlement = "Imomena Hills";
+            } else if (iRoll < 9890) {
+                sSettlement = "Svomwhi";
+            } else {
+                sSettlement = "Wimish";
+            }
+        } else if (iRoll < 9903) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9952) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9972) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9995) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Elf") {
+        if (iRoll < 36) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 294) {
+            sRegion = "Meznamish";
+            sSettlement = "Mizohr Woodlands";
+        } else if (iRoll < 9300) {
+            sRegion = "Ozhvinmish";
+            sSettlement = "Miznoh Forest";
+        } else if (iRoll < 9328) {
+            sRegion = "Zazahni";
+            if (iRoll < 9314) {
+                sSettlement = "Emosvom";
+            } else {
+                sSettlement = "Wimish";
+            }
+        } else if (iRoll < 9591) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9758) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9765) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9772) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Gnome") {
+        if (iRoll < 64) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 8284) {
+            sRegion = "Meznamish";
+            if (iRoll < 1686) {
+                sSettlement = "Dashahn Mountains";
+            } else if (iRoll < 3194) {
+                sSettlement = "Menamo Hills";
+            } else if (iRoll < 4510) {
+                sSettlement = "Mizohr Woodlands";
+            } else if (iRoll < 5953) {
+                sSettlement = "Tanzeh Mountains";
+            } else {
+                sSettlement = "Zhano Headlands";
+            }
+        } else if (iRoll < 8460) {
+            sRegion = "Ozhvinmish";
+            sSettlement = "Imomena Hills";
+        } else if (iRoll < 9637) {
+            sRegion = "Ul-Karg";
+            if (iRoll < 8824) {
+                sSettlement = "Burzumagh";
+            } else if (iRoll < 9519) {
+                sSettlement = "Krimppatu";
+            } else if (iRoll < 9557) {
+                sSettlement = "Kazullagh";
+            } else {
+                sSettlement = "Ronazagh";
+            }
+        } else if (iRoll < 9832) {
+            sRegion = "Zazahni";
+            if (iRoll < 9813) {
+                sSettlement = "Imomena Hills";
+            } else if (iRoll < 9826) {
+                sSettlement = "Svomwhi";
+            } else {
+                sSettlement = "Wimish";
+            }
+        } else if (iRoll < 9864) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9893) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9950) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9969) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Elf") {
+        if (iRoll < 650) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 3764) {
+            sRegion = "Vohven Jungle";
+        } else if (iRoll < 4757) {
+            sRegion = "Meznamish";
+            sSettlement = "Tanzeh Mountains";
+        } else if (iRoll < 6443) {
+            sRegion = "Ozhvinmish";
+            sSettlement = "Miznoh Forest";
+        } else if (iRoll < 7520) {
+            sRegion = "Ul-Karg";
+            if (iRoll < 7004) {
+                sSettlement = "Burzumagh";
+            } else {
+                sSettlement = "Kazullagh";
+            }
+        } else if (iRoll < 9147) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9715) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9845) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9858) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Halfling") {
+        if (iRoll < 139) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 2660) {
+            sRegion = "Bronish";
+            if (iRoll < 685) {
+                sSettlement = "Bronish";
+            } else if (iRoll < 1830) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2517) {
+                sSettlement = "Rural Hamlet";
+            } else {
+                sSettlement = "Minor Town";
+            }
+        } else if (iRoll < 6137) {
+            sRegion = "Meznamish";
+            if (iRoll < 2858) {
+                sSettlement = "Dashahn Mountains";
+            } else if (iRoll < 5713) {
+                sSettlement = "Menamo Hills";
+            } else if (iRoll < 6089) {
+                sSettlement = "Tanzeh Mountains";
+            } else {
+                sSettlement = "Zhano Headlands";
+            }
+        } else if (iRoll < 7696) {
+            sRegion = "Ozhvinmish";
+            if (iRoll < 7319) {
+                sSettlement = "Imomena Hills";
+            } else {
+                sSettlement = "Miznoh Forest";
+            }
+        } else if (iRoll < 8960) {
+            sRegion = "Zazahni";
+            if (iRoll < 8878) {
+                sSettlement = "Imomena Hills";
+            } else if (iRoll < 8932) {
+                sSettlement = "Svomwhi";
+            } else {
+                sSettlement = "Wimish";
+            }
+        } else if (iRoll < 9349) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9637) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9664) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9809) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else if (sRace === "Half-Orc") {
+        if (iRoll < 347) {
+            sRegion = "Ahznomahn";
+            sSettlement = "Zha-Nehzmish";
+        } else if (iRoll < 7083) {
+            sRegion = "Vohven Jungle";
+        } else if (iRoll < 9758) {
+            sRegion = "Whisvomi Forest";
+        } else if (iRoll < 9788) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9871) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9881) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9896) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    } else {
+        if (iRoll < 839) {
+            sRegion = "Ahznomahn";
+            if (iRoll < 202) {
+                sSettlement = "Zha-Nehzmish";
+            } else if (iRoll < 547) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 804) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 837) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 1580) {
+            sRegion = "Vohven Jungle";
+        } else if (iRoll < 1630) {
+            sRegion = "Bronish";
+            if (iRoll < 1590) {
+                sSettlement = "Bronish";
+            } else if (iRoll < 1611) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 1627) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 1629) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 2872) {
+            sRegion = "Meznamish";
+            if (iRoll < 1651) {
+                sSettlement = "Dashan Mountains";
+            } else if (iRoll < 1671) {
+                sSettlement = "Menamo Hills";
+            } else if (iRoll < 1809) {
+                sSettlement = "Monam-Ahnozh";
+            } else if (iRoll < 1811) {
+                sSettlement = "Mizohr Woodlands";
+            } else if (iRoll < 1814) {
+                sSettlement = "Tanzeh Mountains";
+            } else if (iRoll < 1823) {
+                sSettlement = "Zhano Headlands";
+            } else if (iRoll < 2390) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 2809) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 2869) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 5659) {
+            sRegion = "Ozhvinmish";
+            if (iRoll < 2907) {
+                sSettlement = "Anowhizh";
+            } else if (iRoll < 3049) {
+                sSettlement = "Ashoshani";
+            } else if (iRoll < 3062) {
+                sSettlement = "Imomena Hills";
+            } else if (iRoll < 3074) {
+                sSettlement = "Miznahn";
+            } else if (iRoll < 3090) {
+                sSettlement = "Miznoh Forest";
+            } else if (iRoll < 3131) {
+                sSettlement = "Nenehi";
+            } else if (iRoll < 3327) {
+                sSettlement = "Svowmahni";
+            } else if (iRoll < 3357) {
+                sSettlement = "Zomo-wim";
+            } else if (iRoll < 4589) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5502) {
+                sSettlement = "Rual Hamlet";
+            } else if (iRoll < 5632) {
+                sSettlement = "Minor Town";
+            } else if (iRoll < 5639) {
+                sSettlement = "Farmstead";
+            } else {
+                sSettlement = "Parnor Hills";
+            }
+        } else if (iRoll < 5963) {
+            sRegion = "Ul-Karg";
+            if (iRoll < 5682) {
+                sSettlement = "Burzumagh";
+            } else if (iRoll < 5700) {
+                sSettlement = "Krimppatu";
+            } else if (iRoll < 5709) {
+                sSettlement = "Kazullagh";
+            } else if (iRoll < 5713) {
+                sSettlement = "Ronazagh";
+            } else if (iRoll < 5761) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 5788) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 5789) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 6039) {
+            sRegion = "Vrandol";
+            if (iRoll < 5978) {
+                sSettlement = "Vrandol";
+            } else if (iRoll < 6004) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 6025) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 6027) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 8326) {
+            sRegion = "Zazahni";
+            if (iRoll < 6051) {
+                sSettlement = "Emosvom";
+            } else if (iRoll < 6064) {
+                sSettlement = "Imomena Hills";
+            } else if (iRoll < 6093) {
+                sSettlement = "Svomwhi";
+            } else if (iRoll < 6125) {
+                sSettlement = "Wimish";
+            } else if (iRoll < 6164) {
+                sSettlement = "Zenshahn";
+            } else if (iRoll < 6177) {
+                sSettlement = "Zhanohven";
+            } else if (iRoll < 7494) {
+                sSettlement = "Rural Thorp";
+            } else if (iRoll < 8212) {
+                sSettlement = "Rural Hamlet";
+            } else if (iRoll < 8284) {
+                sSettlement = "Minor Town";
+            } else {
+                sSettlement = "Farmstead";
+            }
+        } else if (iRoll < 9842) {
+            sRegion = "Whisvomi Forest";
+        } else if (iRoll < 9864) {
+            sRegion = "Whisvomi Hills";
+        } else if (iRoll < 9900) {
+            sCommunity = oNIB.createBrandobianCommunity(sRace)
+        } else if (iRoll < 9975) {
+            sCommunity = oNIB.createKalamaranEmpireCommunity(sRace)
+        } else if (iRoll < 9977) {
+            sCommunity = oNIB.createReanaarianCommunity(sRace)
+        } else if (iRoll < 9990) {
+            sCommunity = oNIB.createWildLandsCommunity(sRace)
+        } else {
+            sCommunity = oNIB.createYoungKingdomsCommunity(sRace)
+        }
+    }
+    if (sCommunity === "") {
+        sCommunity = sSettlement + " (" + sRegion + ") " + sSuffix;
+    }
+    return sCommunity;
+};
+
 oNIB.createTemperatureZone = function() {
     var oCharacter = oNIB.oCharacter;
     var iRoll = oNIB.roll(100);
