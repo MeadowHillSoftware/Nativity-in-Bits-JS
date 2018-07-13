@@ -1370,6 +1370,8 @@ oNIB.createHomeCommunity = function() {
             oNIB.getSpecificCommunity("Planescape");
         } else if (sChecked === "ravenloft") {
             oNIB.getSpecificCommunity("Ravenloft");
+        } else if (sChecked === "rokugan") {
+            oNIB.getSpecificCommunity("Rokugan");
         } else if (sChecked === "spelljammer") {
             oNIB.getSpecificCommunity("Spelljammer");
         } else if (sChecked === "warcraft") {
@@ -6457,6 +6459,31 @@ oNIB.oSettings["Ravenloft"] = {
     "Zherisia": {iPopulation: 24504, Human: 99, other: 1, sType: "region"}, 
     "Paridon": {iPopulation: 11600, Human: 99, other: 1, sSource: "Ravenloft Campaign Setting", sType: "settlement"}, 
     "Zherisia (undefined)": {iPopulation: 12904, Human: 99, other: 1, sType: "undefined"}, 
+    sType: "region"
+};
+
+oNIB.oSettings["Rokugan"] = {
+    "aRokugan": ["Rokugan (region)"], 
+    "aRokugan(region)": ["Crab Clan", "Dragon Clan", "Lion Clan", "Minor Clans", "Phoenix Clan", "Scorpion Clan", "Unicorn Clan"], 
+    "Rokugan (region)": {iPopulation: 30000000, Human: 99, other: 1, sSource: "Oriental Adventures", sType: "region"}, 
+    "Crab Clan": {iPopulation: 4590000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Crane Clan": {iPopulation: 3780000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Dragon Clan": {iPopulation: 1890000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Lion Clan": {iPopulation: 4540000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "aMinorClans": ["Centipede", "Fox", "Hare", "Mantis", "Monkey", "Naga", "Sparrow", "Tortoise", "Wasp"], 
+    "Minor Clans": {iPopulation: 11690000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Centipede": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Fox": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Hare": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Mantis": {iPopulation: 1080000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Monkey": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Naga": {iPopulation: 2000000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Sparrow": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Tortoise": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Wasp": {iPopulation: 1230000, Human: 99, other: 1, sType: "region"}, 
+    "Phoenix Clan": {iPopulation: 1620000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Scorpion Clan": {iPopulation: 1890000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
+    "Unicorn Clan": {iPopulation: 3780000, Human: 99, other: 1, sSource: "Rokugan Campaign Setting", sType: "region"}, 
     sType: "region"
 };
 
